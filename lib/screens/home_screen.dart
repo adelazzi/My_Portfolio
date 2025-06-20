@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _scrollController.dispose();
     super.dispose();
   }
-
   void _scrollToSection(int index) {
     _currentIndex = index;
     final sectionKey = _sectionKeys[index];
@@ -44,6 +43,43 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     setState(() {});
+  }
+  
+  Widget _buildSocialIcon(Widget icon, String url) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: IconButton(
+        onPressed: () {},
+        icon: icon,
+        color: Colors.white,
+        iconSize: 28,
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.white10,
+          padding: const EdgeInsets.all(12),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDrawerItem(int index, String title, IconData icon) {
+    final isSelected = _currentIndex == index;
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: isSelected ? AppColors.accentColor : null,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isSelected ? AppColors.accentColor : null,
+          fontWeight: isSelected ? FontWeight.bold : null,
+        ),
+      ),
+      onTap: () {
+        _scrollToSection(index);
+        Navigator.pop(context);
+      },
+    );
   }
 
   @override
@@ -128,115 +164,266 @@ class _HomeScreenState extends State<HomeScreen> {
                   key: _sectionKeys[0],
                   height: size.height,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  child: Center(
-                    child: ResponsiveContainer(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // Profile Image
-                          const AnimatedProfileImage(
-                            imagePath: 'assets/images/profile.jpg',
-                            size: 180,
-                          ),
-                          const SizedBox(height: 32),
-
-                          // Name
-                          Text(
-                            AppConstants.fullName,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge
-                                ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                            textAlign: TextAlign.center,
-                          )
-                              .animate()
-                              .fadeIn(duration: 800.ms)
-                              .slideY(begin: 0.3, end: 0),
-
-                          const SizedBox(height: 16),
-
-                          // Animated Role Text
-                          SizedBox(
-                            height: 50,
-                            child: AnimatedTextKit(
-                              animatedTexts: [
-                                TypewriterAnimatedText(
-                                  'Full Stack Developer',
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        color: Colors.white70,
-                                      ),
-                                  speed: const Duration(milliseconds: 100),
-                                ),
-                                TypewriterAnimatedText(
-                                  'Mobile App Developer',
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        color: Colors.white70,
-                                      ),
-                                  speed: const Duration(milliseconds: 100),
-                                ),
-                                TypewriterAnimatedText(
-                                  'UI/UX Enthusiast',
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        color: Colors.white70,
-                                      ),
-                                  speed: const Duration(milliseconds: 100),
-                                ),
-                              ],
-                              totalRepeatCount: 3,
-                              pause: const Duration(milliseconds: 1000),
-                              displayFullTextOnTap: true,
-                              stopPauseOnTap: true,
-                            ),
-                          ),
-
-                          const SizedBox(height: 32),
-
-                          // Social Icons
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              _buildSocialIcon(
-                                  Logo(Logos.github), AppConstants.github),
-                              _buildSocialIcon(
-                                  Logo(Logos.linkedin), AppConstants.linkedin),
-                              _buildSocialIcon(
-                                  Logo(Logos.twitter), AppConstants.twitter),
-                            ],
-                          ).animate().fadeIn(duration: 1200.ms),
-
-                          const SizedBox(height: 48),
-
-                          // Call to Action Button
-                          ElevatedButton.icon(
-                            onPressed: () => _scrollToSection(1),
-                            icon: const Icon(Icons.arrow_downward),
-                            label: const Text('View My Work'),
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 16),
-                            ),
-                          ).animate().fadeIn(duration: 1500.ms).scale(
-                                begin: const Offset(0.8, 0.8),
-                                end: const Offset(1, 1),
-                              ),
-                        ],
-                      ),
+                    // Creative gradient background
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        AppColors.primaryColor,
+                        AppColors.primaryColor.withOpacity(0.8),
+                        AppColors.altCardColor,
+                      ],
                     ),
+                    // Subtle pattern overlay
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/pattern.png'),
+                      opacity: 0.05,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Stack(
+                    children: [                      // Background animated shapes/particles (for visual interest)
+                      Positioned.fill(
+                        child: Opacity(
+                          opacity: 0.1,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,  // Added color
+                              backgroundBlendMode: BlendMode.overlay,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Main content       
+                                     Center(
+                        child: ResponsiveContainer(
+                          child: SingleChildScrollView(
+                            child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Creative profile image with gradient border
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      AppColors.accentColor,
+                                      AppColors.tertiaryColor,
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.accentColor
+                                          .withOpacity(0.5),
+                                      blurRadius: 20,
+                                      spreadRadius: 5,
+                                    )
+                                  ],
+                                ),
+                                padding: const EdgeInsets.all(4),
+                                child: const AnimatedProfileImage(
+                                  imagePath: 'assets/images/profile.jpg',
+                                  size: 180,
+                                ),
+                              ),
+                              const SizedBox(height: 32),
+
+                              // Creative tagline
+                              Text(
+                                AppConstants.tagline,
+                                style: TextStyle(
+                                  color: AppColors.accentColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 3,
+                                ),
+                              )
+                                  .animate()
+                                  .fadeIn(duration: 600.ms, delay: 300.ms),
+
+                              const SizedBox(height: 16),
+
+                              // Name with creative styling
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                  colors: [Colors.white, AppColors.accentColor],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ).createShader(bounds),
+                                child: Text(
+                                  AppConstants.fullName,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        height: 1.1,
+                                      ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                                  .animate()
+                                  .fadeIn(duration: 800.ms)
+                                  .slideY(begin: 0.3, end: 0),
+
+                              const SizedBox(height: 16),
+
+                              // Animated Role Text with creative presentation
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: Colors.black12,
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(color: Colors.white30),
+                                ),
+                                child: SizedBox(
+                                  height: 40,
+                                  child: AnimatedTextKit(
+                                    repeatForever: true,
+                                    animatedTexts: AppConstants.roles
+                                        .map((role) => TyperAnimatedText(
+                                              role,
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineMedium
+                                                  ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                              speed: const Duration(
+                                                  milliseconds: 70),
+                                            ))
+                                        .toList(),
+                                    pause: const Duration(milliseconds: 1000),
+                                    displayFullTextOnTap: true,
+                                    stopPauseOnTap: true,
+                                  ),
+                                ),
+                              )
+                                  .animate()
+                                  .fadeIn(duration: 800.ms, delay: 500.ms),
+
+                              const SizedBox(height: 40),
+
+                              // Creative quote
+                              Container(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Text(
+                                  AppConstants.aboutQuote,
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 16,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                                  .animate()
+                                  .fadeIn(duration: 1000.ms, delay: 700.ms),
+
+                              const SizedBox(height: 40),
+
+                              // Social Icons with modern styling
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  _buildSocialIcon(
+                                      Logo(Logos.github), AppConstants.github),
+                                  _buildSocialIcon(Logo(Logos.linkedin),
+                                      AppConstants.linkedin),
+                                  _buildSocialIcon(Logo(Logos.twitter),
+                                      AppConstants.twitter),
+                                  _buildSocialIcon(
+                                      Logo(Logos.github), AppConstants.medium),
+                                  _buildSocialIcon(Logo(Logos.twitter),
+                                      AppConstants.dribbble),
+                                ],
+                              ).animate().fadeIn(duration: 1200.ms),
+
+                              const SizedBox(height: 48),
+
+                              // Creative CTA buttons
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // Primary CTA
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: AppColors.accentColor
+                                              .withOpacity(0.4),
+                                          blurRadius: 15,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      gradient: LinearGradient(
+                                        colors: AppColors.accentGradient,
+                                      ),
+                                    ),
+                                    child: ElevatedButton.icon(
+                                      onPressed: () => _scrollToSection(1),
+                                      icon: const Icon(Icons.arrow_downward),
+                                      label: Text(AppConstants.viewWorkCTA),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        foregroundColor: Colors.white,
+                                        shadowColor: Colors.transparent,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 16),
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  )
+                                      .animate()
+                                      .fadeIn(duration: 1200.ms, delay: 800.ms)
+                                      .scale(
+                                        begin: const Offset(0.8, 0.8),
+                                        end: const Offset(1, 1),
+                                      ),
+
+                                  // Secondary CTA
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    child: OutlinedButton.icon(
+                                      onPressed: () => _scrollToSection(6),
+                                      icon: const Icon(Icons.mail_outline),
+                                      label: Text(AppConstants.hireMeCTA),
+                                      style: OutlinedButton.styleFrom(
+                                        side: const BorderSide(
+                                            color: Colors.white, width: 1.5),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 16),
+                                        foregroundColor: Colors.white,
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  )
+                                      .animate()
+                                      .fadeIn(duration: 1200.ms, delay: 900.ms)
+                                      .scale(
+                                        begin: const Offset(0.8, 0.8),
+                                        end: const Offset(1, 1),
+                                      ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),)
+                    ],
                   ),
                 ),
               ),
@@ -386,7 +573,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildDrawerItem(int index, String label, IconData icon) {
+  Widget _buildMobileDrawerItem(int index, String label, IconData icon) {
     return ListTile(
       leading: Icon(icon),
       title: Text(label),
@@ -399,7 +586,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildSocialIcon(Widget icon, String url) {
+  Widget _buildDesktopSocialIcon(Widget icon, String url) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: IconButton(
