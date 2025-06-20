@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:provider/provider.dart';
+import '../providers/portfolio_provider.dart';
+import '../utils/constants.dart';
+import '../widgets/portfolio_widgets.dart';
+import 'about_screen.dart';
+import 'skills_screen.dart';
+import 'projects_screen.dart';
+import 'experience_screen.dart';
+import 'education_screen.dart';
+import 'contact_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -8,302 +20,394 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  final List<ParticleModel> particles = [];
-  final int numberOfParticles = 30;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Initialize animation controller
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..repeat();
-
-    // Generate particles
-    for (int i = 0; i < numberOfParticles; i++) {
-      particles.add(ParticleModel(
-        position: Offset(
-          math.Random().nextDouble() * 1.0,
-          math.Random().nextDouble() * 1.0,
-        ),
-        speed: Offset(
-          math.Random().nextDouble() * 0.02 - 0.01,
-          math.Random().nextDouble() * 0.02 - 0.01,
-        ),
-        size: math.Random().nextDouble() * 10 + 2,
-      ));
-    }
-  }
+class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController = ScrollController();
+  final List<GlobalKey> _sectionKeys = List.generate(6, (index) => GlobalKey());
+  int _currentIndex = 0;
 
   @override
   void dispose() {
-    _controller.dispose();
+    _scrollController.dispose();
     super.dispose();
+  }
+
+  void _scrollToSection(int index) {
+    _currentIndex = index;
+    final sectionKey = _sectionKeys[index];
+
+    if (sectionKey.currentContext != null) {
+      Scrollable.ensureVisible(
+        sectionKey.currentContext!,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+      );
+    }
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
-    final isSmallScreen = size.width < 800;
-    // Extra small screens (most phones)
-    final isExtraSmallScreen = size.width < 480;
+    final isMobile = size.width < 600;
 
     return Scaffold(
+      appBar: isMobile
+          ? AppBar(
+              title: const Text('Portfolio'),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Theme.of(context).brightness == Brightness.light
+                        ? Icons.dark_mode
+                        : Icons.light_mode,
+                  ),
+                  onPressed: () {
+                    Provider.of<PortfolioProvider>(context, listen: false)
+                        .toggleTheme();
+                  },
+                ),
+              ],
+            )
+          : null,
+      drawer: isMobile
+          ? Drawer(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CircleAvatar(
+                          radius: 40,
+                          backgroundImage:
+                              AssetImage('assets/images/profile.jpg'),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          AppConstants.fullName,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    color: Colors.white,
+                                  ),
+                        ),
+                        Text(
+                          AppConstants.shortBio,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.white70,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  _buildDrawerItem(0, 'Home', Icons.home),
+                  _buildDrawerItem(1, 'About', Icons.person),
+                  _buildDrawerItem(2, 'Skills', Icons.code),
+                  _buildDrawerItem(3, 'Projects', Icons.work),
+                  _buildDrawerItem(4, 'Experience', Icons.business),
+                  _buildDrawerItem(5, 'Education', Icons.school),
+                  _buildDrawerItem(6, 'Contact', Icons.email),
+                ],
+              ),
+            )
+          : null,
       body: Stack(
         children: [
-          // Background particles animation
-          AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              // Update particle positions
-              for (var particle in particles) {
-                particle.position += particle.speed;
+          // Main Content
+          CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              // Hero Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[0],
+                  height: size.height,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  child: Center(
+                    child: ResponsiveContainer(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // Profile Image
+                          const AnimatedProfileImage(
+                            imagePath: 'assets/images/profile.jpg',
+                            size: 180,
+                          ),
+                          const SizedBox(height: 32),
 
-                // Bounce off the edges
-                if (particle.position.dx < 0 || particle.position.dx > 1.0) {
-                  particle.speed =
-                      Offset(-particle.speed.dx, particle.speed.dy);
-                }
-                if (particle.position.dy < 0 || particle.position.dy > 1.0) {
-                  particle.speed =
-                      Offset(particle.speed.dx, -particle.speed.dy);
-                }
-              }
+                          // Name
+                          Text(
+                            AppConstants.fullName,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge
+                                ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                            textAlign: TextAlign.center,
+                          )
+                              .animate()
+                              .fadeIn(duration: 800.ms)
+                              .slideY(begin: 0.3, end: 0),
 
-              return CustomPaint(
-                size: Size.infinite,
-                painter: ParticlePainter(particles),
-              );
-            },
-          ),
+                          const SizedBox(height: 16),
 
-          // Content
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal:
-                    isExtraSmallScreen ? 16.0 : (isSmallScreen ? 24.0 : 80.0),
-                vertical: isExtraSmallScreen ? 20.0 : 40.0,
+                          // Animated Role Text
+                          SizedBox(
+                            height: 50,
+                            child: AnimatedTextKit(
+                              animatedTexts: [
+                                TypewriterAnimatedText(
+                                  'Full Stack Developer',
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        color: Colors.white70,
+                                      ),
+                                  speed: const Duration(milliseconds: 100),
+                                ),
+                                TypewriterAnimatedText(
+                                  'Mobile App Developer',
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        color: Colors.white70,
+                                      ),
+                                  speed: const Duration(milliseconds: 100),
+                                ),
+                                TypewriterAnimatedText(
+                                  'UI/UX Enthusiast',
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        color: Colors.white70,
+                                      ),
+                                  speed: const Duration(milliseconds: 100),
+                                ),
+                              ],
+                              totalRepeatCount: 3,
+                              pause: const Duration(milliseconds: 1000),
+                              displayFullTextOnTap: true,
+                              stopPauseOnTap: true,
+                            ),
+                          ),
+
+                          const SizedBox(height: 32),
+
+                          // Social Icons
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _buildSocialIcon(
+                                  Logo(Logos.github), AppConstants.github),
+                              _buildSocialIcon(
+                                  Logo(Logos.linkedin), AppConstants.linkedin),
+                              _buildSocialIcon(
+                                  Logo(Logos.twitter), AppConstants.twitter),
+                            ],
+                          ).animate().fadeIn(duration: 1200.ms),
+
+                          const SizedBox(height: 48),
+
+                          // Call to Action Button
+                          ElevatedButton.icon(
+                            onPressed: () => _scrollToSection(1),
+                            icon: const Icon(Icons.arrow_downward),
+                            label: const Text('View My Work'),
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 16),
+                            ),
+                          ).animate().fadeIn(duration: 1500.ms).scale(
+                                begin: const Offset(0.8, 0.8),
+                                end: const Offset(1, 1),
+                              ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              child: isSmallScreen
-                  ? _buildMobileLayout(textTheme, isExtraSmallScreen)
-                  : _buildDesktopLayout(textTheme),
-            ),
+
+              // About Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[1],
+                  child: const AboutScreen(),
+                ),
+              ),
+
+              // Skills Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[2],
+                  child: const SkillsScreen(),
+                ),
+              ),
+
+              // Projects Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[3],
+                  child: const ProjectsScreen(),
+                ),
+              ),
+
+              // Experience Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[4],
+                  child: const ExperienceScreen(),
+                ),
+              ),
+
+              // Education Section
+              SliverToBoxAdapter(
+                child: Container(
+                  key: _sectionKeys[5],
+                  child: const EducationScreen(),
+                ),
+              ),
+
+              // Contact Section
+              SliverToBoxAdapter(
+                child: Container(
+                  child: const ContactScreen(),
+                ),
+              ),
+            ],
           ),
+
+          // Desktop Navigation
+          if (!isMobile)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                color:
+                    Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Logo
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage:
+                              const AssetImage('assets/images/profile.jpg'),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          AppConstants.fullName,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ],
+                    ),
+
+                    // Navigation Links
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        _buildNavLink(0, 'Home'),
+                        _buildNavLink(1, 'About'),
+                        _buildNavLink(2, 'Skills'),
+                        _buildNavLink(3, 'Projects'),
+                        _buildNavLink(4, 'Experience'),
+                        _buildNavLink(5, 'Education'),
+                        const SizedBox(width: 16),
+                        ElevatedButton(
+                          onPressed: () => _scrollToSection(6),
+                          child: const Text('Contact Me'),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        IconButton(
+                          icon: Icon(
+                            Theme.of(context).brightness == Brightness.light
+                                ? Icons.dark_mode
+                                : Icons.light_mode,
+                          ),
+                          onPressed: () {
+                            Provider.of<PortfolioProvider>(context,
+                                    listen: false)
+                                .toggleTheme();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
         ],
       ),
     );
   }
 
-  Widget _buildDesktopLayout(TextTheme textTheme) {
-    return Row(
-      children: [
-        // Left side - Text content
-        Expanded(
-          flex: 5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hello, I'm a",
-                style: textTheme.headlineMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "High-Performance Computing & Fullstack Developer",
-                style: textTheme.displaySmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                "Building efficient solutions with Django & Flutter",
-                style: textTheme.bodyLarge,
-              ),
-              const SizedBox(height: 32),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Scroll to projects section
-                    },
-                    child: const Text('View my work'),
-                  ),
-                  const SizedBox(width: 16),
-                  OutlinedButton(
-                    onPressed: () {
-                      // Scroll to contact section
-                    },
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 14),
-                      side: BorderSide(
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                    child: const Text('Contact me'),
-                  ),
-                ],
-              ),
-            ],
+  Widget _buildNavLink(int index, String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: TextButton(
+        onPressed: () => _scrollToSection(index),
+        style: TextButton.styleFrom(
+          foregroundColor: _currentIndex == index
+              ? Theme.of(context).colorScheme.secondary
+              : Theme.of(context).textTheme.titleMedium?.color,
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontWeight:
+                _currentIndex == index ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-
-        // Right side - Animated illustration
-        Expanded(
-          flex: 4,
-          child: _buildAnimatedAvatar(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMobileLayout(TextTheme textTheme, bool isExtraSmallScreen) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Top area - animated avatar
-        SizedBox(
-          height: isExtraSmallScreen ? 150 : 200,
-          child: Center(
-            child: _buildAnimatedAvatar(isSmall: true),
-          ),
-        ),
-        SizedBox(height: isExtraSmallScreen ? 20 : 40),
-
-        // Text content
-        Text(
-          "Hello, I'm a",
-          style: isExtraSmallScreen
-              ? textTheme.titleLarge
-              : textTheme.headlineMedium,
-        ),
-        SizedBox(height: isExtraSmallScreen ? 4 : 8),
-        Text(
-          "HPC & Fullstack Developer",
-          style: isExtraSmallScreen
-              ? textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)
-              : textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: isExtraSmallScreen ? 8 : 16),
-        Text(
-          "Building efficient solutions with Django & Flutter",
-          style:
-              isExtraSmallScreen ? textTheme.bodyMedium : textTheme.bodyLarge,
-        ),
-        SizedBox(height: isExtraSmallScreen ? 20 : 32),
-        Wrap(
-          spacing: 16,
-          runSpacing: 16,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                // Scroll to projects section
-              },
-              child: const Text('View my work'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                // Scroll to contact section
-              },
-              style: OutlinedButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                    horizontal: isExtraSmallScreen ? 16 : 24,
-                    vertical: isExtraSmallScreen ? 10 : 14),
-                side: BorderSide(color: Theme.of(context).colorScheme.primary),
-              ),
-              child: const Text('Contact me'),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAnimatedAvatar({bool isSmall = false}) {
-    return Center(
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Container(
-            width: isSmall ? 180 : 300,
-            height: isSmall ? 180 : 300,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.secondary,
-                ],
-                transform: GradientRotation(_controller.value * 2 * math.pi),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                  blurRadius: 20,
-                  spreadRadius: 5,
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: CircleAvatar(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                child: Icon(
-                  Icons.code,
-                  size: isSmall ? 60 : 100,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-            ),
-          );
-        },
       ),
     );
   }
-}
 
-class ParticleModel {
-  Offset position; // Position from 0-1 for relative coordinates
-  Offset speed; // Movement speed and direction
-  double size; // Size of the particle
-
-  ParticleModel({
-    required this.position,
-    required this.speed,
-    required this.size,
-  });
-}
-
-class ParticlePainter extends CustomPainter {
-  final List<ParticleModel> particles;
-
-  ParticlePainter(this.particles);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..style = PaintingStyle.fill
-      ..color = const Color(0xFF0062FF).withOpacity(0.4);
-
-    for (var particle in particles) {
-      // Convert the relative position (0-1) to actual screen coordinates
-      final position = Offset(
-        particle.position.dx * size.width,
-        particle.position.dy * size.height,
-      );
-
-      canvas.drawCircle(position, particle.size, paint);
-    }
+  Widget _buildDrawerItem(int index, String label, IconData icon) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(label),
+      selected: _currentIndex == index,
+      selectedColor: Theme.of(context).colorScheme.secondary,
+      onTap: () {
+        Navigator.pop(context);
+        _scrollToSection(index);
+      },
+    );
   }
 
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  Widget _buildSocialIcon(Widget icon, String url) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: IconButton(
+        icon: icon,
+        iconSize: 32,
+        onPressed: () {},
+        color: Colors.white,
+      ),
+    );
+  }
 }
