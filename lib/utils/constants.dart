@@ -8,9 +8,11 @@ class AppColors {
   static const Color quaternaryColor = Color(0xFFA0522D); // Sienna
 
   // Background and card colors
-  static const Color backgroundColor = Color(0xFF2E1E12); // Dark brown background
+  static const Color backgroundColor =
+      Color(0xFF2E1E12); // Dark brown background
   static const Color cardColor = Color(0xFF3A291F); // Darker brown card
-  static const Color altCardColor = Color(0xFF4E3629); // Alternative brown card color
+  static const Color altCardColor =
+      Color(0xFF4E3629); // Alternative brown card color
 
   // Text colors
   static const Color textPrimaryColor = Color(0xFFECECEC); // Light text
@@ -19,7 +21,8 @@ class AppColors {
   static const Color dividerColor = Color(0xFF5A4636); // Subtle brown divider
 
   // Creative accent colors
-  static const Color successColor = Color(0xFF6B8E23); // Olive green for success
+  static const Color successColor =
+      Color(0xFF6B8E23); // Olive green for success
   static const Color errorColor = Color(0xFFB22222); // Firebrick red for error
   static const Color warningColor = Color(0xFFDAA520); // Goldenrod for warning
 
@@ -44,41 +47,41 @@ class AppColors {
 class AppConstants {
   // Portfolio Information
   static const String fullName = "ADEL AZZI";
-  static const String shortBio = "Full Stack Developer | Mobile App Developer";
-  static const String tagline = "Crafting Digital Experiences That Inspire";
+  static const String shortBio = "Flutter Developer | Full-Stack Engineer | Mobile Development Mentor";
+  static const String tagline = "Building Performant Mobile Experiences with Flutter";
   static const String email = "azziadel3939@gmail.com";
   static const String phone = "+213 7 93 63 69 45";
   static const String location = "Bab ezzouar, Algeria";
   static const String aboutMe =
-      "I transform ideas into elegant digital realities. As a passionate Full Stack Developer with "
-      "a creative mindset, I blend artistic vision with technical expertise to build intuitive, "
-      "responsive applications that not only work flawlessly but also tell compelling stories. "
-      "My journey in technology is driven by a relentless curiosity and a desire to push the boundaries "
-      "of what's possible in the digital realm.";
+      "With over 5 years of experience in Flutter development, I've built and launched more than 5 production-ready "
+      "mobile applications, delivering high-quality solutions focused on performance and user experience. My journey includes "
+      "a 1-year internship with software companies, where I gained solid industry experience and sharpened my technical and teamwork skills.\n\n"
+      "In addition to development, I actively mentor students on their final-year (PFE) projects using Flutter, providing "
+      "technical guidance and best practices. As a full-stack developer, I combine Flutter for frontend with Django for backend "
+      "to deliver complete, scalable applications.\n\n"
+      "Currently pursuing a Master's in High-Performance Computing (HPC), focusing on big data and parallel computing—aiming to "
+      "blend intelligent data processing with real-world application development.";
 
   // Professional Identity
   static const List<String> roles = [
-    "Full Stack Developer",
-    "UI/UX Enthusiast",
-    "Mobile App Creator",
-    "Problem Solver",
-    "Digital Innovator"
+    "Flutter Developer",
+    "Full-Stack Engineer",
+    "Mobile Development Mentor",
+    "M1 HPC Student",
+    "Django Backend Developer"
   ];
 
   static const List<String> personalTraits = [
-    "Creative Thinker",
-    "Detail-Oriented",
-    "Continuous Learner",
-    "Team Collaborator",
-    "User-Focused"
+    "Performance Focused",
+    "User Experience Driven",
+    "Technical Mentor",
+    "Problem Solver",
+    "Continuous Learner"
   ];
 
   // Social Media Links
   static const String github = "https://github.com/yourusername";
   static const String linkedin = "https://linkedin.com/in/yourusername";
-  static const String twitter = "https://twitter.com/yourusername";
-  static const String dribbble = "https://dribbble.com/yourusername";
-  static const String medium = "https://medium.com/@yourusername";
 
   // Creative Section Titles
   static const String aboutTitle = "< About Me />";
@@ -95,11 +98,11 @@ class AppConstants {
 
   // Creative quotes for sections
   static const String aboutQuote =
-      "Code is poetry in motion, and I'm the poet.";
+      "< Crafting digital experiences with passion && precision />";
   static const String skillsQuote =
-      "My toolbox is diverse, my approach is methodical.";
+      "const expertise = new Map() .withPerformance() .andCreativity();";
   static const String projectsQuote =
-      "Every line of code tells a story. Here are my best chapters.";
+      "function renderInnovation() { return myJourney.map((challenge) => solution); }";
 }
 
 // Responsive breakpoints
@@ -169,4 +172,42 @@ class DesignElements {
   // Creative shapes
   static const List<double> wavyPattern = [0, 20, -20, 40, -40, 20, -20, 0];
   static const List<double> zigzagPattern = [0, 30, 0, -30, 0, 30, 0, -30];
+
+  // Animated Background Constants
+  static const int particleDensity = 20; // Number of particles per screen
+  static const double minParticleSize = 15.0;
+  static const double maxParticleSize = 50.0;
+  static const double minParticleSpeed = 0.5;
+  static const double maxParticleSpeed = 2.0;
+
+  // Icon animation types
+  static const List<String> techIconsForBackground = [
+    'flutter',
+    'dart',
+    'hadoop',
+    'hive',
+    'pig',
+    'django',
+    'python',
+    'firebase',
+    'sql',
+    'mongodb',
+    'figma'
+  ];
+
+  // Animation patterns
+  static const List<AnimationPattern> animationPatterns = [
+    AnimationPattern.float,
+    AnimationPattern.pulse,
+    AnimationPattern.rotate,
+    AnimationPattern.orbit
+  ];
+}
+
+// Animation patterns for background elements
+enum AnimationPattern {
+  float, // Gentle up and down movement
+  pulse, // Scale in and out
+  rotate, // Rotate in place
+  orbit // Move in circular path
 }

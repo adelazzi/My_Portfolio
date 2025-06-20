@@ -23,7 +23,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
-  final List<GlobalKey> _sectionKeys = List.generate(7, (index) => GlobalKey());
+  final List<GlobalKey> _sectionKeys = List.generate(6, (index) => GlobalKey());
   int _currentIndex = 0;
 
   @override
@@ -185,8 +185,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: AnimatedBackground(
                     child: Center(
-                        child: ResponsiveContainer(
-                      child: SingleChildScrollView(
+                      child: ResponsiveContainer(
+                          child: SingleChildScrollView(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -320,6 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Logo(Logos.github), AppConstants.github),
                                 _buildSocialIcon(Logo(Logos.linkedin),
                                     AppConstants.linkedin),
+                               
                               ],
                             ).animate().fadeIn(duration: 1200.ms),
 
@@ -398,8 +399,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                      ),
-                    )),
+                      )),
+                    ),
                   ),
                 ),
               ),
@@ -408,7 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[1],
-                  child: AboutScreen(key: UniqueKey()),
+                  child: const AboutScreen(),
                 ),
               ),
 
@@ -416,7 +417,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[2],
-                  child: SkillsScreen(key: UniqueKey()),
+                  child: const SkillsScreen(),
                 ),
               ),
 
@@ -424,7 +425,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[3],
-                  child: ProjectsScreen(key: UniqueKey()),
+                  child: const ProjectsScreen(),
                 ),
               ),
 
@@ -432,7 +433,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[4],
-                  child: ExperienceScreen(key: UniqueKey()),
+                  child: const ExperienceScreen(),
                 ),
               ),
 
@@ -440,15 +441,14 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[5],
-                  child: EducationScreen(key: UniqueKey()),
+                  child: const EducationScreen(),
                 ),
               ),
 
               // Contact Section
               SliverToBoxAdapter(
                 child: Container(
-                  key: _sectionKeys[6],
-                  child: ContactScreen(key: UniqueKey()),
+                  child: const ContactScreen(),
                 ),
               ),
             ],
