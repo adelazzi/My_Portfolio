@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
 
@@ -258,11 +259,7 @@ class _ContactScreenState extends State<ContactScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                _buildSocialButton(context, Logos.github, 'GitHub'),
-                const SizedBox(width: 16),
                 _buildSocialButton(context, Logos.linkedin, 'LinkedIn'),
-                const SizedBox(width: 16),
-                _buildSocialButton(context, Logos.twitter, 'Twitter'),
               ],
             ),
           ],
@@ -307,7 +304,10 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget _buildSocialButton(
       BuildContext context, dynamic logoData, String platform) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        final uri = Uri.parse(AppConstants.linkedin);
+        launchUrl(uri, mode: LaunchMode.externalApplication);
+      },
       icon: Logo(logoData),
       label: Text(platform),
       style: ElevatedButton.styleFrom(
@@ -323,8 +323,7 @@ class _ContactScreenState extends State<ContactScreen> {
         return const Color(0xFF333333);
       case 'LinkedIn':
         return const Color(0xFF0077B5);
-      case 'Twitter':
-        return const Color(0xFF1DA1F2);
+
       default:
         return Theme.of(context).colorScheme.secondary;
     }
@@ -339,17 +338,18 @@ class _ContactScreenState extends State<ContactScreen> {
             IconButton(
               icon: Logo(Logos.github),
               color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                final uri = Uri.parse(AppConstants.github);
+                launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
             ),
             IconButton(
               icon: Logo(Logos.linkedin),
               color: Colors.white,
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Logo(Logos.twitter),
-              color: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                final uri = Uri.parse(AppConstants.linkedin);
+                launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
             ),
           ],
         ),

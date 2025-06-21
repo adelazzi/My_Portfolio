@@ -18,7 +18,7 @@ class PortfolioProvider extends ChangeNotifier {
       period: "2025",
       description:
           "One of the top-performing students in this advanced program. Focusing on optimizing performance in computing clusters and parallel handling of huge data sets. Learning cutting-edge techniques for high-performance computing applications and distributed systems architecture.",
-      logoUrl: "assets/images/bootcamp_logo.png",
+      logoUrl: "assets/images/university_logo.png",
     ),
   ];
 
@@ -30,7 +30,7 @@ class PortfolioProvider extends ChangeNotifier {
       period: "2024 - 2025",
       description:
           "Developed mobile applications for business clients with focus on enterprise solutions and integration with existing systems.",
-      logoUrl: "assets/images/techcorp_logo.png",
+      logoUrl: "assets/images/hoskadev.png",
       responsibilities: [
         "Developed responsive front-end interfaces using Flutter GetX",
         "Led data preprocessing and cleaning initiatives for real projects",
@@ -44,7 +44,7 @@ class PortfolioProvider extends ChangeNotifier {
       period: "6 months",
       description:
           "Developed full-stack mobile apps with Django APIs and Flutter frontends. Implemented authentication systems and responsive UIs with seamless backend integration.",
-      logoUrl: "assets/images/matrix_logo.png",
+      logoUrl: "assets/images/matrix.png",
       responsibilities: [
         "Developed Flutter mobile apps with responsive UI and clean architecture",
         "Built RESTful APIs using Django for backend services and data management",
@@ -93,8 +93,8 @@ class PortfolioProvider extends ChangeNotifier {
           "A comprehensive e-commerce mobile application that connects marketers with admins. Features include product management, order processing, financial tracking, inventory management, and real-time analytics for sellers. Implemented secure payment gateways and user authentication.",
       imageUrl: "assets/images/projects/olivia.jpg",
       technologies: ["Flutter", "Firebase"],
-      liveUrl: "https://example-ecommerce.com",
-      githubUrl: "https://github.com/yourusername/ecommerce",
+      liveUrl: "",
+      githubUrl: "",
     ),
     Project(
       title: "GIMDZ - Finance Mobile App",
@@ -148,7 +148,7 @@ class PortfolioProvider extends ChangeNotifier {
       period: "2022 - present",
       description:
           "Started as a regular member and progressively grew to become a team leader through dedication and technical contributions. Now responsible for monitoring team progress and mentoring new members, representing significant professional growth within the organization.",
-      logoUrl: "assets/images/cs_club_logo.png",
+      logoUrl: "assets/images/omc_club.png",
       achievements: [
         "Organized hands-on workshops teaching Flutter and GetX to club members",
         "Coordinated multiple hackathons and served as a team mentor",
@@ -161,7 +161,7 @@ class PortfolioProvider extends ChangeNotifier {
       period: "2024 - present",
       description:
           "Responsible for coordinating event logistics, managing venue setup, and ensuring smooth execution of tech meetups and workshops. Collaborated with cross-functional teams to organize resources, handled equipment needs, and created detailed event plans to facilitate successful community gatherings and learning sessions.",
-      logoUrl: "assets/images/entrepreneur_club_logo.png",
+      logoUrl: "assets/images/gdgalgeria.png",
       achievements: [
         "Streamlined event logistics for 10+ tech conferences using custom calendar management systems",
         "Implemented task management workflows that improved team coordination by 40%",

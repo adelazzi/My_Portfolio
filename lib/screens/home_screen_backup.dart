@@ -113,37 +113,39 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  DrawerHeader(
+                    DrawerHeader(
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                     ),
+                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CircleAvatar(
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage('assets/images/profile.jpg'),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          AppConstants.fullName,
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: Colors.white,
-                                  ),
-                        ),
-                        Text(
-                          AppConstants.shortBio,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Colors.white70,
-                                  ),
-                        ),
+                      const CircleAvatar(
+                        radius: 48, // Increased from 40
+                        backgroundImage:
+                          AssetImage('assets/images/profile.jpg'),
+                      ),
+                      const SizedBox(height: 16), // Increased from 10
+                      Text(
+                        AppConstants.fullName,
+                        style:
+                          Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        AppConstants.shortBio,
+                        style:
+                          Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Colors.white70,
+                            ),
+                      ),
                       ],
                     ),
-                  ),
-                  _buildDrawerItem(0, 'Home', Icons.home),
+                    ),
+                    _buildDrawerItem(0, 'Home', Icons.home),
                   _buildDrawerItem(1, 'About', Icons.person),
                   _buildDrawerItem(2, 'Skills', Icons.code),
                   _buildDrawerItem(3, 'Projects', Icons.work),
@@ -310,9 +312,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .animate()
                                 .fadeIn(duration: 1000.ms, delay: 700.ms),
 
-                            const SizedBox(height: 40),
-
-                            // Social Icons with modern styling
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -320,9 +319,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Logo(Logos.github), AppConstants.github),
                                 _buildSocialIcon(Logo(Logos.linkedin),
                                     AppConstants.linkedin),
-                               
                               ],
                             ).animate().fadeIn(duration: 1200.ms),
+
+                            // Social Icons with modern styling
+                            const SizedBox(height: 40),
 
                             const SizedBox(height: 48),
 
@@ -333,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 // Primary CTA
                                 Container(
                                   margin:
-                                      const EdgeInsets.symmetric(horizontal: 8),
+                                      const EdgeInsets.symmetric(vertical: 8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),
                                     boxShadow: [
@@ -369,34 +370,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                       begin: const Offset(0.8, 0.8),
                                       end: const Offset(1, 1),
                                     ),
-
-                                // Secondary CTA
-                                Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: OutlinedButton.icon(
-                                    onPressed: () => _scrollToSection(6),
-                                    icon: const Icon(Icons.mail_outline),
-                                    label: Text(AppConstants.hireMeCTA),
-                                    style: OutlinedButton.styleFrom(
-                                      side: const BorderSide(
-                                          color: Colors.white, width: 1.5),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 16),
-                                      foregroundColor: Colors.white,
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                                    .animate()
-                                    .fadeIn(duration: 1200.ms, delay: 900.ms)
-                                    .scale(
-                                      begin: const Offset(0.8, 0.8),
-                                      end: const Offset(1, 1),
-                                    ),
                               ],
                             ),
+                            // Secondary CTA
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              child: OutlinedButton.icon(
+                                onPressed: () => _scrollToSection(6),
+                                icon: const Icon(Icons.mail_outline),
+                                label: Text(AppConstants.hireMeCTA),
+                                style: OutlinedButton.styleFrom(
+                                  side: const BorderSide(
+                                      color: Colors.white, width: 1.5),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 16),
+                                  foregroundColor: Colors.white,
+                                  textStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(duration: 1200.ms, delay: 900.ms)
+                                .scale(
+                                  begin: const Offset(0.8, 0.8),
+                                  end: const Offset(1, 1),
+                                ),
                           ],
                         ),
                       )),

@@ -77,10 +77,10 @@ class EducationScreen extends StatelessWidget {
     // Sample certifications data
     final certifications = [
       {
-        'name': 'Full Stack Web Development',
-        'issuer': 'Udemy',
-        'date': 'February 2022',
-        'credential': 'UC-12345',
+        'name': 'Licensed Computer Scientist',
+        'issuer': 'USTHB',
+        'date': 'juin 2024',
+        'credential': 'UC',
       },
       {
         'name': 'Flutter App Development',

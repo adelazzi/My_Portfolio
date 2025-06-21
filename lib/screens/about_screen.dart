@@ -1,11 +1,56 @@
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:http/http.dart' as http;
 import 'package:icons_plus/icons_plus.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
+
+  // Function to download and open the CV
+  Future<void> _downloadCV(BuildContext context) async {
+    try {
+      // URL of your CV file (replace with your actual hosted CV)
+      final String cvUrl = AppConstants.cvUrl;
+
+      if (kIsWeb) {
+        // For web platform, direct link
+        final Uri url = Uri.parse(cvUrl);
+        if (!await launchUrl(url)) {
+          throw 'Could not launch $url';
+        }
+      } else {
+        // For mobile/desktop platforms, download and open
+        final response = await http.get(Uri.parse(cvUrl));
+
+        if (response.statusCode == 200) {
+          // Get temporary directory
+          final directory = await getTemporaryDirectory();
+          final filePath = '${directory.path}/resume.pdf';
+
+          // Write to file
+          final file = File(filePath);
+          await file.writeAsBytes(response.bodyBytes);
+
+          // Open the file
+          final Uri url = Uri.file(filePath);
+          if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+            throw 'Could not open the file';
+          }
+        }
+      }
+    } catch (e) {
+      print('Error downloading CV: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error downloading CV: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,8 +174,8 @@ class AboutScreen extends StatelessWidget {
                 children: [
                   _buildInfoItem(context, Icons.location_on, 'Location:',
                       AppConstants.location),
-                    _buildInfoItem(context, Bootstrap.github, 'GitHub:',
-                      'github.com/yourusername'),
+                  _buildInfoItem(context, Bootstrap.github, 'GitHub:',
+                      'https://github.com/adelazzi'),
                 ],
               ),
             ),
@@ -141,7 +186,7 @@ class AboutScreen extends StatelessWidget {
 
         // Download CV Button
         ElevatedButton.icon(
-          onPressed: () {},
+          onPressed: () => _downloadCV(context),
           icon: const Icon(Icons.download),
           label: const Text('Download CV'),
           style: ElevatedButton.styleFrom(
@@ -160,11 +205,10 @@ class AboutScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            icon is IconData ? icon : null,
+            icon,
             color: Theme.of(context).colorScheme.primary,
             size: 20,
           ),
-         
           const SizedBox(width: 8),
           Expanded(
             child: Column(

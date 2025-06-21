@@ -47,8 +47,10 @@ class AppColors {
 class AppConstants {
   // Portfolio Information
   static const String fullName = "ADEL AZZI";
-  static const String shortBio = "Flutter Developer | Full-Stack Engineer | Mobile Development Mentor";
-  static const String tagline = "Building Performant Mobile Experiences with Flutter";
+  static const String shortBio =
+      "Flutter Developer | Full-Stack Engineer | Mobile Development Mentor";
+  static const String tagline =
+      "Building Performant Mobile Experiences with Flutter";
   static const String email = "azziadel3939@gmail.com";
   static const String phone = "+213 7 93 63 69 45";
   static const String location = "Bab ezzouar, Algeria";
@@ -80,8 +82,9 @@ class AppConstants {
   ];
 
   // Social Media Links
-  static const String github = "https://github.com/yourusername";
-  static const String linkedin = "https://linkedin.com/in/yourusername";
+  static const String github = "https://github.com/adelazzi";
+  static const String linkedin =
+      "https://www.linkedin.com/in/adel-azzi-99649933b/";
 
   // Creative Section Titles
   static const String aboutTitle = "< About Me />";
@@ -95,7 +98,8 @@ class AppConstants {
   static const String hireMeCTA = "Start a Project Together";
   static const String viewWorkCTA = "Explore My Creations";
   static const String downloadCVCTA = "Download My CV";
-
+  static const String cvUrl =
+      'https://drive.google.com/file/d/1ImSAv6fPomGdIckRKtOFBiHjH_PZghLH/view?usp=sharing';
   // Creative quotes for sections
   static const String aboutQuote =
       "< Crafting digital experiences with passion && precision />";

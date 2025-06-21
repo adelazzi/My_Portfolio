@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../providers/portfolio_provider.dart';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
@@ -51,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          final uri = Uri.parse(url);
+          launchUrl(uri, mode: LaunchMode.externalApplication);
+        },
         icon: icon,
         color: Colors.white,
         iconSize: 28,
@@ -326,76 +330,66 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(height: 48),
 
                             // Creative CTA buttons
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // Primary CTA
-                                Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: AppColors.accentColor
-                                            .withOpacity(0.4),
-                                        blurRadius: 15,
-                                        offset: const Offset(0, 5),
-                                      )
-                                    ],
-                                    gradient: LinearGradient(
-                                      colors: AppColors.accentGradient,
-                                    ),
-                                  ),
-                                  child: ElevatedButton.icon(
-                                    onPressed: () => _scrollToSection(1),
-                                    icon: const Icon(Icons.arrow_downward),
-                                    label: Text(AppConstants.viewWorkCTA),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.transparent,
-                                      foregroundColor: Colors.white,
-                                      shadowColor: Colors.transparent,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 16),
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                                    .animate()
-                                    .fadeIn(duration: 1200.ms, delay: 800.ms)
-                                    .scale(
-                                      begin: const Offset(0.8, 0.8),
-                                      end: const Offset(1, 1),
-                                    ),
-
-                                // Secondary CTA
-                                Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: OutlinedButton.icon(
-                                    onPressed: () => _scrollToSection(6),
-                                    icon: const Icon(Icons.mail_outline),
-                                    label: Text(AppConstants.hireMeCTA),
-                                    style: OutlinedButton.styleFrom(
-                                      side: const BorderSide(
-                                          color: Colors.white, width: 1.5),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 16),
-                                      foregroundColor: Colors.white,
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                                    .animate()
-                                    .fadeIn(duration: 1200.ms, delay: 900.ms)
-                                    .scale(
-                                      begin: const Offset(0.8, 0.8),
-                                      end: const Offset(1, 1),
-                                    ),
-                              ],
-                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        AppColors.accentColor.withOpacity(0.4),
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 5),
+                                  )
+                                ],
+                                gradient: LinearGradient(
+                                  colors: AppColors.accentGradient,
+                                ),
+                              ),
+                              child: ElevatedButton.icon(
+                                onPressed: () => _scrollToSection(1),
+                                icon: const Icon(Icons.arrow_downward),
+                                label: Text(AppConstants.viewWorkCTA),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  foregroundColor: Colors.white,
+                                  shadowColor: Colors.transparent,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 16),
+                                  textStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(duration: 1200.ms, delay: 800.ms)
+                                .scale(
+                                  begin: const Offset(0.8, 0.8),
+                                  end: const Offset(1, 1),
+                                ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
+                              child: OutlinedButton.icon(
+                                onPressed: () => _scrollToSection(6),
+                                icon: const Icon(Icons.mail_outline),
+                                label: Text(AppConstants.hireMeCTA),
+                                style: OutlinedButton.styleFrom(
+                                  side: const BorderSide(
+                                      color: Colors.white, width: 1.5),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 16),
+                                  foregroundColor: Colors.white,
+                                  textStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(duration: 1200.ms, delay: 900.ms)
+                                .scale(
+                                  begin: const Offset(0.8, 0.8),
+                                  end: const Offset(1, 1),
+                                ),
                           ],
                         ),
                       ),
