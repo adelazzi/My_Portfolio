@@ -93,8 +93,7 @@ class PortfolioProvider extends ChangeNotifier {
           "A comprehensive e-commerce mobile application that connects marketers with admins. Features include product management, order processing, financial tracking, inventory management, and real-time analytics for sellers. Implemented secure payment gateways and user authentication.",
       imageUrl: "assets/images/projects/olivia.jpg",
       technologies: ["Flutter", "Firebase"],
-      liveUrl: "",
-      githubUrl: "",
+  
     ),
     Project(
       title: "GIMDZ - Finance Mobile App",
@@ -102,8 +101,8 @@ class PortfolioProvider extends ChangeNotifier {
           "A comprehensive personal finance application for managing credit cards, bank accounts, and budgeting. Features include expense tracking, bill reminders, financial insights dashboard, custom budget categories, and AI-driven savings recommendations for users to better manage their finances.",
       imageUrl: "assets/images/projects/gimdz.jpg",
       technologies: ["Flutter", "Firebase", "Dart", "Django"],
-      liveUrl: "",
-      githubUrl: "",
+     
+     
     ),
     Project(
       title: "Econnect - Internation Compition Mobile App",
@@ -111,8 +110,7 @@ class PortfolioProvider extends ChangeNotifier {
           "An event organization app that allows users to find volunteers, purchase tickets, and manage event activities. Features include real-time volunteer management, secure ticket sales, analytics dashboard, and participant communication tools. Won first place in an international competition for its innovative approach to event coordination.",
       imageUrl: "assets/images/projects/ecconnect.jpg",
       technologies: ["flutter", "Dart"],
-      liveUrl: "",
-      githubUrl: "",
+ 
     ),
   ];
 

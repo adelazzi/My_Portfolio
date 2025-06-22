@@ -119,30 +119,105 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   DrawerHeader(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.primaryColor,
+                          AppColors.altCardColor
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/pattern.png'),
+                        opacity: 0.1,
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                    padding: const EdgeInsets.all(16),
+                    margin: EdgeInsets.zero,
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CircleAvatar(
-                          radius: 40,
-                          backgroundImage:
-                              AssetImage('assets/images/profile.jpg'),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          AppConstants.fullName,
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: Colors.white,
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        AppColors.accentColor.withOpacity(0.3),
+                                    blurRadius: 10,
+                                  )
+                                ],
+                              ),
+                              child: const CircleAvatar(
+                                radius: 32,
+                                backgroundImage:
+                                    AssetImage('assets/images/profile.jpg'),
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppConstants.fullName,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 0.5,
+                                        ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                        ),
-                        Text(
-                          AppConstants.shortBio,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Colors.white70,
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    AppConstants.shortBio,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: Colors.white.withOpacity(0.85),
+                                          height: 1.3,
+                                        ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 8,
+                          children: [
+                            Chip(
+                              label: Text(AppConstants.roles[0],
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.white)),
+                              backgroundColor:
+                                  AppColors.accentColor.withOpacity(0.7),
+                              padding: EdgeInsets.zero,
+                            ),
+                            Chip(
+                              label: Text(
+                                  AppConstants.roles.length > 1
+                                      ? AppConstants.roles[1]
+                                      : "",
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.white)),
+                              backgroundColor:
+                                  AppColors.tertiaryColor.withOpacity(0.7),
+                              padding: EdgeInsets.zero,
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -195,6 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            const SizedBox(height: 90),
                             // Creative profile image with gradient border
                             Container(
                               decoration: BoxDecoration(
@@ -367,6 +443,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   begin: const Offset(0.8, 0.8),
                                   end: const Offset(1, 1),
                                 ),
+                            const SizedBox(height: 10),
                             Container(
                               margin: const EdgeInsets.symmetric(horizontal: 8),
                               child: OutlinedButton.icon(

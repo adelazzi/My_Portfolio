@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../providers/portfolio_provider.dart';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
@@ -80,19 +81,22 @@ class EducationScreen extends StatelessWidget {
         'name': 'Licensed Computer Scientist',
         'issuer': 'USTHB',
         'date': 'juin 2024',
-        'credential': 'UC',
+        'credential':
+            'https://drive.google.com/file/d/1TRhmmKkNHx_toEhfd8XvQ33pbhOnLwaY/view?usp=drive_link',
       },
       {
-        'name': 'Flutter App Development',
-        'issuer': 'Google',
-        'date': 'August 2022',
-        'credential': 'GCP-67890',
+        'name': 'Valteer Arab Games 2023',
+        'issuer': 'Algeria',
+        'date': 'juilly 2022',
+        'credential':
+            'https://drive.google.com/file/d/1TTnSF_7Z5bXIhf-0Pb97UOdDXy-B6aQQ/view?usp=drive_link',
       },
       {
-        'name': 'UI/UX Design Fundamentals',
-        'issuer': 'Coursera',
-        'date': 'January 2023',
-        'credential': 'CRSRA-34567',
+        'name': 'Hoska Dev Training',
+        'issuer': 'Hoska Dev',
+        'date': '2023 - 2025',
+        'credential':
+            'https://drive.google.com/file/d/1TTnSF_7Z5bXIhf-0Pb97UOdDXy-B6aQQ/view?usp=drive_link',
       },
     ];
 
@@ -156,17 +160,12 @@ class EducationScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Credential ID
-            Text(
-              'Credential ID: ${cert['credential']}',
-              style: Theme.of(context).textTheme.bodySmall,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-
             // View Certificate Button
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                final uri = Uri.parse(cert['credential'].toString());
+                launchUrl(uri, mode: LaunchMode.externalApplication);
+              },
               child: const Text('View Certificate'),
               style: OutlinedButton.styleFrom(
                 shape: RoundedRectangleBorder(

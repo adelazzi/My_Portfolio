@@ -267,29 +267,32 @@ class ExperienceCard extends StatelessWidget {
                   const SizedBox(height: 4),
 
                   // Company & Period
-                  Row(
-                    children: [
-                      Text(
-                        company,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                      const SizedBox(width: 8),
-                      Container(
-                        height: 16,
-                        width: 1,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        period,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Text(
+                          company,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          height: 16,
+                          width: 1,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          period,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16),
 

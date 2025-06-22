@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
+import 'package:http/http.dart' as http;
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -373,12 +374,27 @@ class _ContactScreenState extends State<ContactScreen> {
     );
   }
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      // Show a success snackbar (in a real app, you would send the message)
+void _submitForm() async {
+  if (_formKey.currentState!.validate()) {
+    final name = _nameController.text;
+    final email = _emailController.text;
+    final message = _messageController.text;
+
+    final uri = Uri.parse('https://formspree.io/f/xgvyljqb'); // Replace with your form ID
+    final response = await http.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: '''{
+        "name": "$name",
+        "email": "$email",
+        "message": "$message"
+      }''',
+    );
+
+    if (response.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Message sent successfully!'),
+        SnackBar(
+          content: Text('Thank you $name! Your message has been sent.'),
           backgroundColor: Colors.green,
         ),
       );
@@ -387,6 +403,16 @@ class _ContactScreenState extends State<ContactScreen> {
       _nameController.clear();
       _emailController.clear();
       _messageController.clear();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Oops! Something went wrong. Please try again later.'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
+}
+
+
 }

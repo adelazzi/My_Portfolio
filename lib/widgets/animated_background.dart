@@ -359,7 +359,7 @@ class AnimatedBackgroundState extends State<AnimatedBackground> {
           random.nextDouble() *
               (DesignElements.maxParticleSpeed -
                   DesignElements.minParticleSpeed) *
-              0.6;
+              0.7;
 
       // Random position within the container
       final posX = random.nextDouble() * size.width;
@@ -429,18 +429,17 @@ class AnimatedBackgroundState extends State<AnimatedBackground> {
                   stops: const [0.0, 0.3, 0.7, 1.0],
                 ),
               ),
-            ),
-
-            // Add subtle noise texture
-            Opacity(
-              opacity: 0.02,
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.4"/></svg>'),
-                    fit: BoxFit.cover,
-                  ),
+            ), // Add subtle texture overlay
+            Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.topLeft,
+                  radius: 1.5,
+                  colors: [
+                    Colors.white.withOpacity(0.03),
+                    Colors.transparent,
+                    Colors.white.withOpacity(0.01),
+                  ],
                 ),
               ),
             ),

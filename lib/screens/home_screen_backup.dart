@@ -113,39 +113,41 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                    DrawerHeader(
+                  DrawerHeader(
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20.0, horizontal: 16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                      const CircleAvatar(
-                        radius: 48, // Increased from 40
-                        backgroundImage:
-                          AssetImage('assets/images/profile.jpg'),
-                      ),
-                      const SizedBox(height: 16), // Increased from 10
-                      Text(
-                        AppConstants.fullName,
-                        style:
-                          Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      Text(
-                        AppConstants.shortBio,
-                        style:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.white70,
-                            ),
-                      ),
+                        const SizedBox(height: 25),
+                        const CircleAvatar(
+                          radius: 48, // Increased from 40
+                          backgroundImage:
+                              AssetImage('assets/images/profile.jpg'),
+                        ),
+                        const SizedBox(height: 16), // Increased from 10
+                        Text(
+                          AppConstants.fullName,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        Text(
+                          AppConstants.shortBio,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.white70,
+                                  ),
+                        ),
                       ],
                     ),
-                    ),
-                    _buildDrawerItem(0, 'Home', Icons.home),
+                  ),
+                  _buildDrawerItem(0, 'Home', Icons.home),
                   _buildDrawerItem(1, 'About', Icons.person),
                   _buildDrawerItem(2, 'Skills', Icons.code),
                   _buildDrawerItem(3, 'Projects', Icons.work),
@@ -193,6 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                             const SizedBox(height: 25),
                             // Creative profile image with gradient border
                             Container(
                               decoration: BoxDecoration(
@@ -328,50 +331,44 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(height: 48),
 
                             // Creative CTA buttons
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // Primary CTA
-                                Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: AppColors.accentColor
-                                            .withOpacity(0.4),
-                                        blurRadius: 15,
-                                        offset: const Offset(0, 5),
-                                      )
-                                    ],
-                                    gradient: LinearGradient(
-                                      colors: AppColors.accentGradient,
-                                    ),
-                                  ),
-                                  child: ElevatedButton.icon(
-                                    onPressed: () => _scrollToSection(1),
-                                    icon: const Icon(Icons.arrow_downward),
-                                    label: Text(AppConstants.viewWorkCTA),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.transparent,
-                                      foregroundColor: Colors.white,
-                                      shadowColor: Colors.transparent,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 16),
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                                    .animate()
-                                    .fadeIn(duration: 1200.ms, delay: 800.ms)
-                                    .scale(
-                                      begin: const Offset(0.8, 0.8),
-                                      end: const Offset(1, 1),
-                                    ),
-                              ],
-                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        AppColors.accentColor.withOpacity(0.4),
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 5),
+                                  )
+                                ],
+                                gradient: LinearGradient(
+                                  colors: AppColors.accentGradient,
+                                ),
+                              ),
+                              child: ElevatedButton.icon(
+                                onPressed: () => _scrollToSection(1),
+                                icon: const Icon(Icons.arrow_downward),
+                                label: Text(AppConstants.viewWorkCTA),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  foregroundColor: Colors.white,
+                                  shadowColor: Colors.transparent,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 16),
+                                  textStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(duration: 1200.ms, delay: 800.ms)
+                                .scale(
+                                  begin: const Offset(0.8, 0.8),
+                                  end: const Offset(1, 1),
+                                ),
+                            const SizedBox(height: 10),
                             // Secondary CTA
                             Container(
                               margin: const EdgeInsets.symmetric(vertical: 8),

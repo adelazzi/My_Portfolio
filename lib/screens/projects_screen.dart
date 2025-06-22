@@ -45,8 +45,8 @@ class ProjectsScreen extends StatelessWidget {
             // Projects grid
             MasonryGridView.count(
               crossAxisCount: crossAxisCount,
-              mainAxisSpacing: 24,
-              crossAxisSpacing: 24,
+              mainAxisSpacing: 30,
+              crossAxisSpacing: 30,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: provider.projectList.length,
@@ -86,11 +86,48 @@ class ProjectsScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(16)),
-                  child: Image.asset(
-                    project.imageUrl,
-                    width: double.infinity,
-                    height: 240,
-                    fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onTap: () {
+                      // Show full-screen image when clicked
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            insetPadding: EdgeInsets.zero,
+                            child: Stack(
+                              children: [
+                                InteractiveViewer(
+                                  panEnabled: true,
+                                  boundaryMargin: const EdgeInsets.all(20),
+                                  minScale: 0.5,
+                                  maxScale: 4.0,
+                                  child: Image.asset(
+                                    project.imageUrl,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 8,
+                                  top: 8,
+                                  child: IconButton(
+                                    icon:
+                                        Icon(Icons.close, color: Colors.white),
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Image.asset(
+                      project.imageUrl,
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
 
