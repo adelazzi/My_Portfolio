@@ -440,7 +440,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const EducationScreen(),
                 ),
               ), // Contact Section
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: const ContactScreen(),
               ),
             ],
