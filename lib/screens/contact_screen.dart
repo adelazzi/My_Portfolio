@@ -391,27 +391,30 @@ class _ContactScreenState extends State<ContactScreen> {
           "message": "$message"
         }''',
       );
-
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Thank you $name! Your message has been sent.'),
-            backgroundColor: Colors.green,
-          ),
-        );
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Thank you $name! Your message has been sent.'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
 
         // Clear the form
         _nameController.clear();
         _emailController.clear();
         _messageController.clear();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content:
-                Text('Oops! Something went wrong. Please try again later.'),
-            backgroundColor: Colors.red,
-          ),
-        );
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content:
+                  Text('Oops! Something went wrong. Please try again later.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     }
   }
