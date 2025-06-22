@@ -392,7 +392,7 @@ class _ContactScreenState extends State<ContactScreen> {
         }''',
       );
       if (response.statusCode == 200) {
-        if (context.mounted) {
+        if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Thank you $name! Your message has been sent.'),
@@ -406,7 +406,7 @@ class _ContactScreenState extends State<ContactScreen> {
         _emailController.clear();
         _messageController.clear();
       } else {
-        if (context.mounted) {
+        if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content:
