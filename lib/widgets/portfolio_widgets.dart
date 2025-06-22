@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import '../utils/responsive.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;

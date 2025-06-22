@@ -111,7 +111,7 @@ class ProjectsScreen extends StatelessWidget {
                                   top: 8,
                                   child: IconButton(
                                     icon:
-                                        Icon(Icons.close, color: Colors.white),
+                                        const Icon(Icons.close, color: Colors.white),
                                     onPressed: () =>
                                         Navigator.of(context).pop(),
                                   ),

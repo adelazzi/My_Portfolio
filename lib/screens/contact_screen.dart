@@ -405,7 +405,7 @@ void _submitForm() async {
       _messageController.clear();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Oops! Something went wrong. Please try again later.'),
           backgroundColor: Colors.red,
         ),

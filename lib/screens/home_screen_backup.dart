@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Container(
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   colors: [
                                     AppColors.accentColor,
                                     AppColors.tertiaryColor,
@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(height: 32),
 
                             // Creative tagline
-                            Text(
+                            const Text(
                               AppConstants.tagline,
                               style: TextStyle(
                                 color: AppColors.accentColor,
@@ -240,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             // Name with creative styling
                             ShaderMask(
-                              shaderCallback: (bounds) => LinearGradient(
+                              shaderCallback: (bounds) => const LinearGradient(
                                 colors: [Colors.white, AppColors.accentColor],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
@@ -343,14 +343,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     offset: const Offset(0, 5),
                                   )
                                 ],
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   colors: AppColors.accentGradient,
                                 ),
                               ),
                               child: ElevatedButton.icon(
                                 onPressed: () => _scrollToSection(1),
                                 icon: const Icon(Icons.arrow_downward),
-                                label: Text(AppConstants.viewWorkCTA),
+                                label: const Text(AppConstants.viewWorkCTA),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.transparent,
                                   foregroundColor: Colors.white,
@@ -375,7 +375,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: OutlinedButton.icon(
                                 onPressed: () => _scrollToSection(6),
                                 icon: const Icon(Icons.mail_outline),
-                                label: Text(AppConstants.hireMeCTA),
+                                label: const Text(AppConstants.hireMeCTA),
                                 style: OutlinedButton.styleFrom(
                                   side: const BorderSide(
                                       color: Colors.white, width: 1.5),
@@ -495,11 +495,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(width: 16),
                         ElevatedButton(
                           onPressed: () => _scrollToSection(6),
-                          child: const Text('Contact Me'),
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                           ),
+                          child: const Text('Contact Me'),
                         ),
                         const SizedBox(width: 16),
                         IconButton(

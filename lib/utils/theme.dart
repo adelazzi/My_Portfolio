@@ -7,12 +7,11 @@ class AppTheme {
   static ThemeData get lightTheme => ThemeData(
         primaryColor: AppColors.primaryColor,
         useMaterial3: true,
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: AppColors.primaryColor,
           secondary: AppColors.accentColor,
           tertiary: AppColors.tertiaryColor,
-          background: Colors.white,
-          surface: const Color(0xFFFAFAFA),
+          surface: Color(0xFFFAFAFA),
           outline: AppColors.dividerColor,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
@@ -120,25 +119,25 @@ class AppTheme {
         // Modern elevated buttons with gradient effect
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(AppColors.accentColor),
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-            padding: MaterialStateProperty.all(
+            backgroundColor: WidgetStateProperty.all(AppColors.accentColor),
+            foregroundColor: WidgetStateProperty.all(Colors.white),
+            padding: WidgetStateProperty.all(
               const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             ),
-            shape: MaterialStateProperty.all(
+            shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.circular(DesignElements.mediumRadius),
               ),
             ),
-            elevation: MaterialStateProperty.all(DesignElements.lowElevation),
-            shadowColor: MaterialStateProperty.all(
-                AppColors.accentColor.withOpacity(0.4)),
-            overlayColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
+            elevation: WidgetStateProperty.all(DesignElements.lowElevation),
+            shadowColor:
+                WidgetStateProperty.all(AppColors.accentColor.withOpacity(0.4)),
+            overlayColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.pressed)) {
                 return AppColors.primaryColor.withOpacity(0.2);
               }
-              if (states.contains(MaterialState.hovered)) {
+              if (states.contains(WidgetState.hovered)) {
                 return AppColors.primaryColor.withOpacity(0.1);
               }
               return null;
@@ -149,7 +148,7 @@ class AppTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.primaryColor,
-            side: BorderSide(color: AppColors.primaryColor, width: 1.5),
+            side: const BorderSide(color: AppColors.primaryColor, width: 1.5),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(DesignElements.mediumRadius),
@@ -178,12 +177,12 @@ class AppTheme {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(DesignElements.mediumRadius),
-            borderSide: BorderSide(color: AppColors.accentColor, width: 2),
+            borderSide: const BorderSide(color: AppColors.accentColor, width: 2),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           labelStyle: TextStyle(color: Colors.grey.shade600),
-          floatingLabelStyle: TextStyle(color: AppColors.primaryColor),
+          floatingLabelStyle: const TextStyle(color: AppColors.primaryColor),
         ),
       );
 
@@ -192,11 +191,10 @@ class AppTheme {
         primaryColor: AppColors.accentColor,
         useMaterial3: true,
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.dark(
+        colorScheme: const ColorScheme.dark(
           primary: AppColors.accentColor,
           secondary: AppColors.tertiaryColor,
           tertiary: AppColors.quaternaryColor,
-          background: AppColors.backgroundColor,
           surface: AppColors.cardColor,
           onSurface: AppColors.textPrimaryColor,
         ),
@@ -282,7 +280,7 @@ class AppTheme {
             color: Colors.white,
             letterSpacing: 0.5,
           ),
-          iconTheme: IconThemeData(color: AppColors.accentColor, size: 24),
+          iconTheme: const IconThemeData(color: AppColors.accentColor, size: 24),
         ),
         // Futuristic card with subtle glow
         cardTheme: CardTheme(
@@ -303,25 +301,25 @@ class AppTheme {
         // Glowing elevated button style
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(AppColors.accentColor),
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-            padding: MaterialStateProperty.all(
+            backgroundColor: WidgetStateProperty.all(AppColors.accentColor),
+            foregroundColor: WidgetStateProperty.all(Colors.white),
+            padding: WidgetStateProperty.all(
               const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             ),
-            shape: MaterialStateProperty.all(
+            shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.circular(DesignElements.mediumRadius),
               ),
             ),
-            elevation: MaterialStateProperty.all(DesignElements.lowElevation),
-            shadowColor: MaterialStateProperty.all(
-                AppColors.accentColor.withOpacity(0.6)),
-            overlayColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
+            elevation: WidgetStateProperty.all(DesignElements.lowElevation),
+            shadowColor:
+                WidgetStateProperty.all(AppColors.accentColor.withOpacity(0.6)),
+            overlayColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.pressed)) {
                 return AppColors.accentColor.withOpacity(0.3);
               }
-              if (states.contains(MaterialState.hovered)) {
+              if (states.contains(WidgetState.hovered)) {
                 return AppColors.accentColor.withOpacity(0.2);
               }
               return null;
@@ -332,7 +330,7 @@ class AppTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.accentColor,
-            side: BorderSide(color: AppColors.accentColor, width: 1.5),
+            side: const BorderSide(color: AppColors.accentColor, width: 1.5),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(DesignElements.mediumRadius),
@@ -340,7 +338,7 @@ class AppTheme {
           ),
         ),
         // Modern divider with glow effect
-        dividerTheme: DividerThemeData(
+        dividerTheme: const DividerThemeData(
           color: AppColors.dividerColor,
           thickness: 1,
           space: 32,
@@ -357,16 +355,16 @@ class AppTheme {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(DesignElements.mediumRadius),
-            borderSide: BorderSide(color: AppColors.dividerColor, width: 1),
+            borderSide: const BorderSide(color: AppColors.dividerColor, width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(DesignElements.mediumRadius),
-            borderSide: BorderSide(color: AppColors.accentColor, width: 2),
+            borderSide: const BorderSide(color: AppColors.accentColor, width: 2),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          labelStyle: TextStyle(color: Colors.white70),
-          floatingLabelStyle: TextStyle(color: AppColors.accentColor),
+          labelStyle: const TextStyle(color: Colors.white70),
+          floatingLabelStyle: const TextStyle(color: AppColors.accentColor),
         ),
       );
 }

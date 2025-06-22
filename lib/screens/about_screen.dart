@@ -16,7 +16,7 @@ class AboutScreen extends StatelessWidget {
   Future<void> _downloadCV(BuildContext context) async {
     try {
       // URL of your CV file (replace with your actual hosted CV)
-      final String cvUrl = AppConstants.cvUrl;
+      const String cvUrl = AppConstants.cvUrl;
 
       if (kIsWeb) {
         // For web platform, direct link

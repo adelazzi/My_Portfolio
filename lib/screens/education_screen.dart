@@ -166,12 +166,12 @@ class EducationScreen extends StatelessWidget {
                 final uri = Uri.parse(cert['credential'].toString());
                 launchUrl(uri, mode: LaunchMode.externalApplication);
               },
-              child: const Text('View Certificate'),
               style: OutlinedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
+              child: const Text('View Certificate'),
             ),
           ],
         ),

@@ -345,7 +345,7 @@ class AnimatedBackgroundState extends State<AnimatedBackground> {
     final random = math.Random();
 
     // Using fewer particles for better performance
-    final particleDensity = DesignElements.particleDensity ~/ 2;
+    const particleDensity = DesignElements.particleDensity ~/ 2;
 
     for (int i = 0; i < particleDensity; i++) {
       // Random parameters for the particles with more subtle values
