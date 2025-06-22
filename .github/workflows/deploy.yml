@@ -27,13 +27,14 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
-
-      - name: Analyze project
+        run: flutter pub get      - name: Analyze project
         run: flutter analyze
 
       - name: Build Flutter web
-        run: flutter build web --release --base-href="/My_Portfolio/"
+        run: |
+          flutter build web --release --base-href="/my_portfelio/"
+          # Add .nojekyll to prevent Jekyll processing
+          touch build/web/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
