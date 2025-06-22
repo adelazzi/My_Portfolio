@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                             const SizedBox(height: 25),
+                            const SizedBox(height: 25),
                             // Creative profile image with gradient border
                             Container(
                               decoration: BoxDecoration(
@@ -542,31 +542,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 _currentIndex == index ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildMobileDrawerItem(int index, String label, IconData icon) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(label),
-      selected: _currentIndex == index,
-      selectedColor: Theme.of(context).colorScheme.secondary,
-      onTap: () {
-        Navigator.pop(context);
-        _scrollToSection(index);
-      },
-    );
-  }
-
-  Widget _buildDesktopSocialIcon(Widget icon, String url) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: IconButton(
-        icon: icon,
-        iconSize: 32,
-        onPressed: () {},
-        color: Colors.white,
       ),
     );
   }

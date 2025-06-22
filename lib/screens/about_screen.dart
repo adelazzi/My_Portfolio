@@ -46,9 +46,11 @@ class AboutScreen extends StatelessWidget {
       }
     } catch (e) {
       debugPrint('Error downloading CV: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error downloading CV: $e')),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error downloading CV: $e')),
+        );
+      }
     }
   }
 

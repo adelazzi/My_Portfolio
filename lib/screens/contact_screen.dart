@@ -374,45 +374,45 @@ class _ContactScreenState extends State<ContactScreen> {
     );
   }
 
-void _submitForm() async {
-  if (_formKey.currentState!.validate()) {
-    final name = _nameController.text;
-    final email = _emailController.text;
-    final message = _messageController.text;
+  void _submitForm() async {
+    if (_formKey.currentState!.validate()) {
+      final name = _nameController.text;
+      final email = _emailController.text;
+      final message = _messageController.text;
 
-    final uri = Uri.parse('https://formspree.io/f/xgvyljqb'); // Replace with your form ID
-    final response = await http.post(
-      uri,
-      headers: {'Content-Type': 'application/json'},
-      body: '''{
-        "name": "$name",
-        "email": "$email",
-        "message": "$message"
-      }''',
-    );
-
-    if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Thank you $name! Your message has been sent.'),
-          backgroundColor: Colors.green,
-        ),
+      final uri = Uri.parse(
+          'https://formspree.io/f/xgvyljqb'); // Replace with your form ID
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: '''{
+          "name": "$name",
+          "email": "$email",
+          "message": "$message"
+        }''',
       );
 
-      // Clear the form
-      _nameController.clear();
-      _emailController.clear();
-      _messageController.clear();
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Oops! Something went wrong. Please try again later.'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Thank you $name! Your message has been sent.'),
+            backgroundColor: Colors.green,
+          ),
+        );
+
+        // Clear the form
+        _nameController.clear();
+        _emailController.clear();
+        _messageController.clear();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content:
+                Text('Oops! Something went wrong. Please try again later.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
-}
-
-
 }
