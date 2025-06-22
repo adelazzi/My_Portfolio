@@ -24,17 +24,16 @@ jobs:
         with:
           flutter-version: "3.22.0"
           channel: "stable"
-          cache: true      - name: Install dependencies
+          cache: true
+
+      - name: Install dependencies
         run: flutter pub get
 
       - name: Analyze project
         run: flutter analyze
 
       - name: Build Flutter web
-        run: |
-          flutter build web --release --base-href="/My_Portfolio/"
-          # Add .nojekyll to prevent Jekyll processing
-          touch build/web/.nojekyll
+        run: flutter build web --release --base-href="/My_Portfolio/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
