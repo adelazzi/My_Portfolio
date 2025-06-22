@@ -28,11 +28,9 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get      - name: Analyze project
-        run: flutter analyze
-
-      - name: Build Flutter web
+        run: flutter analyze      - name: Build Flutter web
         run: |
-          flutter build web --release --base-href="/my_portfelio/"
+          flutter build web --release --base-href="/My_Portfolio/"
           # Add .nojekyll to prevent Jekyll processing
           touch build/web/.nojekyll
 
