@@ -32,6 +32,11 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
+  web:
+    generate: true
+    image_path: "assets/Logo.jpg"
+    background_color: "#8B4513"
+    theme_color: "#8B4513"
   remove_alpha_ios: true
   image_path: "assets/Logo.jpg"
 
