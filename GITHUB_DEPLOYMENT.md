@@ -270,3 +270,33 @@ error: No such remote: 'origin'
 - ✅ Configuring git user and email
 - ✅ Committing all files
 - ✅ Pushing to gh-pages branch
+
+## 🔧 **IMPORTANT: GitHub Permissions Fix Required**
+
+### ❌ **Permission Error Found:**
+```
+Permission to adelazzi/My_Portfolio.git denied to github-actions[bot].
+fatal: unable to access 'https://github.com/adelazzi/My_Portfolio.git/': The requested URL returned error: 403
+```
+
+### ✅ **Quick Fix - Enable GitHub Actions Permissions:**
+
+**Step 1: Repository Settings**
+1. Go to: https://github.com/adelazzi/My_Portfolio
+2. Click **Settings** tab
+3. Click **Pages** (left sidebar)
+4. Under **Source**, select: ✅ **GitHub Actions** (NOT "Deploy from a branch")
+
+**Step 2: Workflow Permissions**
+1. Still in **Settings**, click **Actions** → **General**
+2. Scroll to **Workflow permissions**
+3. Select: ✅ **Read and write permissions**
+4. Check: ✅ **Allow GitHub Actions to create and approve pull requests**
+5. Click **Save**
+
+**Step 3: Re-trigger Deployment**
+- Push any small change to trigger a new deployment
+- Or go to **Actions** tab and click "Re-run all jobs"
+
+### 🔄 **Updated Deployment Method**
+I've updated your workflow to use the newer, more reliable GitHub Pages deployment method that should resolve this permissions issue.
