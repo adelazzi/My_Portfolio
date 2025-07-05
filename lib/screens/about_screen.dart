@@ -1,13 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:http/http.dart' as http;
 import 'package:icons_plus/icons_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-// Conditional imports for platform-specific functionality
-import 'dart:io' if (dart.library.html) 'dart:html';
-import 'package:path_provider/path_provider.dart'
-    if (dart.library.html) 'dart:html';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
 
@@ -21,32 +16,9 @@ class AboutScreen extends StatelessWidget {
       const String cvUrl = AppConstants.cvUrl;
       final Uri url = Uri.parse(cvUrl);
 
-      if (kIsWeb) {
-        // For web platform, open in new tab
-        if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-          throw 'Could not launch $url';
-        }
-      } else {
-        // For mobile/desktop platforms, download and open
-        final response = await http.get(Uri.parse(cvUrl));
-
-        if (response.statusCode == 200) {
-          // Get temporary directory
-          final directory = await getTemporaryDirectory();
-          final filePath = '${directory.path}/resume.pdf';
-
-          // Write to file
-          final file = File(filePath);
-          await file.writeAsBytes(response.bodyBytes);
-
-          // Open the file
-          final Uri fileUrl = Uri.file(filePath);
-          if (!await launchUrl(fileUrl, mode: LaunchMode.externalApplication)) {
-            throw 'Could not open the file';
-          }
-        } else {
-          throw 'Failed to download CV: ${response.statusCode}';
-        }
+      // For all platforms, open CV in external application/browser
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw 'Could not launch $url';
       }
     } catch (e) {
       debugPrint('Error downloading CV: $e');
