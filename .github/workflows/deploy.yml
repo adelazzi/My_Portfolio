@@ -3,7 +3,7 @@ name: Flutter Web Build and Deploy
 on:
   push:
     branches:
-      - main  # Set the branch you want to trigger the build on
+      - main  # Trigger only on push to the main branch
 
 jobs:
   build:
@@ -16,12 +16,12 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.1'
+          flutter-version: '3.22.1'  # Use your Flutter version
 
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build Web
+      - name: Build Web with correct base href
         run: flutter build web --base-href=/My_Portfolio/
 
       - name: Deploy to GitHub Pages
