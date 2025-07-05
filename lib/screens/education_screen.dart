@@ -165,9 +165,7 @@ class EducationScreen extends StatelessWidget {
             OutlinedButton(
               onPressed: () async {
                 final uri = Uri.parse(cert['credential'].toString());
-                final mode = kIsWeb
-                    ? LaunchMode.externalApplication
-                    : LaunchMode.externalApplication;
+                const mode = LaunchMode.externalApplication;
 
                 if (!await launchUrl(uri, mode: mode)) {
                   debugPrint('Could not launch ${cert['credential']}');

@@ -308,9 +308,7 @@ class _ContactScreenState extends State<ContactScreen> {
     return ElevatedButton.icon(
       onPressed: () async {
         final uri = Uri.parse(AppConstants.linkedin);
-        final mode = kIsWeb
-            ? LaunchMode.externalApplication
-            : LaunchMode.externalApplication;
+        const mode = LaunchMode.externalApplication;
 
         if (!await launchUrl(uri, mode: mode)) {
           debugPrint('Could not launch ${AppConstants.linkedin}');
@@ -348,9 +346,7 @@ class _ContactScreenState extends State<ContactScreen> {
               color: Colors.white,
               onPressed: () async {
                 final uri = Uri.parse(AppConstants.github);
-                final mode = kIsWeb
-                    ? LaunchMode.externalApplication
-                    : LaunchMode.externalApplication;
+                const mode = LaunchMode.externalApplication;
 
                 if (!await launchUrl(uri, mode: mode)) {
                   debugPrint('Could not launch ${AppConstants.github}');
@@ -362,9 +358,7 @@ class _ContactScreenState extends State<ContactScreen> {
               color: Colors.white,
               onPressed: () async {
                 final uri = Uri.parse(AppConstants.linkedin);
-                final mode = kIsWeb
-                    ? LaunchMode.externalApplication
-                    : LaunchMode.externalApplication;
+                const mode = LaunchMode.externalApplication;
 
                 if (!await launchUrl(uri, mode: mode)) {
                   debugPrint('Could not launch ${AppConstants.linkedin}');

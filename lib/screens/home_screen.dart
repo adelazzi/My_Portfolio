@@ -55,10 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: IconButton(
         onPressed: () async {
           final uri = Uri.parse(url);
-          // Use different launch modes for web vs mobile
-          final mode = kIsWeb
-              ? LaunchMode.externalApplication
-              : LaunchMode.externalApplication;
+          // Use external application mode for all platforms
+          const mode = LaunchMode.externalApplication;
 
           if (!await launchUrl(uri, mode: mode)) {
             debugPrint('Could not launch $url');
