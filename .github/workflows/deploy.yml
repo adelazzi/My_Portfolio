@@ -1,48 +1,31 @@
-name: Deploy Flutter Web to GitHub Pages
+name: Flutter Web Build and Deploy
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:  # Allows manual triggering
+      - main  # Set the branch you want to trigger the build on
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.22.0"
-          channel: "stable"
-          cache: true
+          flutter-version: '3.10.5'  # Use the Flutter version you want
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: flutter pub get
 
-      - name: Analyze project
-        run: flutter analyze
-        
-      - name: Build Flutter web
-        run: |
-          flutter build web --release --base-href="/My_Portfolio/" --no-tree-shake-icons
-          # Add .nojekyll to prevent Jekyll processing
-          touch build/web/.nojekyll
+      - name: Build Web
+        run: flutter build web
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          force_orphan: true
-          commit_message: "Deploy: ${{ github.event.head_commit.message }}"
-
