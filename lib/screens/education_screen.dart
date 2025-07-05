@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
@@ -162,9 +163,15 @@ class EducationScreen extends StatelessWidget {
 
             // View Certificate Button
             OutlinedButton(
-              onPressed: () {
+              onPressed: () async {
                 final uri = Uri.parse(cert['credential'].toString());
-                launchUrl(uri, mode: LaunchMode.externalApplication);
+                final mode = kIsWeb
+                    ? LaunchMode.externalApplication
+                    : LaunchMode.externalApplication;
+
+                if (!await launchUrl(uri, mode: mode)) {
+                  debugPrint('Could not launch ${cert['credential']}');
+                }
               },
               style: OutlinedButton.styleFrom(
                 shape: RoundedRectangleBorder(

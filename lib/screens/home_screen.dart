@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -52,9 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: IconButton(
-        onPressed: () {
+        onPressed: () async {
           final uri = Uri.parse(url);
-          launchUrl(uri, mode: LaunchMode.externalApplication);
+          // Use different launch modes for web vs mobile
+          final mode = kIsWeb
+              ? LaunchMode.externalApplication
+              : LaunchMode.externalApplication;
+
+          if (!await launchUrl(uri, mode: mode)) {
+            debugPrint('Could not launch $url');
+          }
         },
         icon: icon,
         color: Colors.white,

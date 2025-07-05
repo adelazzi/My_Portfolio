@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constants.dart';
@@ -12,6 +13,18 @@ class Responsive {
 
   static bool isDesktop(BuildContext context) =>
       MediaQuery.of(context).size.width >= ScreenSize.tabletBreakpoint;
+
+  // Web-specific breakpoints
+  static bool isWebMobile(BuildContext context) =>
+      kIsWeb && MediaQuery.of(context).size.width < 768;
+
+  static bool isWebTablet(BuildContext context) =>
+      kIsWeb &&
+      MediaQuery.of(context).size.width >= 768 &&
+      MediaQuery.of(context).size.width < 1200;
+
+  static bool isWebDesktop(BuildContext context) =>
+      kIsWeb && MediaQuery.of(context).size.width >= 1200;
 
   static Widget responsiveBuilder({
     required Widget mobile,

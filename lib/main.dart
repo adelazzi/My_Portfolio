@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'providers/portfolio_provider.dart';
@@ -6,6 +7,9 @@ import 'screens/home_screen.dart';
 import 'utils/theme.dart';
 
 void main() {
+  // Ensure Flutter bindings are initialized for web
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyPortfolio());
 }
 
@@ -19,12 +23,12 @@ class MyPortfolio extends StatelessWidget {
       child: Consumer<PortfolioProvider>(
         builder: (context, provider, _) {
           return ScreenUtilInit(
-            designSize: const Size(1440, 900),
+            designSize: kIsWeb ? const Size(1440, 900) : const Size(414, 896),
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (context, child) {
               return MaterialApp(
-                title: 'Full Stack Developer Portfolio',
+                title: 'Adel Azzi - Full Stack Developer Portfolio',
                 debugShowCheckedModeBanner: false,
                 themeMode: provider.themeMode,
                 theme: AppTheme.lightTheme,

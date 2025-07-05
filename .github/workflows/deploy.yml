@@ -1,31 +1,44 @@
-name: Flutter Web Build and Deploy
+name: Deploy Flutter Portfolio to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # Trigger only on push to the main branch
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.1'  # Use your Flutter version
+          flutter-version: "3.22.1"
+          channel: "stable"
 
       - name: Install Dependencies
         run: flutter pub get
 
+      - name: Analyze Code
+        run: flutter analyze
+
       - name: Build Web with correct base href
-        run: flutter build web --base-href=/My_Portfolio/
+        run: flutter build web --release --base-href=/My_Portfolio/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
+          force_orphan: true

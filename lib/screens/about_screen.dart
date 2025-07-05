@@ -1,11 +1,13 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
 import 'package:icons_plus/icons_plus.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+// Conditional imports for platform-specific functionality
+import 'dart:io' if (dart.library.html) 'dart:html';
+import 'package:path_provider/path_provider.dart'
+    if (dart.library.html) 'dart:html';
 import '../utils/constants.dart';
 import '../widgets/portfolio_widgets.dart';
 
@@ -17,11 +19,11 @@ class AboutScreen extends StatelessWidget {
     try {
       // URL of your CV file (replace with your actual hosted CV)
       const String cvUrl = AppConstants.cvUrl;
+      final Uri url = Uri.parse(cvUrl);
 
       if (kIsWeb) {
-        // For web platform, direct link
-        final Uri url = Uri.parse(cvUrl);
-        if (!await launchUrl(url)) {
+        // For web platform, open in new tab
+        if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
           throw 'Could not launch $url';
         }
       } else {
@@ -38,10 +40,12 @@ class AboutScreen extends StatelessWidget {
           await file.writeAsBytes(response.bodyBytes);
 
           // Open the file
-          final Uri url = Uri.file(filePath);
-          if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+          final Uri fileUrl = Uri.file(filePath);
+          if (!await launchUrl(fileUrl, mode: LaunchMode.externalApplication)) {
             throw 'Could not open the file';
           }
+        } else {
+          throw 'Failed to download CV: ${response.statusCode}';
         }
       }
     } catch (e) {

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -305,9 +306,15 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget _buildSocialButton(
       BuildContext context, dynamic logoData, String platform) {
     return ElevatedButton.icon(
-      onPressed: () {
+      onPressed: () async {
         final uri = Uri.parse(AppConstants.linkedin);
-        launchUrl(uri, mode: LaunchMode.externalApplication);
+        final mode = kIsWeb
+            ? LaunchMode.externalApplication
+            : LaunchMode.externalApplication;
+
+        if (!await launchUrl(uri, mode: mode)) {
+          debugPrint('Could not launch ${AppConstants.linkedin}');
+        }
       },
       icon: Logo(logoData),
       label: Text(platform),
@@ -339,17 +346,29 @@ class _ContactScreenState extends State<ContactScreen> {
             IconButton(
               icon: Logo(Logos.github),
               color: Colors.white,
-              onPressed: () {
+              onPressed: () async {
                 final uri = Uri.parse(AppConstants.github);
-                launchUrl(uri, mode: LaunchMode.externalApplication);
+                final mode = kIsWeb
+                    ? LaunchMode.externalApplication
+                    : LaunchMode.externalApplication;
+
+                if (!await launchUrl(uri, mode: mode)) {
+                  debugPrint('Could not launch ${AppConstants.github}');
+                }
               },
             ),
             IconButton(
               icon: Logo(Logos.linkedin),
               color: Colors.white,
-              onPressed: () {
+              onPressed: () async {
                 final uri = Uri.parse(AppConstants.linkedin);
-                launchUrl(uri, mode: LaunchMode.externalApplication);
+                final mode = kIsWeb
+                    ? LaunchMode.externalApplication
+                    : LaunchMode.externalApplication;
+
+                if (!await launchUrl(uri, mode: mode)) {
+                  debugPrint('Could not launch ${AppConstants.linkedin}');
+                }
               },
             ),
           ],
