@@ -96,7 +96,7 @@ class OptimizedTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.accentColor,
-            side: BorderSide(color: AppColors.accentColor, width: 2),
+            side: const BorderSide(color: AppColors.accentColor, width: 2),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -122,7 +122,7 @@ class OptimizedTheme {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: AppColors.accentColor, width: 2),
+            borderSide: const BorderSide(color: AppColors.accentColor, width: 2),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -238,7 +238,7 @@ class OptimizedTheme {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.accentColor,
-            side: BorderSide(color: AppColors.accentColor, width: 2),
+            side: const BorderSide(color: AppColors.accentColor, width: 2),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -264,7 +264,7 @@ class OptimizedTheme {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: AppColors.accentColor, width: 2),
+            borderSide: const BorderSide(color: AppColors.accentColor, width: 2),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
