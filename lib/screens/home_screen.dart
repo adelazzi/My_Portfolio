@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../providers/portfolio_provider.dart';
 import '../utils/constants.dart';
-import '../widgets/portfolio_widgets.dart';
-import '../widgets/animated_background.dart';
+import '../widgets/optimized_widgets.dart';
+import '../widgets/optimized_background.dart';
 import 'about_screen.dart';
 import 'skills_screen.dart';
 import 'projects_screen.dart';
@@ -267,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: AnimatedBackground(
+                  child: OptimizedAnimatedBackground(
                     child: Center(
                         child: ResponsiveContainer(
                       child: SingleChildScrollView(
@@ -298,7 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                               padding: const EdgeInsets.all(4),
-                              child: const AnimatedProfileImage(
+                              child: const OptimizedProfileImage(
                                 imagePath: 'assets/images/profile.jpg',
                                 size: 180,
                               ),
@@ -484,7 +484,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[1],
-                  child: AboutScreen(key: UniqueKey()),
+                  child: const AboutScreen(),
                 ),
               ),
 
@@ -492,7 +492,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[2],
-                  child: SkillsScreen(key: UniqueKey()),
+                  child: const SkillsScreen(),
                 ),
               ),
 
@@ -500,7 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[3],
-                  child: ProjectsScreen(key: UniqueKey()),
+                  child: const ProjectsScreen(),
                 ),
               ),
 
@@ -508,7 +508,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[4],
-                  child: ExperienceScreen(key: UniqueKey()),
+                  child: const ExperienceScreen(),
                 ),
               ),
 
@@ -516,7 +516,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   key: _sectionKeys[5],
-                  child: EducationScreen(key: UniqueKey()),
+                  child: const EducationScreen(),
                 ),
               ),
 

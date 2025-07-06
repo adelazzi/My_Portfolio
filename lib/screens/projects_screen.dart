@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import '../providers/portfolio_provider.dart';
 import '../utils/constants.dart';
-import '../widgets/portfolio_widgets.dart';
+import '../widgets/optimized_widgets.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class ProjectsScreen extends StatelessWidget {
       child: ResponsiveContainer(
         child: Column(
           children: [
-            const SectionTitle(title: AppConstants.projectsTitle),
+            const OptimizedSectionTitle(title: AppConstants.projectsTitle),
             const SizedBox(height: 24),
 
             // Projects intro text
@@ -52,7 +52,7 @@ class ProjectsScreen extends StatelessWidget {
               itemCount: provider.projectList.length,
               itemBuilder: (context, index) {
                 final project = provider.projectList[index];
-                return ProjectCard(
+                return OptimizedProjectCard(
                   title: project.title,
                   description: project.description,
                   imageUrl: project.imageUrl,
@@ -110,8 +110,8 @@ class ProjectsScreen extends StatelessWidget {
                                   right: 8,
                                   top: 8,
                                   child: IconButton(
-                                    icon:
-                                        const Icon(Icons.close, color: Colors.white),
+                                    icon: const Icon(Icons.close,
+                                        color: Colors.white),
                                     onPressed: () =>
                                         Navigator.of(context).pop(),
                                   ),

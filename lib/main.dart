@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'providers/portfolio_provider.dart';
 import 'screens/home_screen.dart';
-import 'utils/theme.dart';
+import 'utils/optimized_theme.dart';
 
 void main() {
   // Ensure Flutter bindings are initialized for web
@@ -31,8 +31,8 @@ class MyPortfolio extends StatelessWidget {
                 title: 'Adel Azzi - Full Stack Developer Portfolio',
                 debugShowCheckedModeBanner: false,
                 themeMode: provider.themeMode,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
+                theme: OptimizedTheme.lightTheme,
+                darkTheme: OptimizedTheme.darkTheme,
                 home: child,
               );
             },

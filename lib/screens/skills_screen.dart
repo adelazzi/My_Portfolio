@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/portfolio_models.dart';
 import '../providers/portfolio_provider.dart';
 import '../utils/constants.dart';
-import '../widgets/portfolio_widgets.dart';
+import '../widgets/optimized_widgets.dart';
 
 class SkillsScreen extends StatelessWidget {
   const SkillsScreen({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class SkillsScreen extends StatelessWidget {
       child: ResponsiveContainer(
         child: Column(
           children: [
-            const SectionTitle(title: AppConstants.skillsTitle),
+            const OptimizedSectionTitle(title: AppConstants.skillsTitle),
             const SizedBox(height: 24),
 
             // Short intro text about skills
@@ -111,7 +111,7 @@ class SkillsScreen extends StatelessWidget {
 
           // Skills List
           ...skills.map((skill) {
-            return SkillBar(
+            return OptimizedSkillBar(
               skillName: skill.name,
               proficiency: skill.proficiency,
             );

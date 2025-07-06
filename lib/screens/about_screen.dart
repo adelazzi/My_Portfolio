@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/constants.dart';
-import '../widgets/portfolio_widgets.dart';
+import '../widgets/optimized_widgets.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class AboutScreen extends StatelessWidget {
       child: ResponsiveContainer(
         child: Column(
           children: [
-            const SectionTitle(title: AppConstants.aboutTitle),
+            const OptimizedSectionTitle(title: AppConstants.aboutTitle),
 
             // About Content (Responsive Layout)
             isMobile
