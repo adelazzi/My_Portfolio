@@ -49,24 +49,36 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildSocialIcon(Widget icon, String url) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: IconButton(
-        onPressed: () async {
-          final uri = Uri.parse(url);
-          // Use external application mode for all platforms
-          const mode = LaunchMode.externalApplication;
+    final isMobile = MediaQuery.of(context).size.width < 600;
 
-          if (!await launchUrl(uri, mode: mode)) {
-            debugPrint('Could not launch $url');
-          }
-        },
-        icon: icon,
-        color: Colors.white,
-        iconSize: 28,
-        style: IconButton.styleFrom(
-          backgroundColor: Colors.white10,
-          padding: const EdgeInsets.all(12),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: isMobile ? 8 : 10),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.white.withOpacity(0.3),
+            width: 1,
+          ),
+        ),
+        child: IconButton(
+          onPressed: () async {
+            final uri = Uri.parse(url);
+            // Use external application mode for all platforms
+            const mode = LaunchMode.externalApplication;
+
+            if (!await launchUrl(uri, mode: mode)) {
+              debugPrint('Could not launch $url');
+            }
+          },
+          icon: icon,
+          color: Colors.white,
+          iconSize: isMobile ? 24 : 28,
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.white.withOpacity(0.1),
+            padding: EdgeInsets.all(isMobile ? 10 : 12),
+          ),
+          tooltip: url.contains('github') ? 'GitHub' : 'LinkedIn',
         ),
       ),
     );
@@ -74,22 +86,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildDrawerItem(int index, String title, IconData icon) {
     final isSelected = _currentIndex == index;
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: isSelected ? AppColors.accentColor : null,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: isSelected ? AppColors.accentColor.withOpacity(0.1) : null,
       ),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: isSelected ? AppColors.accentColor : null,
-          fontWeight: isSelected ? FontWeight.bold : null,
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+        leading: Icon(
+          icon,
+          color: isSelected ? AppColors.accentColor : Colors.grey[600],
+          size: 22,
         ),
+        title: Text(
+          title,
+          style: TextStyle(
+            color: isSelected ? AppColors.accentColor : Colors.grey[700],
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+            fontSize: 15,
+          ),
+        ),
+        onTap: () {
+          _scrollToSection(index);
+          Navigator.pop(context);
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        selected: isSelected,
       ),
-      onTap: () {
-        _scrollToSection(index);
-        Navigator.pop(context);
-      },
     );
   }
 
@@ -101,18 +127,30 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: isMobile
           ? AppBar(
-              title: const Text('Portfolio'),
+              title: Text(
+                'Portfolio',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: isMobile ? 18 : 20,
+                ),
+              ),
+              centerTitle: true,
+              elevation: 0,
+              backgroundColor:
+                  Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95),
               actions: [
                 IconButton(
                   icon: Icon(
                     Theme.of(context).brightness == Brightness.light
-                        ? Icons.dark_mode
-                        : Icons.light_mode,
+                        ? Icons.dark_mode_rounded
+                        : Icons.light_mode_rounded,
+                    size: 24,
                   ),
                   onPressed: () {
                     Provider.of<PortfolioProvider>(context, listen: false)
                         .toggleTheme();
                   },
+                  tooltip: 'Toggle theme',
                 ),
               ],
             )
@@ -131,11 +169,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/pattern.png'),
-                        opacity: 0.1,
-                        fit: BoxFit.cover,
                       ),
                     ),
                     padding: const EdgeInsets.all(16),
@@ -227,13 +260,34 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  _buildDrawerItem(0, 'Home', Icons.home),
-                  _buildDrawerItem(1, 'About', Icons.person),
-                  _buildDrawerItem(2, 'Skills', Icons.code),
-                  _buildDrawerItem(3, 'Projects', Icons.work),
-                  _buildDrawerItem(4, 'Experience', Icons.business),
-                  _buildDrawerItem(5, 'Education', Icons.school),
-                  _buildDrawerItem(6, 'Contact', Icons.email),
+                  // Mobile-optimized navigation items
+                  _buildDrawerItem(0, 'Home', Icons.home_rounded),
+                  _buildDrawerItem(1, 'About', Icons.person_rounded),
+                  _buildDrawerItem(2, 'Skills', Icons.code_rounded),
+                  _buildDrawerItem(3, 'Projects', Icons.work_rounded),
+                  _buildDrawerItem(4, 'Experience', Icons.business_rounded),
+                  _buildDrawerItem(5, 'Education', Icons.school_rounded),
+                  _buildDrawerItem(6, 'Contact', Icons.email_rounded),
+
+                  // Additional mobile actions
+                  const Divider(color: Colors.white24),
+                  ListTile(
+                    leading: Icon(
+                      Theme.of(context).brightness == Brightness.light
+                          ? Icons.dark_mode_rounded
+                          : Icons.light_mode_rounded,
+                      color: Colors.grey[600],
+                    ),
+                    title: Text(
+                      'Toggle Theme',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                    onTap: () {
+                      Provider.of<PortfolioProvider>(context, listen: false)
+                          .toggleTheme();
+                      Navigator.pop(context);
+                    },
+                  ),
                 ],
               ),
             )
@@ -271,11 +325,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                         child: ResponsiveContainer(
                       child: SingleChildScrollView(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isMobile ? 16 : 24,
+                          vertical: isMobile ? 20 : 0,
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const SizedBox(height: 90),
+                            SizedBox(height: isMobile ? 60 : 90),
                             // Creative profile image with gradient border
                             Container(
                               decoration: BoxDecoration(
@@ -292,31 +350,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                   BoxShadow(
                                     color:
                                         AppColors.accentColor.withOpacity(0.5),
-                                    blurRadius: 20,
-                                    spreadRadius: 5,
+                                    blurRadius: isMobile ? 15 : 20,
+                                    spreadRadius: isMobile ? 3 : 5,
                                   )
                                 ],
                               ),
                               padding: const EdgeInsets.all(4),
-                              child: const OptimizedProfileImage(
+                              child: OptimizedProfileImage(
                                 imagePath: 'assets/images/profile.jpg',
-                                size: 180,
+                                size: isMobile ? 140 : 180,
                               ),
                             ),
-                            const SizedBox(height: 32),
+                            SizedBox(height: isMobile ? 24 : 32),
 
                             // Creative tagline
-                            const Text(
+                            Text(
                               AppConstants.tagline,
                               style: TextStyle(
                                 color: AppColors.accentColor,
-                                fontSize: 16,
+                                fontSize: isMobile ? 14 : 16,
                                 fontWeight: FontWeight.w500,
-                                letterSpacing: 3,
+                                letterSpacing: isMobile ? 2 : 3,
                               ),
+                              textAlign: TextAlign.center,
                             ).animate().fadeIn(duration: 600.ms, delay: 300.ms),
 
-                            const SizedBox(height: 16),
+                            SizedBox(height: isMobile ? 12 : 16),
 
                             // Name with creative styling
                             ShaderMask(
@@ -333,6 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ?.copyWith(
                                       fontWeight: FontWeight.bold,
                                       height: 1.1,
+                                      fontSize: isMobile ? 32 : 48,
                                     ),
                                 textAlign: TextAlign.center,
                               ),
@@ -341,19 +401,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .fadeIn(duration: 800.ms)
                                 .slideY(begin: 0.3, end: 0),
 
-                            const SizedBox(height: 16),
+                            SizedBox(height: isMobile ? 12 : 16),
 
                             // Animated Role Text with creative presentation
                             Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 8),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: isMobile ? 12 : 16,
+                                vertical: isMobile ? 6 : 8,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.black12,
                                 borderRadius: BorderRadius.circular(50),
                                 border: Border.all(color: Colors.white30),
                               ),
                               child: SizedBox(
-                                height: 40,
+                                height: isMobile ? 32 : 40,
                                 child: AnimatedTextKit(
                                   repeatForever: true,
                                   animatedTexts: AppConstants.roles
@@ -365,6 +427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ?.copyWith(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.w500,
+                                                  fontSize: isMobile ? 18 : 24,
                                                 ),
                                             speed: const Duration(
                                                 milliseconds: 70),
@@ -377,17 +440,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ).animate().fadeIn(duration: 800.ms, delay: 500.ms),
 
-                            const SizedBox(height: 40),
+                            SizedBox(height: isMobile ? 30 : 40),
 
                             // Creative quote
                             Container(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              padding: EdgeInsets.symmetric(
+                                vertical: isMobile ? 8 : 10,
+                                horizontal: isMobile ? 16 : 0,
+                              ),
                               child: Text(
                                 AppConstants.aboutQuote,
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.8),
                                   fontStyle: FontStyle.italic,
-                                  fontSize: 16,
+                                  fontSize: isMobile ? 14 : 16,
+                                  height: 1.4,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -395,7 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .animate()
                                 .fadeIn(duration: 1000.ms, delay: 700.ms),
 
-                            const SizedBox(height: 40),
+                            SizedBox(height: isMobile ? 30 : 40),
 
                             // Social Icons with modern styling
                             Row(
@@ -408,70 +475,85 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ).animate().fadeIn(duration: 1200.ms),
 
-                            const SizedBox(height: 48),
+                            SizedBox(height: isMobile ? 36 : 48),
 
-                            // Creative CTA buttons
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 8),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color:
-                                        AppColors.accentColor.withOpacity(0.4),
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 5),
-                                  )
-                                ],
-                                gradient: const LinearGradient(
-                                  colors: AppColors.accentGradient,
-                                ),
-                              ),
-                              child: ElevatedButton.icon(
+                            // Creative CTA buttons - Stacked on mobile
+                            if (isMobile) ...[
+                              // Mobile: Stack buttons vertically
+                              _buildMobileCTAButton(
                                 onPressed: () => _scrollToSection(1),
-                                icon: const Icon(Icons.arrow_downward),
-                                label: const Text(AppConstants.viewWorkCTA),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  foregroundColor: Colors.white,
-                                  shadowColor: Colors.transparent,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 16),
-                                  textStyle: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
+                                icon: Icons.arrow_downward_rounded,
+                                label: AppConstants.viewWorkCTA,
+                                isPrimary: true,
                               ),
-                            )
-                                .animate()
-                                .fadeIn(duration: 1200.ms, delay: 800.ms)
-                                .scale(
-                                  begin: const Offset(0.8, 0.8),
-                                  end: const Offset(1, 1),
-                                ),
-                            const SizedBox(height: 10),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 8),
-                              child: OutlinedButton.icon(
+                              const SizedBox(height: 12),
+                              _buildMobileCTAButton(
                                 onPressed: () => _scrollToSection(6),
-                                icon: const Icon(Icons.mail_outline),
-                                label: const Text(AppConstants.hireMeCTA),
-                                style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(
-                                      color: Colors.white, width: 1.5),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 16),
-                                  foregroundColor: Colors.white,
-                                  textStyle: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
+                                icon: Icons.mail_outline_rounded,
+                                label: AppConstants.hireMeCTA,
+                                isPrimary: false,
                               ),
-                            )
-                                .animate()
-                                .fadeIn(duration: 1200.ms, delay: 900.ms)
-                                .scale(
-                                  begin: const Offset(0.8, 0.8),
-                                  end: const Offset(1, 1),
-                                ),
+                            ] else ...[
+                              // Desktop: Keep horizontal layout
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: AppColors.accentColor
+                                              .withOpacity(0.4),
+                                          blurRadius: 15,
+                                          offset: const Offset(0, 5),
+                                        )
+                                      ],
+                                      gradient: const LinearGradient(
+                                        colors: AppColors.accentGradient,
+                                      ),
+                                    ),
+                                    child: ElevatedButton.icon(
+                                      onPressed: () => _scrollToSection(1),
+                                      icon: const Icon(Icons.arrow_downward),
+                                      label:
+                                          const Text(AppConstants.viewWorkCTA),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        foregroundColor: Colors.white,
+                                        shadowColor: Colors.transparent,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 16),
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    child: OutlinedButton.icon(
+                                      onPressed: () => _scrollToSection(6),
+                                      icon: const Icon(Icons.mail_outline),
+                                      label: const Text(AppConstants.hireMeCTA),
+                                      style: OutlinedButton.styleFrom(
+                                        side: const BorderSide(
+                                            color: Colors.white, width: 1.5),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 16),
+                                        foregroundColor: Colors.white,
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                            SizedBox(height: isMobile ? 40 : 20),
                           ],
                         ),
                       ),
@@ -624,5 +706,72 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Widget _buildMobileCTAButton({
+    required VoidCallback onPressed,
+    required IconData icon,
+    required String label,
+    required bool isPrimary,
+  }) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: isPrimary
+          ? Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.accentColor.withOpacity(0.4),
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
+                  )
+                ],
+                gradient: const LinearGradient(
+                  colors: AppColors.accentGradient,
+                ),
+              ),
+              child: ElevatedButton.icon(
+                onPressed: onPressed,
+                icon: Icon(icon),
+                label: Text(label),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  foregroundColor: Colors.white,
+                  shadowColor: Colors.transparent,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
+            )
+          : OutlinedButton.icon(
+              onPressed: onPressed,
+              icon: Icon(icon),
+              label: Text(label),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Colors.white, width: 1.5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                foregroundColor: Colors.white,
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+            ),
+    ).animate().fadeIn(
+        duration: 1200.ms,
+        delay: Duration(milliseconds: isPrimary ? 800 : 900));
   }
 }
