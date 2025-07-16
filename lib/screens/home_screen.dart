@@ -170,6 +170,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
+                         // Subtle pattern overlay
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/pattern.png'),
+                      opacity: 0.05,
+                      fit: BoxFit.cover,
+                    ),
                     ),
                     padding: const EdgeInsets.all(16),
                     margin: EdgeInsets.zero,
@@ -314,12 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         AppColors.altCardColor,
                       ],
                     ),
-                    // Subtle pattern overlay
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/pattern.png'),
-                      opacity: 0.05,
-                      fit: BoxFit.cover,
-                    ),
+                 
                   ),
                   child: OptimizedAnimatedBackground(
                     child: Center(
