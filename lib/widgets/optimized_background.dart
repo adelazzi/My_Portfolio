@@ -81,14 +81,7 @@ class OptimizedAnimatedBackgroundState
               ),
             ),
 
-            // Subtle pattern overlay
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/pattern.png'),
-                  opacity: 0.03,
-                  fit: BoxFit.cover,
-                ),
+          
               ),
             ),
 
