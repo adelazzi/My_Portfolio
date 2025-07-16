@@ -180,12 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         AppColors.altCardColor,
                       ],
                     ),
-                    // Subtle pattern overlay
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/pattern.png'),
-                      opacity: 0.05,
-                      fit: BoxFit.cover,
-                    ),
+                  
                   ),
                   child: AnimatedBackground(
                     child: Center(
