@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         end: Alignment.bottomRight,
                       ),
                          // Subtle pattern overlay
-                    image: const DecorationImage(
+                    image: DecorationImage(
                       image: AssetImage('assets/images/pattern.png'),
                       opacity: 0.05,
                       fit: BoxFit.cover,
