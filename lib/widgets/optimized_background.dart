@@ -81,9 +81,9 @@ class OptimizedAnimatedBackgroundState
               ),
             ),
 
+   
           
-              ),
-            ),
+            
 
             // Optimized floating particles
             AnimatedBuilder(
