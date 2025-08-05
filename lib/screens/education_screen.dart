@@ -96,7 +96,7 @@ class EducationScreen extends StatelessWidget {
         'issuer': 'Hoska Dev',
         'date': '2023 - 2025',
         'credential':
-            'https://drive.google.com/file/d/1TTnSF_7Z5bXIhf-0Pb97UOdDXy-B6aQQ/view?usp=drive_link',
+            'https://drive.google.com/file/d/1TTkK1Swgf5DdmtcWS5jjf50DYq3xiArq/view?usp=drive_link',
       },
     ];
 
