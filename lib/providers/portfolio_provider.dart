@@ -93,7 +93,13 @@ class PortfolioProvider extends ChangeNotifier {
           "A comprehensive e-commerce mobile application that connects marketers with admins. Features include product management, order processing, financial tracking, inventory management, and real-time analytics for sellers. Implemented secure payment gateways and user authentication.",
       imageUrl: "assets/images/projects/olivia.jpg",
       technologies: ["Flutter", "Firebase"],
-  
+    ),
+    Project(
+      title: "First Step In Data Mining - Educational Book",
+      description:
+          " Proudly presenting my first academic book: \"First Step in Data Mining\" — a concise, 108-page guide designed to make data mining accessible and practical for college students and beginners.\n\nHighlights:\n🔹 Core concepts: distance measures, classification, clustering\n🔹 MPI parallel computing for big data challenges\n🔹 Structured chapters with exercises (TD) and hands-on labs (TP)\n\nA resource crafted by a student, for students, to simplify the journey into data science.",
+      imageUrl: "assets/images/projects/MyDataMiningBook.jpg",
+      technologies: ["Writing", 'Data Mining'],
     ),
     Project(
       title: "GIMDZ - Finance Mobile App",
@@ -101,8 +107,6 @@ class PortfolioProvider extends ChangeNotifier {
           "A comprehensive personal finance application for managing credit cards, bank accounts, and budgeting. Features include expense tracking, bill reminders, financial insights dashboard, custom budget categories, and AI-driven savings recommendations for users to better manage their finances.",
       imageUrl: "assets/images/projects/gimdz.jpg",
       technologies: ["Flutter", "Firebase", "Dart", "Django"],
-     
-     
     ),
     Project(
       title: "Econnect - Internation Compition Mobile App",
@@ -110,7 +114,6 @@ class PortfolioProvider extends ChangeNotifier {
           "An event organization app that allows users to find volunteers, purchase tickets, and manage event activities. Features include real-time volunteer management, secure ticket sales, analytics dashboard, and participant communication tools. Won first place in an international competition for its innovative approach to event coordination.",
       imageUrl: "assets/images/projects/ecconnect.jpg",
       technologies: ["flutter", "Dart"],
- 
     ),
   ];
 
