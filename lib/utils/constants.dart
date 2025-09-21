@@ -9,10 +9,10 @@ class AppColors {
 
   // Background and card colors
   static const Color backgroundColor =
-      Color(0xFFF0F8FF); // Alice Blue background
-  static const Color cardColor = Color(0xFFE6E6FA); // Lavender card
+      Color(0xFFF0F8FF);
+  static const Color cardColor = Color(0xFFE6E6FA); 
   static const Color altCardColor =
-      Color(0xFFDCDCDC); // Gainsboro alternative card color
+      Color(0xFFDCDCDC); 
 
   // Text colors
   static const Color textPrimaryColor = Color(0xFF000000); // Black text

@@ -115,6 +115,19 @@ class PortfolioProvider extends ChangeNotifier {
       imageUrl: "assets/images/projects/ecconnect.jpg",
       technologies: ["flutter", "Dart"],
     ),
+        Project(
+      title: "Faz Apps - Provet School Mobile Apps",
+      description:
+          "🚀 Fez Apps: A Unified Flutter & Firebase Ecosystem for Modern Education!\n"
+          "Streamlining school communication with three interconnected apps for admins, professors, and parents.\n\n"
+          "✨ Features:\n"
+          "▶️ Admin App: Manage faculty, students, and curricula in real-time.\n"
+          "▶️ Professor App: Organize classes, monitor performance, and handle assignments.\n"
+          "▶️ Parents App: Get live updates, pay fees, and receive instant notifications.\n\n"
+          "Built with Flutter for cross-platform consistency and Firebase for real-time backend functionality. Overcame technical and UX challenges to deliver a seamless experience.",
+      imageUrl: "assets/images/projects/faz.jpg",
+      technologies: ["flutter", "Dart" , 'FireBase' , 'Django'  ],
+    ),
   ];
 
   // Sample Skills Data
