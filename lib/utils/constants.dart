@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Brown-based gradient colors
-  static const Color primaryColor = Color(0xFF8B4513); // Saddle Brown
-  static const Color accentColor = Color(0xFFD2691E); // Chocolate
-  static const Color tertiaryColor = Color(0xFFDEB887); // Burlywood
-  static const Color quaternaryColor = Color(0xFFA0522D); // Sienna
+  // Vivid blue-based gradient colors
+  static const Color primaryColor = Color(0xFF0000FF); // Blue
+  static const Color accentColor = Color(0xFF1E90FF); // Dodger Blue
+  static const Color tertiaryColor = Color(0xFF4169E1); // Royal Blue
+  static const Color quaternaryColor = Color(0xFF4682B4); // Steel Blue
 
   // Background and card colors
   static const Color backgroundColor =
-      Color(0xFF2E1E12); // Dark brown background
-  static const Color cardColor = Color(0xFF3A291F); // Darker brown card
+      Color(0xFFF0F8FF); // Alice Blue background
+  static const Color cardColor = Color(0xFFE6E6FA); // Lavender card
   static const Color altCardColor =
-      Color(0xFF4E3629); // Alternative brown card color
+      Color(0xFFDCDCDC); // Gainsboro alternative card color
 
   // Text colors
-  static const Color textPrimaryColor = Color(0xFFECECEC); // Light text
+  static const Color textPrimaryColor = Color(0xFF000000); // Black text
   static const Color textSecondaryColor =
-      Color(0xFFD9CBC4); // Medium light text with brown tint
-  static const Color dividerColor = Color(0xFF5A4636); // Subtle brown divider
+      Color(0xFF696969); // Dim Gray text
+  static const Color dividerColor = Color(0xFF4169E1); // Royal Blue divider
 
   // Creative accent colors
   static const Color successColor =
-      Color(0xFF6B8E23); // Olive green for success
-  static const Color errorColor = Color(0xFFB22222); // Firebrick red for error
-  static const Color warningColor = Color(0xFFDAA520); // Goldenrod for warning
+      Color(0xFF32CD32); // Lime Green for success
+  static const Color errorColor = Color(0xFFFF0000); // Red for error
+  static const Color warningColor = Color(0xFFFFA500); // Orange for warning
 
   // Gradient maps for creative elements
-  static const List<Color> primaryGradient = [primaryColor, Color(0xFF654321)];
-  static const List<Color> accentGradient = [accentColor, Color(0xFFA86E3D)];
+  static const List<Color> primaryGradient = [primaryColor, Color(0xFF1E90FF)];
+  static const List<Color> accentGradient = [accentColor, Color(0xFF87CEEB)];
   static const List<Color> creativeGradient = [
-    Color(0xFF8B4513),
-    Color(0xFFCD853F)
+    Color(0xFF0000FF),
+    Color(0xFF1E90FF)
   ];
+  
 
   // Shadows for depth
   static final List<BoxShadow> cardShadow = [
