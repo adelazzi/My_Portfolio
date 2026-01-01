@@ -312,10 +312,10 @@ class EducationViewMobile extends StatelessWidget {
 
         return RefreshIndicator(
           onRefresh: controller.loadEducationData,
-          child: ListView(
-            shrinkWrap: true, // ✅ Fix 1: Fit parent height
+          child: Column(
+            // shrinkWrap: true, // ✅ Fix 1: Fit parent height
 
-            physics: const AlwaysScrollableScrollPhysics(),
+            // physics: const AlwaysScrollableScrollPhysics(),
             children: [
               // Title
               Text(

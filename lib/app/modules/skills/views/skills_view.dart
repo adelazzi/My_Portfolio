@@ -144,7 +144,7 @@ class SkillsViewMobile extends StatelessWidget {
       decoration: const BoxDecoration(
           image: DecorationImage(
         fit: BoxFit.cover,
-        image: AssetImage('images/project_background.png'),
+        image: AssetImage('assets/images/project_background.png'),
       )),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: Column(
