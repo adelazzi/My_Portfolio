@@ -383,7 +383,7 @@ class AboutViewMobile extends GetView<AboutController> {
                 SizedBox(height: 20.h),
                 Text(StringsAssetsConstants.aboutMe,
                     style: TextStyles.bodyMedium(context),
-                    textAlign: TextAlign.justify),
+                    textAlign: TextAlign.start),
               ],
             ),
           ),
