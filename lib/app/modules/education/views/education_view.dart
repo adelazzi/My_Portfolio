@@ -237,7 +237,7 @@ class EducationCardWidget extends StatelessWidget {
               ),
               child: education.logoUrl!.isNotEmpty
                   ? ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(8.r),
+                borderRadius: BorderRadius.circular(16.r),
                       child: Image.asset(
                         education.logoUrl!,
                         filterQuality: FilterQuality.high,

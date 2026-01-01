@@ -212,34 +212,34 @@ class ThemeStyles {
     ),
 
     // Card Theme
-    cardTheme: CardThemeData(
-      color: LightColors.surfaceColor,
-      elevation: 2,
-      shadowColor: LightColors.shadowColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      margin: EdgeInsets.zero,
-    ),
+    // cardTheme: CardThemeData(
+    //   color: LightColors.surfaceColor,
+    //   elevation: 2,
+    //   shadowColor: LightColors.shadowColor,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(16.r),
+    //   ),
+    //   margin: EdgeInsets.zero,
+    // ),
 
-    // Dialog Theme
-    dialogTheme: DialogThemeData(
-      backgroundColor: LightColors.surfaceColor,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      titleTextStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-        color: LightColors.textColor,
-      ),
-      contentTextStyle: TextStyle(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
-        color: LightColors.textColor,
-      ),
-    ),
+    // // Dialog Theme
+    // dialogTheme: DialogThemeData(
+    //   backgroundColor: LightColors.surfaceColor,
+    //   elevation: 4,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(20.r),
+    //   ),
+    //   titleTextStyle: TextStyle(
+    //     fontSize: 20.sp,
+    //     fontWeight: FontWeight.w700,
+    //     color: LightColors.textColor,
+    //   ),
+    //   contentTextStyle: TextStyle(
+    //     fontSize: 16.sp,
+    //     fontWeight: FontWeight.w400,
+    //     color: LightColors.textColor,
+    //   ),
+    // ),
 
     // Bottom Sheet Theme
     bottomSheetTheme: BottomSheetThemeData(
@@ -465,34 +465,34 @@ class ThemeStyles {
     ),
 
     // Card Theme
-    cardTheme: CardThemeData(
-      color: DarkColors.surfaceColor,
-      elevation: 2,
-      shadowColor: DarkColors.shadowColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      margin: EdgeInsets.zero,
-    ),
+    // cardTheme: CardThemeData(
+    //   color: DarkColors.surfaceColor,
+    //   elevation: 2,
+    //   shadowColor: DarkColors.shadowColor,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(16.r),
+    //   ),
+    //   margin: EdgeInsets.zero,
+    // ),
 
-    // Dialog Theme
-    dialogTheme: DialogThemeData(
-      backgroundColor: DarkColors.surfaceColor,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      titleTextStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-        color: DarkColors.textColor,
-      ),
-      contentTextStyle: TextStyle(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
-        color: DarkColors.textColor,
-      ),
-    ),
+    // // Dialog Theme
+    // dialogTheme: DialogThemeData(
+    //   backgroundColor: DarkColors.surfaceColor,
+    //   elevation: 4,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(20.r),
+    //   ),
+    //   titleTextStyle: TextStyle(
+    //     fontSize: 20.sp,
+    //     fontWeight: FontWeight.w700,
+    //     color: DarkColors.textColor,
+    //   ),
+    //   contentTextStyle: TextStyle(
+    //     fontSize: 16.sp,
+    //     fontWeight: FontWeight.w400,
+    //     color: DarkColors.textColor,
+    //   ),
+    // ),
 
     // Bottom Sheet Theme
     bottomSheetTheme: BottomSheetThemeData(

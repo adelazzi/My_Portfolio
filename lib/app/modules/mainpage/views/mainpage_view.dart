@@ -52,7 +52,7 @@ class MainpageView extends GetView<MainpageController> {
                     ),
                     child: Stack(children: [
                       Align(
-                        alignment: AlignmentGeometry.bottomCenter,
+                        alignment: AlignmentDirectional.bottomCenter,
                         child: SizedBox(
                             height: 60.w,
                             child: Lottie.asset(IconsAssetsConstants.robot)),
