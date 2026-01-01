@@ -518,7 +518,7 @@ class ExperienceCardWidgetMobile extends StatelessWidget {
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(35.r),
                       child:
-                          Image.network(experience.logoUrl!, fit: BoxFit.cover),
+                          Image.asset(experience.logoUrl!, fit: BoxFit.cover),
                     )
                   : Icon(Icons.work, size: 35.sp, color: Colors.white),
             ),
