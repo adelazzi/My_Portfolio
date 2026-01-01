@@ -43,11 +43,15 @@ class StringsAssetsConstants {
   static String get licensedComputerScientist =>
       "licentiate_computer_science".tr;
   static String get valteerArabGames => "valteer_arab_games".tr;
+
+  static String get GimDzCertaficate => "gim_dz_certification".tr;
   static String get hoskaDevTraining => "hoska_dev_training".tr;
   static String get educationJourney => "education_journey".tr;
   static String get educationIntro => "education_intro".tr;
   static String get certifications => "certifications".tr;
   static String get openCertificateError => "open_certificate_error".tr;
+
+  //gim_dz_certification
   // main page items
   static String get home => "home".tr;
   static String get about => "about".tr;

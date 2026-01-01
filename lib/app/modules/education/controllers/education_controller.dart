@@ -39,6 +39,12 @@ Future<void> loadEducationData() async {
       date: '2023 - 2025',
       credential: 'https://drive.google.com/file/d/1TTkK1Swgf5DdmtcWS5jjf50DYq3xiArq/view?usp=drive_link',
     ),
+        Certafication(
+      name: StringsAssetsConstants.GimDzCertaficate,
+      issuer: 'ENSM',
+      date: '2025',
+      credential: 'https://drive.google.com/file/d/1H4QHIpcaoZAgmjChXvdrhltQcwEXGoum/view?usp=drive_link',
+    ),
   ]);
 
   educationList.value = PortfolioData.educationList;

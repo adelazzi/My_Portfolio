@@ -129,6 +129,11 @@ class EducationView extends StatelessWidget {
                         certification: controller.certifications[2])
                     .animate()
                     .fadeIn(duration: 2000.ms, delay: 300.ms),
+                      CertificationCard(
+                        titel: StringsAssetsConstants.GimDzCertaficate,
+                        certification: controller.certifications[3])
+                    .animate()
+                    .fadeIn(duration: 2000.ms, delay: 350.ms),
               ],
             ));
       },

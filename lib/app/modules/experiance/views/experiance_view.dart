@@ -142,31 +142,33 @@ class ExperienceCardWidget extends StatelessWidget {
           children: [
             // Modern Logo Container
             Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                gradient: MainColors.primaryGradient,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: MainColors.primaryColor(context).withOpacity(0.3),
-                    blurRadius: 16.r,
-                    offset: Offset(0, 6.h),
+                width: 30.w,
+                height: 30.w,
+                decoration: BoxDecoration(
+                  gradient: MainColors.primaryGradient,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: MainColors.primaryColor(context).withOpacity(0.3),
+                      blurRadius: 16.r,
+                      offset: Offset(0, 6.h),
+                    ),
+                  ],
+                ),
+                child:
+                    // experience.logoUrl != null
+                    //     ?
+                    ClipRRect(
+                  borderRadius: BorderRadius.circular(36.r),
+                  child: Image.asset(
+                    experience.logoUrl!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        Icon(Icons.work, size: 28.sp, color: Colors.white),
                   ),
-                ],
-              ),
-              child: experience.logoUrl != null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(36.r),
-                      child: Image.network(
-                        experience.logoUrl!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            Icon(Icons.work, size: 28.sp, color: Colors.white),
-                      ),
-                    )
-                  : Icon(Icons.work, size: 28.sp, color: Colors.white),
-            ),
+                )
+                // : Icon(Icons.work, size: 28.sp, color: Colors.white),
+                ),
             SizedBox(width: 20.w),
 
             // Content
