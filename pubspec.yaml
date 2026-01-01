@@ -23,6 +23,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   http: ^0.13.6
   path_provider: ^2.1.1
+  get: ^4.7.3
+  lottie: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +44,25 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
+  
   assets:
+    - assets/
     - assets/images/
     - assets/icons/
     - assets/images/projects/
+    - assets/fonts/
+    - assets/portfolio/
+    - assets/translations/
+  fonts:
+    - family: PlusJakartaSans-Bold
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+    - family: PlusJakartaSans-Regular
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
+    - family: PlusJakartaSans-Medium
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
+    - family: PlusJakartaSans-semiBold
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-semiBold.ttf

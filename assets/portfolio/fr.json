@@ -1,0 +1,240 @@
+{
+  "educationList": [
+    {
+      "degree": "Licence en Informatique",
+      "institution": "Université USTHB",
+      "period": "2020 - 2024",
+      "description": "Diplôme de quatre ans axé sur le développement d'algorithmes, les structures de données et plusieurs langages de programmation. Développé de solides compétences en résolution de problèmes grâce à des défis de programmation compétitive et des implémentations de projets complexes.",
+      "logoUrl": "assets/images/university_logo.png"
+    },
+    {
+      "degree": "Programme Master HPC",
+      "institution": "USTHB",
+      "period": "2025",
+      "description": "L'un des meilleurs étudiants de ce programme avancé. Focus sur l'optimisation des performances dans les clusters de calcul et la gestion parallèle de grands ensembles de données. Apprentissage de techniques de pointe pour les applications de calcul haute performance et l'architecture des systèmes distribués.",
+      "logoUrl": "assets/images/university_logo.png"
+    },
+    {
+      "degree": "Année préparatoire",
+      "institution": "Université agraire d'État d'Orel",
+      "period": "2025 - Présent",
+      "description": "Année préparatoire pour étudiants internationaux - études intensives de russe pour préparer les études supérieures en informatique et technologies en Russie. Apprentissage du russe de base et académique.",
+      "logoUrl": "assets/images/oryol_logo.png"
+    }
+  ],
+  "experienceList": [
+    {
+      "position": "Développeur Flutter",
+      "company": "Hiske Dev",
+      "period": "2024 - 2025",
+      "description": "Développé des applications mobiles pour des clients professionnels avec un focus sur les solutions d'entreprise et l'intégration avec les systèmes existants.",
+      "logoUrl": "assets/images/hoskadev.png",
+      "responsibilities": [
+        "Développé des interfaces front-end responsives avec Flutter GetX",
+        "Dirigé des initiatives de prétraitement et nettoyage de données pour de vrais projets",
+        "Rejoint l'équipe de développement mobile pour créer des applications personnalisées pour des clients externes",
+        "Collaboré avec les designers UX/UI pour implémenter des interfaces modernes"
+      ]
+    },
+    {
+      "position": "Développeur Full Stack",
+      "company": "Matrix software Solutions",
+      "period": "6 mois",
+      "description": "Développé des applications mobiles full-stack avec APIs Django et frontends Flutter. Implémenté des systèmes d'authentification et des UI responsives avec intégration backend fluide.",
+      "logoUrl": "assets/images/matrix.png",
+      "responsibilities": [
+        "Développé des applications mobiles Flutter avec UI responsive et architecture propre",
+        "Construit des APIs RESTful avec Django pour les services backend et la gestion des données",
+        "Implémenté l'algorithme de Dijkstra pour la recherche de routes efficaces dans une app de suivi de livraison",
+        "Optimisé les algorithmes de recherche de chemin pour la navigation en temps réel avec réduction de la charge computationnelle",
+        "Intégré Django ORM avec des bases de données spatiales pour supporter les fonctionnalités de géolocalisation"
+      ]
+    },
+    {
+      "position": "Délégué de classe",
+      "company": "Université USTHB",
+      "period": "2022 - 2024",
+      "description": "Servi comme principal intermédiaire entre les étudiants et les professeurs, facilitant une communication efficace et assurant un traitement rapide des préoccupations académiques.",
+      "logoUrl": "assets/images/university_logo.png",
+      "responsibilities": [
+        "Coordonné les emplois du temps des classes et la logistique des examens avec l'administration du département",
+        "Organisé des groupes d'étude et des sessions d'apprentissage collaboratif pour des matières complexes",
+        "Médié les conflits et représenté les intérêts des étudiants lors des réunions départementales",
+        "Maintenu des canaux de communication entre le corps professoral et les étudiants pour les annonces et retours",
+        "Facilité la résolution des problèmes académiques affectant les performances et le bien-être des étudiants"
+      ]
+    },
+    {
+      "position": "Bénévole Logistique",
+      "company": "Jeux Arabes",
+      "period": "2023",
+      "description": "Bénévolé au sein de l'équipe logistique de cet événement sportif international prestigieux, assurant des opérations fluides et une coordination entre les différents acteurs.",
+      "logoUrl": "assets/images/arab_games_logo.png",
+      "responsibilities": [
+        "Coordonné la distribution d'équipements et d'approvisionnements à travers plusieurs lieux d'événements",
+        "Assisté à la logistique de transport pour les athlètes et officiels",
+        "Supporté les opérations de mise en place et démontage des sites pour différentes compétitions sportives",
+        "Collaboré avec des équipes internationales pour résoudre les défis logistiques",
+        "AidÉ à la gestion de la planification et de l'allocation des ressources pendant l'événement"
+      ]
+    }
+  ],
+  "projectList": [
+    {
+      "title": "Olivia - Application E-Commerce Mobile",
+      "description": "Application mobile e-commerce complète connectant les marketeurs aux administrateurs. Fonctionnalités incluant la gestion des produits, traitement des commandes, suivi financier, gestion des stocks et analyses en temps réel pour les vendeurs. Implémenté des passerelles de paiement sécurisées et authentification utilisateur.",
+      "imageUrl": "assets/images/projects/olivia.jpg",
+      "technologies": [
+        "Flutter",
+        "Firebase"
+      ]
+    },
+    {
+      "title": "Premiers Pas en Data Mining - Livre Éducatif",
+      "description": "Présenté avec fierté mon premier livre académique : \"Premiers Pas en Data Mining\" — un guide concis de 108 pages conçu pour rendre le data mining accessible et pratique pour les étudiants universitaires et débutants.\n\nPoints forts :\n🔹 Concepts fondamentaux : mesures de distance, classification, clustering\n🔹 Calcul parallèle MPI pour les défis des big data\n🔹 Chapitres structurés avec exercices (TD) et labs pratiques (TP)\n\nUne ressource créée par un étudiant, pour les étudiants, simplifiant le voyage vers la data science.",
+      "imageUrl": "assets/images/projects/MyDataMiningBook.jpg",
+      "technologies": [
+        "Écriture",
+        "Data Mining"
+      ]
+    },
+    {
+      "title": "GIMDZ - Application Financière Mobile",
+      "description": "Application de finance personnelle complète pour gérer cartes de crédit, comptes bancaires et budget. Fonctionnalités incluant suivi des dépenses, rappels de factures, tableau de bord d'insights financiers, catégories de budget personnalisées et recommandations d'épargne basées sur l'IA pour une meilleure gestion financière.",
+      "imageUrl": "assets/images/projects/gimdz.jpg",
+      "technologies": [
+        "Flutter",
+        "Firebase",
+        "Dart",
+        "Django"
+      ]
+    },
+    {
+      "title": "Econnect - Application Concours International Mobile",
+      "description": "Application d'organisation d'événements permettant de trouver des volontaires, acheter des billets et gérer les activités d'événement. Fonctionnalités incluant gestion des volontaires en temps réel, vente de billets sécurisée, tableau d'analyses et outils de communication des participants. A remporté la première place dans un concours international pour son approche innovante de coordination d'événements.",
+      "imageUrl": "assets/images/projects/ecconnect.jpg",
+      "technologies": [
+        "Flutter",
+        "Dart"
+      ]
+    },
+    {
+      "title": "Faz Apps - Applications Scolaires Mobile",
+      "description": "🚀 Fez Apps : Écosystème unifié Flutter & Firebase pour l'éducation moderne !\nSimplification de la communication scolaire avec trois applications interconnectées pour administrateurs, professeurs et parents.\n\n✨ Fonctionnalités :\n▶️ App Admin : Gérer corps enseignant, étudiants et programmes en temps réel.\n▶️ App Prof : Organiser classes, suivre performances et gérer devoirs.\n▶️ App Parents : Recevoir mises à jour live, payer frais et notifications instantanées.\n\nConstruit avec Flutter pour cohérence multiplateforme et Firebase pour backend temps réel. Surmonté défis techniques et UX pour une expérience fluide.",
+      "imageUrl": "assets/images/projects/faz.jpg",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Django"
+      ]
+    }
+  ],
+  "skillsList": [
+    {
+      "name": "HTML/CSS",
+      "proficiency": 0.6,
+      "category": "Frontend"
+    },
+    {
+      "name": "Dart",
+      "proficiency": 0.8,
+      "category": "Frontend"
+    },
+    {
+      "name": "Flutter",
+      "proficiency": 0.85,
+      "category": "Frontend"
+    },
+    {
+      "name": "Flutter GetX",
+      "proficiency": 0.75,
+      "category": "Frontend"
+    },
+    {
+      "name": "Python",
+      "proficiency": 0.8,
+      "category": "Backend"
+    },
+    {
+      "name": "Django",
+      "proficiency": 0.75,
+      "category": "Backend"
+    },
+    {
+      "name": "MongoDB",
+      "proficiency": 0.85,
+      "category": "Database"
+    },
+    {
+      "name": "MySQL",
+      "proficiency": 0.8,
+      "category": "Database"
+    },
+    {
+      "name": "Firebase",
+      "proficiency": 0.9,
+      "category": "Database"
+    },
+    {
+      "name": "Docker",
+      "proficiency": 0.7,
+      "category": "DevOps"
+    },
+    {
+      "name": "GitHub",
+      "proficiency": 0.65,
+      "category": "DevOps"
+    },
+    {
+      "name": "Azure",
+      "proficiency": 0.3,
+      "category": "DevOps"
+    },
+    {
+      "name": "Hadoop",
+      "proficiency": 0.5,
+      "category": "DevOps"
+    }
+  ],
+  "clubActivities": [
+    {
+      "name": "Club OMC",
+      "role": "Chef d'équipe",
+      "period": "2022 - présent",
+      "description": "Commencé comme membre ordinaire et progressivement devenu chef d'équipe grâce au dévouement et aux contributions techniques. Maintenant responsable du suivi du progrès de l'équipe et du mentorat des nouveaux membres, représentant une croissance professionnelle significative au sein de l'organisation.",
+      "logoUrl": "assets/images/omc_club.png",
+      "achievements": [
+        "Organisé des ateliers pratiques enseignant Flutter et GetX aux membres du club",
+        "Coordonné plusieurs hackathons et servi de mentor d'équipe",
+        "Remporté la première place dans une compétition internationale avec l'équipe du club"
+      ]
+    },
+    {
+      "name": "GDG Algérie",
+      "role": "Membre Logistique",
+      "period": "2024 - présent",
+      "description": "Responsable de la coordination logistique des événements, gestion de la mise en place des lieux et assurance d'une exécution fluide des meetups tech et ateliers. Collaboré avec des équipes multifonctionnelles pour organiser les ressources, géré les besoins en équipement et créé des plans d'événements détaillés pour faciliter des rassemblements communautaires et sessions d'apprentissage réussis.",
+      "logoUrl": "assets/images/gdgalgeria.png",
+      "achievements": [
+        "Rationalisé la logistique d'événements pour 10+ conférences tech avec des systèmes de gestion de calendrier personnalisés",
+        "Implémenté des workflows de gestion de tâches améliorant la coordination d'équipe de 40%",
+        "Développé un calendrier de planification d'événements synchronisant les responsabilités à travers plusieurs équipes d'organisation"
+      ]
+    }
+  ],
+  "roles": [
+    "Développeur Flutter",
+    "Ingénieur Full-Stack",
+    "Mentor Développement Mobile",
+    "Étudiant M2 HPC",
+    "Développeur Backend Django"
+  ],
+  "personalTraits": [
+    "Orienté Performance",
+    "Centré Expérience Utilisateur",
+    "Mentor Technique",
+    "Résolveur de Problèmes",
+    "Apprenant Continu"
+  ]
+}
