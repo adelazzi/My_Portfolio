@@ -508,20 +508,21 @@ class ExperienceCardWidgetMobile extends StatelessWidget {
           // Logo at top center
           Center(
             child: Container(
-              width: 70.w,
-              height: 70.w,
-              decoration: const BoxDecoration(
-                gradient: MainColors.primaryGradient,
-                shape: BoxShape.circle,
-              ),
-              child: experience.logoUrl!.isEmpty
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(35.r),
-                      child:
-                          Image.asset(experience.logoUrl!, fit: BoxFit.cover),
-                    )
-                  : Icon(Icons.work, size: 35.sp, color: Colors.white),
-            ),
+                width: 70.w,
+                height: 70.w,
+                decoration: const BoxDecoration(
+                  gradient: MainColors.primaryGradient,
+                  shape: BoxShape.circle,
+                ),
+                child:
+                    // experience.logoUrl!.isEmpty
+                    //     ?
+                    ClipRRect(
+                  borderRadius: BorderRadius.circular(35.r),
+                  child: Image.asset(experience.logoUrl!, fit: BoxFit.cover),
+                )
+                // : Icon(Icons.work, size: 35.sp, color: Colors.white),
+                ),
           ),
           SizedBox(height: 20.h),
 
