@@ -36,8 +36,7 @@ class MainpageView extends GetView<MainpageController> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          MainColors.primaryColor(context)
-                              .withValues(alpha: 0.1),
+                          MainColors.primaryColor(context).withOpacity(0.1),
                           Colors.transparent,
                         ],
                         begin: Alignment.topLeft,
@@ -45,7 +44,7 @@ class MainpageView extends GetView<MainpageController> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05),
+                          color: Colors.black.withOpacity(0.05),
                           blurRadius: 20,
                           offset: const Offset(4, 0),
                         ),
@@ -82,8 +81,7 @@ class MainpageView extends GetView<MainpageController> {
                                       borderRadius: BorderRadius.circular(30.r),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black
-                                              .withValues(alpha: 0.1),
+                                          color: Colors.black.withOpacity(0.1),
                                           blurRadius: 15.r,
                                           spreadRadius: 2,
                                         ),
@@ -218,7 +216,7 @@ class MainpageView extends GetView<MainpageController> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r)),
             tileColor: controller.currentPageIndex.value == index
-                ? MainColors.primaryColor(context).withValues(alpha: 0.15)
+                ? MainColors.primaryColor(context).withOpacity(0.15)
                 : Colors.transparent,
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),

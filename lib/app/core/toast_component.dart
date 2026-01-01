@@ -28,7 +28,7 @@ class ToastComponent {
           const Text('', style: TextStyle(color: Colors.white, fontSize: 0)),
       boxShadows: [
         BoxShadow(
-          color: MainColors.textColor(context).withValues(alpha: 0.1),
+          color: MainColors.textColor(context).withOpacity(0.1),
           spreadRadius: 0,
           blurRadius: 20.r,
           offset: const Offset(0, 0),
@@ -70,7 +70,7 @@ class ToastComponent {
           const Text('', style: TextStyle(color: Colors.white, fontSize: 0)),
       boxShadows: [
         BoxShadow(
-          color: MainColors.textColor(context).withValues(alpha: 0.15),
+          color: MainColors.textColor(context).withOpacity(0.15),
           spreadRadius: 0,
           blurRadius: 20.r,
           offset: const Offset(0, 4),
@@ -97,13 +97,13 @@ class ToastComponent {
 
   Color _getBackgroundColor(ToastTypes type) {
     return type == ToastTypes.error
-        ? MainColors.errorColor(Get.context!).withValues(alpha: 0.7)
+        ? MainColors.errorColor(Get.context!).withOpacity(0.7)
         : type == ToastTypes.success
-            ? MainColors.successColor(Get.context!).withValues(alpha: 0.7)
+            ? MainColors.successColor(Get.context!).withOpacity(0.7)
             : type == ToastTypes.info
-                ? MainColors.primaryColor(Get.context!).withValues(alpha: 0.7)
+                ? MainColors.primaryColor(Get.context!).withOpacity(0.7)
                 : type == ToastTypes.copies
-                    ? MainColors.blackColor.withValues(alpha: 0.7)
+                    ? MainColors.blackColor.withOpacity(0.7)
                     : MainColors.secondaryColor(Get.context!);
   }
 }

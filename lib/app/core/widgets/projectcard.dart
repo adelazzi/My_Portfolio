@@ -32,7 +32,7 @@ class ProjectCard extends StatelessWidget {
       height: 310.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        color: MainColors.whiteColor.withValues(alpha: 0.2),
+        color: MainColors.whiteColor.withOpacity(0.2),
         boxShadow: [
           BoxShadow(
             color: MainColors.shadowColor(context),
@@ -40,7 +40,7 @@ class ProjectCard extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.2),
+          color: Colors.white.withOpacity(0.2),
           width: 1.w,
         ),
       ),
@@ -52,7 +52,7 @@ class ProjectCard extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: AlertDialog(
                 backgroundColor:
-                    MainColors.backgroundColor(context).withValues(alpha: 0.8),
+                    MainColors.backgroundColor(context).withOpacity(0.8),
                 title: Text(
                   project.title,
                   style: TextStyles.bodyMedium(context),
@@ -83,7 +83,7 @@ class ProjectCard extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: AlertDialog(
                           backgroundColor: MainColors.backgroundColor(context)
-                              .withValues(alpha: 0.8),
+                              .withOpacity(0.8),
                           content: ClipRRect(
                             borderRadius: BorderRadius.circular(8.r),
                             child: Image.network(
@@ -137,7 +137,7 @@ class ProjectCard extends StatelessWidget {
                     Text(
                       project.description,
                       style: TextStyles.bodyTiny(context).copyWith(
-                        color: Colors.white.withValues(alpha: 0.8),
+                        color: Colors.white.withOpacity(0.8),
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -153,17 +153,17 @@ class ProjectCard extends StatelessWidget {
                                   vertical: 4.h,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.2),
+                                  color: Colors.white.withOpacity(0.2),
                                   borderRadius: BorderRadius.circular(12.r),
                                   border: Border.all(
-                                    color: Colors.white.withValues(alpha: 0.3),
+                                    color: Colors.white.withOpacity(0.3),
                                     width: 0.5.w,
                                   ),
                                 ),
                                 child: Text(
                                   tech,
                                   style: TextStyles.bodyTiny(context).copyWith(
-                                    color: Colors.white.withValues(alpha: 0.9),
+                                    color: Colors.white.withOpacity(0.9),
                                   ),
                                 ),
                               ))
@@ -228,16 +228,16 @@ class ProjectCardMobile extends StatelessWidget {
       height: 200.h, // Reduced height for mobile
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: MainColors.whiteColor.withValues(alpha: 0.15),
+        color: MainColors.whiteColor.withOpacity(0.15),
         boxShadow: [
           BoxShadow(
-            color: MainColors.shadowColor(context).withValues(alpha: 0.3),
+            color: MainColors.shadowColor(context).withOpacity(0.3),
             blurRadius: 12.r,
             offset: Offset(0, 4.h),
           ),
         ],
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: Colors.white.withOpacity(0.1),
           width: 1.w,
         ),
       ),
@@ -294,7 +294,7 @@ class ProjectCardMobile extends StatelessWidget {
                       Text(
                         project.description,
                         style: TextStyles.bodyMedium(context).copyWith(
-                          color: Colors.white.withValues(alpha: 0.85),
+                          color: Colors.white.withOpacity(0.85),
                           fontSize: 13.sp,
                           height: 1.3,
                         ),
@@ -314,11 +314,10 @@ class ProjectCardMobile extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withValues(alpha: 0.2),
+                                    color: Colors.white.withOpacity(0.2),
                                     borderRadius: BorderRadius.circular(10.r),
                                     border: Border.all(
-                                      color:
-                                          Colors.white.withValues(alpha: 0.3),
+                                      color: Colors.white.withOpacity(0.3),
                                       width: 0.5.w,
                                     ),
                                   ),
@@ -326,8 +325,7 @@ class ProjectCardMobile extends StatelessWidget {
                                     tech,
                                     style:
                                         TextStyles.bodySmall(context).copyWith(
-                                      color:
-                                          Colors.white.withValues(alpha: 0.9),
+                                      color: Colors.white.withOpacity(0.9),
                                       fontSize: 11.sp,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -408,7 +406,7 @@ class ProjectCardMobile extends StatelessWidget {
                       Text(
                         project.description,
                         style: TextStyles.bodyMedium(context).copyWith(
-                          color: Colors.white.withValues(alpha: 0.9),
+                          color: Colors.white.withOpacity(0.9),
                           height: 1.5,
                         ),
                       ),
@@ -433,10 +431,9 @@ class ProjectCardMobile extends StatelessWidget {
                                           .copyWith(color: Colors.white),
                                     ),
                                     backgroundColor:
-                                        Colors.white.withValues(alpha: 0.2),
+                                        Colors.white.withOpacity(0.2),
                                     side: BorderSide(
-                                      color:
-                                          Colors.white.withValues(alpha: 0.3),
+                                      color: Colors.white.withOpacity(0.3),
                                     ),
                                   ))
                               .toList(),

@@ -130,7 +130,7 @@ class HomeView extends GetView<HomeController> {
                       color: MainColors.backgroundColor(context),
                       boxShadow: [
                         BoxShadow(
-                          color: MainColors.primaryBrand.withValues(alpha: 0.4),
+                          color: MainColors.primaryBrand.withOpacity(0.4),
                           spreadRadius: 3.r,
                         )
                       ],
@@ -149,7 +149,7 @@ class HomeView extends GetView<HomeController> {
             Text(
               "Everything about me . \n Transforming bold ideas into creative Flutter reality 🚀",
               style: TextStyles.bodySmall(context).copyWith(
-                  color: MainColors.textColor(context).withValues(alpha: 0.6)),
+                  color: MainColors.textColor(context).withOpacity(0.6)),
             ),
             const Spacer(),
             Row(
@@ -230,7 +230,7 @@ class Techs extends StatelessWidget {
           border: Border.all(width: 1, color: color),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: 0.3),
+              color: color.withOpacity(0.3),
               spreadRadius: 2,
             )
           ]),

@@ -118,18 +118,18 @@ class ExperienceCardWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            MainColors.primaryColor(context).withValues(alpha: 0.05),
-            MainColors.primaryColor(context).withValues(alpha: 0.02),
+            MainColors.primaryColor(context).withOpacity(0.05),
+            MainColors.primaryColor(context).withOpacity(0.02),
           ],
         ),
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: MainColors.primaryColor(context).withValues(alpha: 0.1),
+          color: MainColors.primaryColor(context).withOpacity(0.1),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: MainColors.primaryColor(context).withValues(alpha: 0.1),
+            color: MainColors.primaryColor(context).withOpacity(0.1),
             blurRadius: 20.r,
             offset: Offset(0, 8.h),
           ),
@@ -149,8 +149,7 @@ class ExperienceCardWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color:
-                        MainColors.primaryColor(context).withValues(alpha: 0.3),
+                    color: MainColors.primaryColor(context).withOpacity(0.3),
                     blurRadius: 16.r,
                     offset: Offset(0, 6.h),
                   ),
@@ -258,16 +257,15 @@ class ClubActivityCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.purple.withValues(alpha: 0.04),
-            Colors.blue.withValues(alpha: 0.04),
+            Colors.purple.withOpacity(0.04),
+            Colors.blue.withOpacity(0.04),
           ],
         ),
         borderRadius: BorderRadius.circular(20.r),
-        border:
-            Border.all(color: Colors.blue.withValues(alpha: 0.15), width: 1),
+        border: Border.all(color: Colors.blue.withOpacity(0.15), width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.blue.withValues(alpha: 0.1),
+            color: Colors.blue.withOpacity(0.1),
             blurRadius: 16.r,
             offset: Offset(0, 8.h),
           ),
@@ -317,11 +315,10 @@ class ClubActivityCard extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 4.h),
                         decoration: BoxDecoration(
-                          color: MainColors.accentBrand.withValues(alpha: 0.2),
+                          color: MainColors.accentBrand.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
-                              color: MainColors.accentBrand
-                                  .withValues(alpha: 0.4)),
+                              color: MainColors.accentBrand.withOpacity(0.4)),
                         ),
                         child: Text(
                           clubActivity.role,
@@ -336,10 +333,10 @@ class ClubActivityCard extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                   decoration: BoxDecoration(
-                    color: MainColors.primaryBrand.withValues(alpha: 0.1),
+                    color: MainColors.primaryBrand.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
-                        color: MainColors.primaryBrand.withValues(alpha: 0.3)),
+                        color: MainColors.primaryBrand.withOpacity(0.3)),
                   ),
                   child: Text(
                     clubActivity.period,
@@ -373,12 +370,11 @@ class ClubActivityCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.w, vertical: 6.h),
                           decoration: BoxDecoration(
-                            color:
-                                MainColors.inactiveColor.withValues(alpha: 0.1),
+                            color: MainColors.inactiveColor.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(16.r),
                             border: Border.all(
-                                color: MainColors.inactiveColor
-                                    .withValues(alpha: 0.2)),
+                                color:
+                                    MainColors.inactiveColor.withOpacity(0.2)),
                           ),
                           child: Text(
                             achievement,
@@ -491,16 +487,16 @@ class ExperienceCardWidgetMobile extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            MainColors.primaryColor(context).withValues(alpha: 0.08),
-            MainColors.primaryColor(context).withValues(alpha: 0.03),
+            MainColors.primaryColor(context).withOpacity(0.08),
+            MainColors.primaryColor(context).withOpacity(0.03),
           ],
         ),
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-            color: MainColors.primaryColor(context).withValues(alpha: 0.15)),
+            color: MainColors.primaryColor(context).withOpacity(0.15)),
         boxShadow: [
           BoxShadow(
-            color: MainColors.primaryColor(context).withValues(alpha: 0.15),
+            color: MainColors.primaryColor(context).withOpacity(0.15),
             blurRadius: 20.r,
             offset: Offset(0, 8.h),
           ),
@@ -588,15 +584,15 @@ class ClubActivityCardMobile extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.purple.withValues(alpha: 0.08),
-            Colors.blue.withValues(alpha: 0.08)
+            Colors.purple.withOpacity(0.08),
+            Colors.blue.withOpacity(0.08)
           ],
         ),
         borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(color: Colors.blue.withValues(alpha: 0.2)),
+        border: Border.all(color: Colors.blue.withOpacity(0.2)),
         boxShadow: [
           BoxShadow(
-            color: Colors.blue.withValues(alpha: 0.15),
+            color: Colors.blue.withOpacity(0.15),
             blurRadius: 20.r,
             offset: Offset(0, 8.h),
           ),
@@ -633,7 +629,7 @@ class ClubActivityCardMobile extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: MainColors.accentBrand.withValues(alpha: 0.2),
+                        color: MainColors.accentBrand.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(16.r),
                       ),
                       child: Text(clubActivity.role,
@@ -645,7 +641,7 @@ class ClubActivityCardMobile extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                 decoration: BoxDecoration(
-                  color: MainColors.primaryBrand.withValues(alpha: 0.1),
+                  color: MainColors.primaryBrand.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(16.r),
                 ),
                 child: Text(clubActivity.period,
@@ -671,8 +667,7 @@ class ClubActivityCardMobile extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 16.w, vertical: 8.h),
                         decoration: BoxDecoration(
-                          color:
-                              MainColors.inactiveColor.withValues(alpha: 0.2),
+                          color: MainColors.inactiveColor.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Text(achievement,

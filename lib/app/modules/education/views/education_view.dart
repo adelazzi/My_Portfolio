@@ -163,8 +163,7 @@ class CertificationCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(5.r),
                 decoration: BoxDecoration(
-                  color: MainColors.backgroundColor(context)
-                      .withValues(alpha: 0.5),
+                  color: MainColors.backgroundColor(context).withOpacity(0.5),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -233,7 +232,7 @@ class EducationCardWidget extends StatelessWidget {
               height: 28.w,
               padding: EdgeInsets.all(12.r),
               decoration: BoxDecoration(
-                color: MainColors.primaryColor(context).withValues(alpha: 0.1),
+                color: MainColors.primaryColor(context).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: education.logoUrl!.isNotEmpty
@@ -416,7 +415,7 @@ class CertificationCardMobile extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(12.r),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: Colors.white.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -479,10 +478,10 @@ class EducationCardWidgetMobile extends StatelessWidget {
         color: MainColors.backgroundColor(context),
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-            color: MainColors.primaryColor(context).withValues(alpha: 0.1)),
+            color: MainColors.primaryColor(context).withOpacity(0.1)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 15.r,
             offset: Offset(0, 4.h),
           ),
@@ -497,7 +496,7 @@ class EducationCardWidgetMobile extends StatelessWidget {
               width: 60.w,
               height: 60.w,
               decoration: BoxDecoration(
-                color: MainColors.primaryColor(context).withValues(alpha: 0.1),
+                color: MainColors.primaryColor(context).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: education.logoUrl!.isNotEmpty

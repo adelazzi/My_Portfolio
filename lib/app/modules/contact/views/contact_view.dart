@@ -292,7 +292,7 @@ class ContactViewMobile extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(6.w),
                 decoration: BoxDecoration(
-                  color: MainColors.primaryBrand.withValues(alpha: 0.1),
+                  color: MainColors.primaryBrand.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Icon(Icons.contact_mail,
@@ -466,7 +466,7 @@ class ContactViewMobile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: MainColors.primaryBrand.withValues(alpha: 0.05),
+        color: MainColors.primaryBrand.withOpacity(0.05),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
@@ -522,7 +522,7 @@ class ContactViewMobile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: MainColors.primaryBrand.withValues(alpha: 0.1),
+              color: MainColors.primaryBrand.withOpacity(0.1),
               blurRadius: 8,
               // ignore: prefer_const_constructors
               offset: Offset(0, 2),

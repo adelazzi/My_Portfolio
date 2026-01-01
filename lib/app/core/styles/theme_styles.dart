@@ -12,8 +12,8 @@ class ThemeStyles {
     primaryColor: MainColors.primaryBrand,
     scaffoldBackgroundColor: LightColors.backgroundColor,
     shadowColor: LightColors.shadowColor,
-    splashColor: MainColors.primaryBrand.withValues(alpha: 0.2),
-    highlightColor: MainColors.primaryBrand.withValues(alpha: 0.1),
+    splashColor: MainColors.primaryBrand.withOpacity(0.2),
+    highlightColor: MainColors.primaryBrand.withOpacity(0.1),
 
     // App Bar Theme
     appBarTheme: AppBarTheme(
@@ -131,12 +131,12 @@ class ThemeStyles {
         borderSide: const BorderSide(color: LightColors.errorColor, width: 2),
       ),
       labelStyle: TextStyle(
-        color: LightColors.textColor.withValues(alpha: 0.7),
+        color: LightColors.textColor.withOpacity(0.7),
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
       hintStyle: TextStyle(
-        color: LightColors.textColor.withValues(alpha: 0.5),
+        color: LightColors.textColor.withOpacity(0.5),
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
@@ -192,7 +192,7 @@ class ThemeStyles {
       labelLarge: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
-        color: LightColors.textColor.withValues(alpha: 0.8),
+        color: LightColors.textColor.withOpacity(0.8),
       ),
       bodyLarge: TextStyle(
         fontSize: 16.sp,
@@ -207,7 +207,7 @@ class ThemeStyles {
       bodySmall: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: LightColors.textColor.withValues(alpha: 0.7),
+        color: LightColors.textColor.withOpacity(0.7),
       ),
     ),
 
@@ -265,8 +265,8 @@ class ThemeStyles {
     primaryColor: DarkColors.primaryColor,
     scaffoldBackgroundColor: DarkColors.backgroundColor,
     shadowColor: DarkColors.shadowColor,
-    splashColor: DarkColors.primaryColor.withValues(alpha: 0.2),
-    highlightColor: DarkColors.primaryColor.withValues(alpha: 0.1),
+    splashColor: DarkColors.primaryColor.withOpacity(0.2),
+    highlightColor: DarkColors.primaryColor.withOpacity(0.1),
 
     // App Bar Theme
     appBarTheme: AppBarTheme(
@@ -384,12 +384,12 @@ class ThemeStyles {
         borderSide: const BorderSide(color: DarkColors.errorColor, width: 2),
       ),
       labelStyle: TextStyle(
-        color: DarkColors.textColor.withValues(alpha: 0.7),
+        color: DarkColors.textColor.withOpacity(0.7),
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
       hintStyle: TextStyle(
-        color: DarkColors.textColor.withValues(alpha: 0.5),
+        color: DarkColors.textColor.withOpacity(0.5),
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
@@ -445,7 +445,7 @@ class ThemeStyles {
       labelLarge: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
-        color: DarkColors.textColor.withValues(alpha: 0.8),
+        color: DarkColors.textColor.withOpacity(0.8),
       ),
       bodyLarge: TextStyle(
         fontSize: 16.sp,
@@ -460,7 +460,7 @@ class ThemeStyles {
       bodySmall: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: DarkColors.textColor.withValues(alpha: 0.7),
+        color: DarkColors.textColor.withOpacity(0.7),
       ),
     ),
 

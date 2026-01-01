@@ -86,19 +86,19 @@ class SkillsView extends GetView<SkillsController> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                skillcolor!.withValues(alpha: 0.2),
+                skillcolor!.withOpacity(0.2),
                 Colors.transparent,
               ],
             ),
             borderRadius: BorderRadius.circular(8.r),
             border: Border(
-                left: BorderSide(
-                    color: skillcolor.withValues(alpha: 0.2), width: 3.w)),
+                left:
+                    BorderSide(color: skillcolor.withOpacity(0.2), width: 3.w)),
           ),
           child: Row(
             children: [
               Icon(Icons.category,
-                  size: 8.sp, color: Colors.white.withValues(alpha: 0.9)),
+                  size: 8.sp, color: Colors.white.withOpacity(0.9)),
               SizedBox(width: 8.w),
               Text(
                 category,
@@ -222,14 +222,13 @@ class SkillsViewMobile extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 12.h),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [skillcolor!.withValues(alpha: 0.12), Colors.transparent],
+              colors: [skillcolor!.withOpacity(0.12), Colors.transparent],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
             borderRadius: BorderRadius.circular(10.r),
             border: Border(
-              left: BorderSide(
-                  color: skillcolor.withValues(alpha: 0.3), width: 3.w),
+              left: BorderSide(color: skillcolor.withOpacity(0.3), width: 3.w),
             ),
           ),
           child: Row(
@@ -237,7 +236,7 @@ class SkillsViewMobile extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                  color: skillcolor.withValues(alpha: 0.15),
+                  color: skillcolor.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(6.r),
                 ),
                 child: Icon(

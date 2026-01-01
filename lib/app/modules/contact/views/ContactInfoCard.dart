@@ -23,7 +23,7 @@ class ContactInfoCard extends StatelessWidget {
       padding: EdgeInsets.all(8.w),
       margin: EdgeInsets.all(20.r),
       decoration: BoxDecoration(
-          color: MainColors.inactiveColor.withValues(alpha: 0.15),
+          color: MainColors.inactiveColor.withOpacity(0.15),
           borderRadius: BorderRadius.circular(10.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
