@@ -263,7 +263,7 @@ class SkillsViewMobile extends StatelessWidget {
         ...skills
             .map((skill) => Padding(
                   padding: EdgeInsets.only(bottom: 10.h),
-                  child: SkillTile(skill: skill, color: skillcolor),
+                  child: SkillTileMobile(skill: skill, color: skillcolor),
                 ))
             .toList(),
       ],

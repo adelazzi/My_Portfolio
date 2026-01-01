@@ -257,7 +257,7 @@ class ProjectCardMobile extends StatelessWidget {
                   child: SizedBox(
                     width: 80.w,
                     height: 80.h,
-                    child: Image.network(
+                    child: Image.asset(
                       project.imageUrl,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => Container(
