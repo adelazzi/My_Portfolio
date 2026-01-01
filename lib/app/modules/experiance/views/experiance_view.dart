@@ -514,7 +514,7 @@ class ExperienceCardWidgetMobile extends StatelessWidget {
                 gradient: MainColors.primaryGradient,
                 shape: BoxShape.circle,
               ),
-              child: experience.logoUrl != null
+              child: experience.logoUrl!.isEmpty
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(35.r),
                       child:

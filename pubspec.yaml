@@ -53,6 +53,7 @@ flutter:
     - assets/fonts/
     - assets/portfolio/
     - assets/translations/
+
   fonts:
     - family: PlusJakartaSans-Bold
       fonts:

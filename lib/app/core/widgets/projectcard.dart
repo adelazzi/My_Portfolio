@@ -104,7 +104,7 @@ class ProjectCard extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
-                      child: Image.network(
+                      child: Image.asset(
                         project.imageUrl,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) =>

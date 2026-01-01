@@ -115,7 +115,7 @@ class TranslationUtil extends GetxController {
 
   /// Gets display name for any language with flag
   static String getLanguageDisplay(AppLanguage language) {
-    return '${_languageFlags[language]} ${_languageNames[language]}';
+    return '${_languageNames[language]}';
   }
 }
 
