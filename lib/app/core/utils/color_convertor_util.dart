@@ -7,7 +7,9 @@ class ColorConvertorUtil {
     if (color == null ||
         color == "" ||
         color.contains("#") == false ||
-        color == "null") return MainColors.whiteColor;
+        color == "null") {
+      return MainColors.whiteColor;
+    }
     color = color.replaceAll("#", "");
     Color convertedColor = MainColors.whiteColor;
     if (color.length == 6) {

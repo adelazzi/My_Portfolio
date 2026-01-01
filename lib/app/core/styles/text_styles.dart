@@ -27,14 +27,14 @@ class TextStyles {
         fontSize: 10.sp,
         fontWeight: FontWeight.w700,
         fontFamily: FontsFamilyAssetsConstants.medium,
-        color: MainColors.textColor(context).withOpacity(0.8),
+        color: MainColors.textColor(context).withValues(alpha: 0.8),
         height: 1.3,
       );
   static TextStyle labelTiny(BuildContext context) => TextStyle(
         fontSize: 6.sp,
         fontWeight: FontWeight.w700,
         fontFamily: FontsFamilyAssetsConstants.medium,
-        color: MainColors.textColor(context).withOpacity(0.8),
+        color: MainColors.textColor(context).withValues(alpha: 0.8),
         height: 1,
       );
 
@@ -59,14 +59,14 @@ class TextStyles {
         fontSize: 10.sp,
         fontWeight: FontWeight.w400,
         fontFamily: FontsFamilyAssetsConstants.regular,
-        color: MainColors.textColor(context).withOpacity(0.8),
+        color: MainColors.textColor(context).withValues(alpha: 0.8),
         height: 1.4,
       );
   static TextStyle bodyTiny(BuildContext context) => TextStyle(
         fontSize: 6.sp,
         fontWeight: FontWeight.w400,
         fontFamily: FontsFamilyAssetsConstants.regular,
-        color: MainColors.textColor(context).withOpacity(0.8),
+        color: MainColors.textColor(context).withValues(alpha: 0.8),
         height: 1,
       );
 }

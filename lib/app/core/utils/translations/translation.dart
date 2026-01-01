@@ -120,7 +120,7 @@ class Translation extends Translations {
   // Private helper method for logging
   static void _logMissingLanguage(String languageCode) {
     // You can replace this with your preferred logging method
-    print('Warning: Translation file for "$languageCode" is empty or not loaded.');
+    // print('Warning: Translation file for "$languageCode" is empty or not loaded.');
   }
 }
 

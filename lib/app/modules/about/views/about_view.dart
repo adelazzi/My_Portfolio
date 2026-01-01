@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/strings_assets_constants.dart';
 
 class AboutView extends GetView<AboutController> {
-  AboutView({Key? key}) : super(key: key);
+  const AboutView({Key? key}) : super(key: key);
 
   // Function to download and open the CV
   Future<void> _downloadCV(BuildContext context) async {
@@ -308,7 +308,7 @@ class AboutView extends GetView<AboutController> {
 }
 
 class AboutViewMobile extends GetView<AboutController> {
-  AboutViewMobile({Key? key}) : super(key: key);
+  const AboutViewMobile({Key? key}) : super(key: key);
 
   Future<void> _downloadCV(BuildContext context) async {
     try {
@@ -368,10 +368,11 @@ class AboutViewMobile extends GetView<AboutController> {
           Container(
             padding: EdgeInsets.all(20.w),
             decoration: BoxDecoration(
-              color: MainColors.backgroundColor(context).withOpacity(0.5),
+              color: MainColors.backgroundColor(context).withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
-                  color: MainColors.primaryColor(context).withOpacity(0.2)),
+                  color:
+                      MainColors.primaryColor(context).withValues(alpha: 0.2)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -414,7 +415,6 @@ class AboutViewMobile extends GetView<AboutController> {
                 ),
               ),
               SizedBox(height: 16.h),
-
             ],
           ),
 
@@ -459,9 +459,10 @@ class AboutViewMobile extends GetView<AboutController> {
         color: MainColors.backgroundColor(context),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-            color: MainColors.primaryColor(context).withOpacity(0.1)),
+            color: MainColors.primaryColor(context).withValues(alpha: 0.1)),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10.r),
+          BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05), blurRadius: 10.r),
         ],
       ),
       child: InkWell(
@@ -472,7 +473,7 @@ class AboutViewMobile extends GetView<AboutController> {
             Container(
               padding: EdgeInsets.all(12.w),
               decoration: BoxDecoration(
-                color: MainColors.primaryColor(context).withOpacity(0.1),
+                color: MainColors.primaryColor(context).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: Icon(icon,

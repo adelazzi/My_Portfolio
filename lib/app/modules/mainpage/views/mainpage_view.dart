@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +36,8 @@ class MainpageView extends GetView<MainpageController> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          MainColors.primaryColor(context).withOpacity(0.1),
+                          MainColors.primaryColor(context)
+                              .withValues(alpha: 0.1),
                           Colors.transparent,
                         ],
                         begin: Alignment.topLeft,
@@ -42,7 +45,7 @@ class MainpageView extends GetView<MainpageController> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withValues(alpha: 0.05),
                           blurRadius: 20,
                           offset: const Offset(4, 0),
                         ),
@@ -79,13 +82,14 @@ class MainpageView extends GetView<MainpageController> {
                                       borderRadius: BorderRadius.circular(30.r),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
+                                          color: Colors.black
+                                              .withValues(alpha: 0.1),
                                           blurRadius: 15.r,
                                           spreadRadius: 2,
                                         ),
                                       ],
                                     ),
-                                    child: LanguageSwitcher(),
+                                    child: const LanguageSwitcher(),
                                   ),
                                 ],
                               ),
@@ -107,7 +111,7 @@ class MainpageView extends GetView<MainpageController> {
             ),
           )
         : Scaffold(
-            floatingActionButton: LanguageSwitcherMobile(),
+            floatingActionButton: const LanguageSwitcherMobile(),
             body: ListView(
               children: [
                 HomeViewMobile()
@@ -118,7 +122,9 @@ class MainpageView extends GetView<MainpageController> {
                         duration: 800.ms,
                         curve: Curves.easeOutBack),
                 _buildAnimatedSection(
-                    child: AboutViewMobile(), delay: 200.ms, duration: 600.ms),
+                    child: const AboutViewMobile(),
+                    delay: 200.ms,
+                    duration: 600.ms),
                 _buildAnimatedSection(
                     child: EducationViewMobile(),
                     delay: 400.ms,
@@ -212,7 +218,7 @@ class MainpageView extends GetView<MainpageController> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r)),
             tileColor: controller.currentPageIndex.value == index
-                ? MainColors.primaryColor(context).withOpacity(0.15)
+                ? MainColors.primaryColor(context).withValues(alpha: 0.15)
                 : Colors.transparent,
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
@@ -227,7 +233,7 @@ class MainpageView extends GetView<MainpageController> {
 
       switch (currentTitle) {
         case 'About':
-          return AboutView();
+          return const AboutView();
         case 'Contact':
           return ContactView();
         case 'Education':
@@ -239,7 +245,7 @@ class MainpageView extends GetView<MainpageController> {
         case 'Projects':
           return ProjectsView();
         case 'Skills':
-          return SkillsView();
+          return const SkillsView();
         default:
           return HomeView();
       }

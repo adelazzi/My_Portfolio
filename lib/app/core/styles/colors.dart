@@ -62,7 +62,7 @@ class MainColors {
   
   // Semantic colors for halal food app
   static const Color logoutColor = Color(0xFFDC2626);
-  static const Color pendingColor = Color(0xF59E0B);
+  static const Color pendingColor = Color(0x00f59e0b);
   static const Color indicatorColor = Color(0xFF10B981);
   static const Color inactiveColor = Color(0xFF9CA3AF);
   static const Color textInputColor = Color(0xFF1F2937);

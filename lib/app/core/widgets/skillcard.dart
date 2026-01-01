@@ -8,8 +8,8 @@ import 'package:my_portfolio/app/models/portfolio_models.dart';
 
 class SkillTile extends StatelessWidget {
   final Skill skill;
-  Color? color;
-  SkillTile({Key? key, required this.skill, this.color}) : super(key: key);
+  final Color? color;
+  const SkillTile({Key? key, required this.skill, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +20,21 @@ class SkillTile extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            color!.withOpacity(0.12) ?? Colors.white.withOpacity(0.12),
-            color!.withOpacity(0.3) ?? Colors.white.withOpacity(0.03),
+            color!.withValues(alpha: 0.12),
+            color!.withValues(alpha: 0.3),
           ],
         ),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: Colors.white.withOpacity(0.15),
+          color: Colors.white.withValues(alpha: 0.15),
           width: 1.w,
           strokeAlign: BorderSide.strokeAlignInside,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 12.r,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -69,12 +69,12 @@ class SkillTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: (color ?? Colors.cyan).withOpacity(0.3),
+                      color: (color ?? Colors.cyan).withValues(alpha: 0.3),
                       blurRadius: 4.r,
                       spreadRadius: 0.5,
                     ),
                   ],
-                  // color: Colors.white.withOpacity(0.12),
+                  // color: Colors.white.withValues(alpha:0.12),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
                 child: Container(
@@ -82,8 +82,8 @@ class SkillTile extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: color != null
                         ? LinearGradient(colors: [
-                            color!.withOpacity(0.7),
-                            color!.withOpacity(0.4),
+                            color!.withValues(alpha: 0.7),
+                            color!.withValues(alpha: 0.4),
                           ])
                         : MainColors.primaryGradient,
                     borderRadius: BorderRadius.circular(2.r),
@@ -98,7 +98,7 @@ class SkillTile extends StatelessWidget {
           Text(
             '${(skill.proficiency * 100).toInt()}%',
             style: TextStyles.bodyTiny(context).copyWith(
-              color: Colors.white.withOpacity(0.85),
+              color: Colors.white.withValues(alpha: 0.85),
               fontWeight: FontWeight.w600,
               // fontSize: 11.sp,
             ),

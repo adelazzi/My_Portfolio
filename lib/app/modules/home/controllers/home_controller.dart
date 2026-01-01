@@ -13,8 +13,4 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     "Portfolio Builder"
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

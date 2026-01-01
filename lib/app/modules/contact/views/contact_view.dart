@@ -12,7 +12,6 @@ import 'package:my_portfolio/app/core/styles/colors.dart';
 import 'package:my_portfolio/app/core/styles/text_styles.dart';
 import 'package:my_portfolio/app/core/toast_component.dart';
 import 'package:my_portfolio/app/modules/contact/controllers/contact_controller.dart';
-import 'package:my_portfolio/app/modules/contact/views/ContactInfoCard.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactView extends StatelessWidget {
@@ -160,7 +159,7 @@ class ContactView extends StatelessWidget {
               Center(
                 child: ElevatedButton.icon(
                   onPressed: _submitForm,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.send,
                     color: MainColors.whiteColor,
                   ),
@@ -293,7 +292,7 @@ class ContactViewMobile extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(6.w),
                 decoration: BoxDecoration(
-                  color: MainColors.primaryBrand.withOpacity(0.1),
+                  color: MainColors.primaryBrand.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Icon(Icons.contact_mail,
@@ -467,7 +466,7 @@ class ContactViewMobile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: MainColors.primaryBrand.withOpacity(0.05),
+        color: MainColors.primaryBrand.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Column(
@@ -523,8 +522,9 @@ class ContactViewMobile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: MainColors.primaryBrand.withOpacity(0.1),
+              color: MainColors.primaryBrand.withValues(alpha: 0.1),
               blurRadius: 8,
+              // ignore: prefer_const_constructors
               offset: Offset(0, 2),
             ),
           ],
@@ -561,7 +561,7 @@ class ContactViewMobile extends StatelessWidget {
 
       if (response.statusCode == 200) {
         ToastComponent().showDesktopToast(
-          context,
+          Get.context!,
           message:
               '${StringsAssetsConstants.thankYou} $name! ${StringsAssetsConstants.messageSent}',
           type: ToastTypes.success,
@@ -569,7 +569,7 @@ class ContactViewMobile extends StatelessWidget {
         // controller.clear();
       } else {
         ToastComponent().showDesktopToast(
-          context,
+          Get.context!,
           message: StringsAssetsConstants.oopsSomethingWrong,
           type: ToastTypes.error,
         );

@@ -5,7 +5,7 @@ import 'package:my_portfolio/app/core/styles/text_styles.dart';
 import 'package:my_portfolio/app/modules/loading/controllers/loading_controller.dart';
 
 class LoadingView extends GetView<LoadingController> {
-  LoadingView({Key? key}) : super(key: key);
+  const LoadingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class LoadingView extends GetView<LoadingController> {
               .copyWith(color: MainColors.primaryColor(context)),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text('This is the Loading page.'),
       ),
     );

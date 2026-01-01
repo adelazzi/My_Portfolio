@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 class StringsAssetsConstants {
   //
   static String get agentID => "agentID".tr;
+  static String get bio => "bio".tr;
+
   static String get hiIm => "hi_im".tr;
   static String get email => "email".tr;
   static String get helloThere => "hello_there".tr;

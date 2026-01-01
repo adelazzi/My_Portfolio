@@ -86,21 +86,19 @@ class SkillsView extends GetView<SkillsController> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                skillcolor!.withOpacity(0.2) ?? Colors.white.withOpacity(0.2),
+                skillcolor!.withValues(alpha: 0.2),
                 Colors.transparent,
               ],
             ),
             borderRadius: BorderRadius.circular(8.r),
             border: Border(
                 left: BorderSide(
-                    color: skillcolor!.withOpacity(0.2) ??
-                        MainColors.inactiveColor.withOpacity(0.6),
-                    width: 3.w)),
+                    color: skillcolor.withValues(alpha: 0.2), width: 3.w)),
           ),
           child: Row(
             children: [
               Icon(Icons.category,
-                  size: 8.sp, color: Colors.white.withOpacity(0.9)),
+                  size: 8.sp, color: Colors.white.withValues(alpha: 0.9)),
               SizedBox(width: 8.w),
               Text(
                 category,
@@ -111,12 +109,13 @@ class SkillsView extends GetView<SkillsController> {
         ),
         SizedBox(height: 16.h),
 
-        // Skills Tiles Grid
+        // Skills Tilesconst  Grid
         LayoutBuilder(
           builder: (context, constraints) {
             final crossAxisCount = constraints.maxWidth > 768 ? 3 : 2;
             return GridView.count(
               shrinkWrap: true,
+              // ignore: prefer_const_constructors
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: crossAxisCount,
               crossAxisSpacing: 12.w,
@@ -142,7 +141,7 @@ class SkillsViewMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:const BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
         fit: BoxFit.cover,
         image: AssetImage('images/project_background.png'),
@@ -223,13 +222,14 @@ class SkillsViewMobile extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 12.h),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [skillcolor!.withOpacity(0.12), Colors.transparent],
+              colors: [skillcolor!.withValues(alpha: 0.12), Colors.transparent],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
             borderRadius: BorderRadius.circular(10.r),
             border: Border(
-              left: BorderSide(color: skillcolor.withOpacity(0.3), width: 3.w),
+              left: BorderSide(
+                  color: skillcolor.withValues(alpha: 0.3), width: 3.w),
             ),
           ),
           child: Row(
@@ -237,7 +237,7 @@ class SkillsViewMobile extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                  color: skillcolor.withOpacity(0.15),
+                  color: skillcolor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(6.r),
                 ),
                 child: Icon(

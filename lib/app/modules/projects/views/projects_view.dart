@@ -12,6 +12,7 @@ import 'package:my_portfolio/app/modules/projects/controllers/projects_controlle
 
 class ProjectsView extends GetView<ProjectsController> {
   ProjectsView({Key? key}) : super(key: key);
+  @override
   ProjectsController controller = Get.put(ProjectsController());
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,7 @@ class ProjectsView extends GetView<ProjectsController> {
 
 class ProjectsViewMobile extends GetView<ProjectsController> {
   ProjectsViewMobile({Key? key}) : super(key: key);
+  @override
   final ProjectsController controller = Get.put(ProjectsController());
 
   @override
@@ -88,7 +90,7 @@ class ProjectsViewMobile extends GetView<ProjectsController> {
 
           Obx(() {
             if (controller.isLoading.value) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           
             if (PortfolioData.projectList.isEmpty) {
@@ -111,7 +113,7 @@ class ProjectsViewMobile extends GetView<ProjectsController> {
           
             return ListView.separated(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: PortfolioData.projectList.length,
               separatorBuilder: (context, index) => SizedBox(height: 24.h),
               itemBuilder: (context, index) {

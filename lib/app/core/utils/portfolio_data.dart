@@ -41,9 +41,9 @@ class PortfolioData extends GetxController {
       final jsonString =
           await rootBundle.loadString('assets/portfolio/en.json');
       to!._data.value = json.decode(jsonString);
-      print('PortfolioData loaded: ${roles.length} roles'); // Fixed print
+      // print('PortfolioData loaded: ${roles.length} roles'); // Fixed print
     } catch (e) {
-      print('PortfolioData fallback to English: $e');
+      // print('PortfolioData fallback to English: $e');
       final jsonString =
           await rootBundle.loadString('assets/portfolio/en.json');
       to!._data.value = json.decode(jsonString);

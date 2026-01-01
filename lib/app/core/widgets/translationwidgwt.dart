@@ -49,7 +49,7 @@ class LanguageSwitcher extends StatelessWidget {
                           horizontal: 15.w, vertical: 13.h),
                       decoration: BoxDecoration(
                         color: TranslationUtil.isCurrentLanguage(language)
-                            ? MainColors.indicatorColor.withOpacity(0.3)
+                            ? MainColors.indicatorColor.withValues(alpha: 0.3)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
@@ -81,7 +81,7 @@ class LanguageSwitcherMobile extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
-              color: MainColors.shadowColor(context).withOpacity(0.3),
+              color: MainColors.shadowColor(context).withValues(alpha: 0.3),
               blurRadius: 12.r,
               offset: Offset(0, 4.h),
             ),

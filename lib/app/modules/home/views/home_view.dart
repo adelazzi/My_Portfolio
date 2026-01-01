@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, must_be_immutable
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'package:my_portfolio/app/core/styles/text_styles.dart';
 import 'package:my_portfolio/app/core/utils/portfolio_data.dart';
 import 'package:my_portfolio/app/modules/home/controllers/home_controller.dart';
 import 'package:my_portfolio/app/modules/mainpage/controllers/mainpage_controller.dart';
-import 'package:my_portfolio/app/modules/user_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
@@ -60,6 +59,7 @@ class HomeView extends GetView<HomeController> {
                                         ))
                                     .toList(),
                                 totalRepeatCount: 10,
+                                // ignore: prefer_const_constructors
                                 pause: Duration(milliseconds: 1000),
                                 repeatForever: false,
                               ),
@@ -130,7 +130,7 @@ class HomeView extends GetView<HomeController> {
                       color: MainColors.backgroundColor(context),
                       boxShadow: [
                         BoxShadow(
-                          color: MainColors.primaryBrand.withOpacity(0.4),
+                          color: MainColors.primaryBrand.withValues(alpha: 0.4),
                           spreadRadius: 3.r,
                         )
                       ],
@@ -149,7 +149,7 @@ class HomeView extends GetView<HomeController> {
             Text(
               "Everything about me . \n Transforming bold ideas into creative Flutter reality 🚀",
               style: TextStyles.bodySmall(context).copyWith(
-                  color: MainColors.textColor(context).withOpacity(0.6)),
+                  color: MainColors.textColor(context).withValues(alpha: 0.6)),
             ),
             const Spacer(),
             Row(
@@ -161,27 +161,27 @@ class HomeView extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.flutter,
                         color: MainColors.indicatorColor,
                       ),
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.dart,
                         color: MainColors.successColor(context),
                       ),
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.django,
                         color: MainColors.primaryBrand,
                       ),
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.pythion,
                         color: MainColors.inactiveColor,
                       ),
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.firebase,
                         color: MainColors.pendingColor,
                       ),
-                      techs(
+                      Techs(
                         logo: IconsAssetsConstants.supabase,
                         color: MainColors.secondaryBrand,
                       ),
@@ -209,8 +209,8 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-class techs extends StatelessWidget {
-  techs({
+class Techs extends StatelessWidget {
+  Techs({
     required this.logo,
     required this.color,
     super.key,
@@ -230,7 +230,7 @@ class techs extends StatelessWidget {
           border: Border.all(width: 1, color: color),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.3),
+              color: color.withValues(alpha: 0.3),
               spreadRadius: 2,
             )
           ]),
@@ -283,12 +283,11 @@ class HomeViewMobile extends GetView<HomeController> {
                             ))
                         .toList(),
                     totalRepeatCount: 10,
-                    pause: Duration(milliseconds: 1000),
+                    pause: const Duration(milliseconds: 1000),
                   )
-                : Text('Flutter Developer')),
+                : const Text('Flutter Developer')),
           ),
         ),
-
 
         // Description
         SizedBox(height: 24.h),
@@ -296,8 +295,7 @@ class HomeViewMobile extends GetView<HomeController> {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
             //TODO
-            "Everything about me. Transforming bold ideas into creative Flutter reality 🚀",
-            style: TextStyles.bodyMedium(context),
+            StringsAssetsConstants.bio, style: TextStyles.bodyMedium(context),
             textAlign: TextAlign.center,
           ),
         ),

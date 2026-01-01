@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,7 +32,7 @@ class ProjectCard extends StatelessWidget {
       height: 310.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        color: MainColors.whiteColor.withOpacity(0.2),
+        color: MainColors.whiteColor.withValues(alpha: 0.2),
         boxShadow: [
           BoxShadow(
             color: MainColors.shadowColor(context),
@@ -41,7 +40,7 @@ class ProjectCard extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withValues(alpha: 0.2),
           width: 1.w,
         ),
       ),
@@ -53,7 +52,7 @@ class ProjectCard extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: AlertDialog(
                 backgroundColor:
-                    MainColors.backgroundColor(context).withOpacity(0.8),
+                    MainColors.backgroundColor(context).withValues(alpha: 0.8),
                 title: Text(
                   project.title,
                   style: TextStyles.bodyMedium(context),
@@ -84,7 +83,7 @@ class ProjectCard extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: AlertDialog(
                           backgroundColor: MainColors.backgroundColor(context)
-                              .withOpacity(0.8),
+                              .withValues(alpha: 0.8),
                           content: ClipRRect(
                             borderRadius: BorderRadius.circular(8.r),
                             child: Image.network(
@@ -138,7 +137,7 @@ class ProjectCard extends StatelessWidget {
                     Text(
                       project.description,
                       style: TextStyles.bodyTiny(context).copyWith(
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withValues(alpha: 0.8),
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -154,17 +153,17 @@ class ProjectCard extends StatelessWidget {
                                   vertical: 4.h,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
+                                  color: Colors.white.withValues(alpha: 0.2),
                                   borderRadius: BorderRadius.circular(12.r),
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.3),
+                                    color: Colors.white.withValues(alpha: 0.3),
                                     width: 0.5.w,
                                   ),
                                 ),
                                 child: Text(
                                   tech,
                                   style: TextStyles.bodyTiny(context).copyWith(
-                                    color: Colors.white.withOpacity(0.9),
+                                    color: Colors.white.withValues(alpha: 0.9),
                                   ),
                                 ),
                               ))
@@ -205,8 +204,6 @@ class ProjectCard extends StatelessWidget {
   }
 }
 
-
-
 class ProjectCardMobile extends StatelessWidget {
   final Project project;
 
@@ -231,16 +228,16 @@ class ProjectCardMobile extends StatelessWidget {
       height: 200.h, // Reduced height for mobile
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: MainColors.whiteColor.withOpacity(0.15),
+        color: MainColors.whiteColor.withValues(alpha: 0.15),
         boxShadow: [
           BoxShadow(
-            color: MainColors.shadowColor(context).withOpacity(0.3),
+            color: MainColors.shadowColor(context).withValues(alpha: 0.3),
             blurRadius: 12.r,
             offset: Offset(0, 4.h),
           ),
         ],
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           width: 1.w,
         ),
       ),
@@ -263,8 +260,7 @@ class ProjectCardMobile extends StatelessWidget {
                     child: Image.network(
                       project.imageUrl,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          Container(
+                      errorBuilder: (context, error, stackTrace) => Container(
                         color: Colors.grey[900],
                         child: Icon(
                           Icons.image_not_supported,
@@ -298,7 +294,7 @@ class ProjectCardMobile extends StatelessWidget {
                       Text(
                         project.description,
                         style: TextStyles.bodyMedium(context).copyWith(
-                          color: Colors.white.withOpacity(0.85),
+                          color: Colors.white.withValues(alpha: 0.85),
                           fontSize: 13.sp,
                           height: 1.3,
                         ),
@@ -318,18 +314,20 @@ class ProjectCardMobile extends StatelessWidget {
                                     vertical: 3.h,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
+                                    color: Colors.white.withValues(alpha: 0.2),
                                     borderRadius: BorderRadius.circular(10.r),
                                     border: Border.all(
-                                      color: Colors.white.withOpacity(0.3),
+                                      color:
+                                          Colors.white.withValues(alpha: 0.3),
                                       width: 0.5.w,
                                     ),
                                   ),
                                   child: Text(
                                     tech,
-                                    style: TextStyles.bodySmall(context)
-                                        .copyWith(
-                                      color: Colors.white.withOpacity(0.9),
+                                    style:
+                                        TextStyles.bodySmall(context).copyWith(
+                                      color:
+                                          Colors.white.withValues(alpha: 0.9),
                                       fontSize: 11.sp,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -337,7 +335,7 @@ class ProjectCardMobile extends StatelessWidget {
                                 ))
                             .toList(),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       // Action buttons - aligned to bottom right
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -345,7 +343,8 @@ class ProjectCardMobile extends StatelessWidget {
                           if (project.githubUrl != null) ...[
                             IconButton(
                               onPressed: () => _launchUrl(project.githubUrl),
-                              icon: Icon(Icons.code, color: Colors.white, size: 20.sp),
+                              icon: Icon(Icons.code,
+                                  color: Colors.white, size: 20.sp),
                               padding: EdgeInsets.all(4.w),
                               constraints: BoxConstraints(
                                 minWidth: 32.w,
@@ -357,7 +356,8 @@ class ProjectCardMobile extends StatelessWidget {
                           if (project.liveUrl != null)
                             IconButton(
                               onPressed: () => _launchUrl(project.liveUrl),
-                              icon: Icon(Icons.launch, color: Colors.white, size: 20.sp),
+                              icon: Icon(Icons.launch,
+                                  color: Colors.white, size: 20.sp),
                               padding: EdgeInsets.all(4.w),
                               constraints: BoxConstraints(
                                 minWidth: 32.w,
@@ -383,7 +383,8 @@ class ProjectCardMobile extends StatelessWidget {
       context: context,
       builder: (context) => Dialog(
         backgroundColor: MainColors.backgroundColor(context),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
         child: Container(
           padding: EdgeInsets.all(20.w),
           constraints: BoxConstraints(maxHeight: 400.h),
@@ -407,7 +408,7 @@ class ProjectCardMobile extends StatelessWidget {
                       Text(
                         project.description,
                         style: TextStyles.bodyMedium(context).copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           height: 1.5,
                         ),
                       ),
@@ -432,9 +433,10 @@ class ProjectCardMobile extends StatelessWidget {
                                           .copyWith(color: Colors.white),
                                     ),
                                     backgroundColor:
-                                        Colors.white.withOpacity(0.2),
+                                        Colors.white.withValues(alpha: 0.2),
                                     side: BorderSide(
-                                      color: Colors.white.withOpacity(0.3),
+                                      color:
+                                          Colors.white.withValues(alpha: 0.3),
                                     ),
                                   ))
                               .toList(),
@@ -450,7 +452,9 @@ class ProjectCardMobile extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () => Get.back(),
-                    child: Text('Close', style: TextStyles.bodyMedium(context).copyWith(color: Colors.white)),
+                    child: Text('Close',
+                        style: TextStyles.bodyMedium(context)
+                            .copyWith(color: Colors.white)),
                   ),
                 ],
               ),

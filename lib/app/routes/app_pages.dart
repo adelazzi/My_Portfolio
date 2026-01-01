@@ -32,12 +32,12 @@ class AppPages {
     // hereadd the new files like the others
     GetPage(
       name: _Paths.LOADING,
-      page: () => LoadingView(),
+      page: () => const LoadingView(),
       binding: LoadingBinding(),
     ),
     GetPage(
       name: _Paths.MAINPAGE,
-      page: () => MainpageView(),
+      page: () => const MainpageView(),
       binding: MainpageBinding(),
     ),
     GetPage(
@@ -47,7 +47,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ABOUT,
-      page: () => AboutView(),
+      page: () => const AboutView(),
       binding: AboutBinding(),
     ),
     GetPage(
@@ -72,7 +72,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SKILLS,
-      page: () => SkillsView(),
+      page: () => const SkillsView(),
       binding: SkillsBinding(),
     ),
 

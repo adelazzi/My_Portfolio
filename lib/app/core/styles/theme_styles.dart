@@ -12,8 +12,8 @@ class ThemeStyles {
     primaryColor: MainColors.primaryBrand,
     scaffoldBackgroundColor: LightColors.backgroundColor,
     shadowColor: LightColors.shadowColor,
-    splashColor: MainColors.primaryBrand.withOpacity(0.2),
-    highlightColor: MainColors.primaryBrand.withOpacity(0.1),
+    splashColor: MainColors.primaryBrand.withValues(alpha: 0.2),
+    highlightColor: MainColors.primaryBrand.withValues(alpha: 0.1),
 
     // App Bar Theme
     appBarTheme: AppBarTheme(
@@ -40,7 +40,7 @@ class ThemeStyles {
     ),
 
     // Color Scheme - More comprehensive
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       primary: MainColors.primaryBrand,
       secondary: MainColors.secondaryBrand,
       surface: LightColors.surfaceColor,
@@ -93,7 +93,7 @@ class ThemeStyles {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: MainColors.primaryBrand,
-        side: BorderSide(color: MainColors.primaryBrand, width: 1.5),
+        side: const BorderSide(color: MainColors.primaryBrand, width: 1.5),
         textStyle: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
@@ -120,23 +120,23 @@ class ThemeStyles {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: MainColors.primaryBrand, width: 2),
+        borderSide: const BorderSide(color: MainColors.primaryBrand, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: LightColors.errorColor, width: 2),
+        borderSide: const BorderSide(color: LightColors.errorColor, width: 2),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: LightColors.errorColor, width: 2),
+        borderSide: const BorderSide(color: LightColors.errorColor, width: 2),
       ),
       labelStyle: TextStyle(
-        color: LightColors.textColor.withOpacity(0.7),
+        color: LightColors.textColor.withValues(alpha: 0.7),
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
       hintStyle: TextStyle(
-        color: LightColors.textColor.withOpacity(0.5),
+        color: LightColors.textColor.withValues(alpha: 0.5),
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
@@ -192,7 +192,7 @@ class ThemeStyles {
       labelLarge: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
-        color: LightColors.textColor.withOpacity(0.8),
+        color: LightColors.textColor.withValues(alpha: 0.8),
       ),
       bodyLarge: TextStyle(
         fontSize: 16.sp,
@@ -207,7 +207,7 @@ class ThemeStyles {
       bodySmall: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: LightColors.textColor.withOpacity(0.7),
+        color: LightColors.textColor.withValues(alpha: 0.7),
       ),
     ),
 
@@ -265,8 +265,8 @@ class ThemeStyles {
     primaryColor: DarkColors.primaryColor,
     scaffoldBackgroundColor: DarkColors.backgroundColor,
     shadowColor: DarkColors.shadowColor,
-    splashColor: DarkColors.primaryColor.withOpacity(0.2),
-    highlightColor: DarkColors.primaryColor.withOpacity(0.1),
+    splashColor: DarkColors.primaryColor.withValues(alpha: 0.2),
+    highlightColor: DarkColors.primaryColor.withValues(alpha: 0.1),
 
     // App Bar Theme
     appBarTheme: AppBarTheme(
@@ -293,7 +293,7 @@ class ThemeStyles {
     ),
 
     // Color Scheme - More comprehensive
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       primary: DarkColors.primaryColor,
       secondary: DarkColors.secondaryColor,
       surface: DarkColors.surfaceColor,
@@ -346,7 +346,7 @@ class ThemeStyles {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: DarkColors.primaryColor,
-        side: BorderSide(color: DarkColors.primaryColor, width: 1.5),
+        side: const BorderSide(color: DarkColors.primaryColor, width: 1.5),
         textStyle: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
@@ -373,23 +373,23 @@ class ThemeStyles {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: DarkColors.primaryColor, width: 2),
+        borderSide: const BorderSide(color: DarkColors.primaryColor, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: DarkColors.errorColor, width: 2),
+        borderSide: const BorderSide(color: DarkColors.errorColor, width: 2),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(color: DarkColors.errorColor, width: 2),
+        borderSide: const BorderSide(color: DarkColors.errorColor, width: 2),
       ),
       labelStyle: TextStyle(
-        color: DarkColors.textColor.withOpacity(0.7),
+        color: DarkColors.textColor.withValues(alpha: 0.7),
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       ),
       hintStyle: TextStyle(
-        color: DarkColors.textColor.withOpacity(0.5),
+        color: DarkColors.textColor.withValues(alpha: 0.5),
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       ),
@@ -445,7 +445,7 @@ class ThemeStyles {
       labelLarge: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w500,
-        color: DarkColors.textColor.withOpacity(0.8),
+        color: DarkColors.textColor.withValues(alpha: 0.8),
       ),
       bodyLarge: TextStyle(
         fontSize: 16.sp,
@@ -460,7 +460,7 @@ class ThemeStyles {
       bodySmall: TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: DarkColors.textColor.withOpacity(0.7),
+        color: DarkColors.textColor.withValues(alpha: 0.7),
       ),
     ),
 

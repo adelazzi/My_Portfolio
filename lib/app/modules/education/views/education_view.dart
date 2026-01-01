@@ -163,7 +163,8 @@ class CertificationCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(5.r),
                 decoration: BoxDecoration(
-                  color: MainColors.backgroundColor(context).withOpacity(0.5),
+                  color: MainColors.backgroundColor(context)
+                      .withValues(alpha: 0.5),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -232,7 +233,7 @@ class EducationCardWidget extends StatelessWidget {
               height: 28.w,
               padding: EdgeInsets.all(12.r),
               decoration: BoxDecoration(
-                color: MainColors.primaryColor(context).withOpacity(0.1),
+                color: MainColors.primaryColor(context).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: education.logoUrl!.isNotEmpty
@@ -307,7 +308,7 @@ class EducationViewMobile extends StatelessWidget {
       padding: EdgeInsets.all(20.w),
       child: Obx(() {
         if (controller.isLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         return RefreshIndicator(
@@ -315,7 +316,7 @@ class EducationViewMobile extends StatelessWidget {
           child: ListView(
             shrinkWrap: true, // ✅ Fix 1: Fit parent height
 
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             children: [
               // Title
               Text(
@@ -384,16 +385,14 @@ class CertificationCardMobile extends StatelessWidget {
   final Certafication certification;
   final String titel;
 
-  const CertificationCardMobile({
-    Key? key, 
-    required this.titel, 
-    required this.certification
-  }) : super(key: key);
+  const CertificationCardMobile(
+      {Key? key, required this.titel, required this.certification})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,  // ✅ Full width for mobile
+      width: double.infinity, // ✅ Full width for mobile
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         gradient: MainColors.primaryGradient,
@@ -411,18 +410,18 @@ class CertificationCardMobile extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.r),
           onTap: () => _launchCertificate(context),
           child: Padding(
-            padding: EdgeInsets.all(20.w),  // Larger padding
+            padding: EdgeInsets.all(20.w), // Larger padding
             child: Column(
               children: [
                 Container(
                   padding: EdgeInsets.all(12.r),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.verified,
-                    size: 28.sp,  // Bigger icon
+                    size: 28.sp, // Bigger icon
                     color: Colors.white,
                   ),
                 ),
@@ -457,32 +456,33 @@ class CertificationCardMobile extends StatelessWidget {
     try {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (e) {
-      ToastComponent().showMobileToast(context,
+      ToastComponent().showMobileToast(Get.context!,
           message: StringsAssetsConstants.openCertificateError,
           type: ToastTypes.error);
     }
   }
 }
 
-
 class EducationCardWidgetMobile extends StatelessWidget {
   final Education education;
 
-  const EducationCardWidgetMobile({Key? key, required this.education}) : super(key: key);
+  const EducationCardWidgetMobile({Key? key, required this.education})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,  // ✅ Full width
+      width: double.infinity, // ✅ Full width
       margin: EdgeInsets.only(bottom: 24.h),
-      padding: EdgeInsets.all(20.w),  // Larger padding
+      padding: EdgeInsets.all(20.w), // Larger padding
       decoration: BoxDecoration(
         color: MainColors.backgroundColor(context),
         borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: MainColors.primaryColor(context).withOpacity(0.1)),
+        border: Border.all(
+            color: MainColors.primaryColor(context).withValues(alpha: 0.1)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 15.r,
             offset: Offset(0, 4.h),
           ),
@@ -497,15 +497,17 @@ class EducationCardWidgetMobile extends StatelessWidget {
               width: 60.w,
               height: 60.w,
               decoration: BoxDecoration(
-                color: MainColors.primaryColor(context).withOpacity(0.1),
+                color: MainColors.primaryColor(context).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: education.logoUrl!.isNotEmpty
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(12.r),
-                      child: Image.asset(education.logoUrl!, fit: BoxFit.contain),
+                      child:
+                          Image.asset(education.logoUrl!, fit: BoxFit.contain),
                     )
-                  : Icon(Icons.school, size: 32.sp, color: MainColors.primaryColor(context)),
+                  : Icon(Icons.school,
+                      size: 32.sp, color: MainColors.primaryColor(context)),
             ),
           ),
           SizedBox(height: 20.h),
@@ -518,7 +520,8 @@ class EducationCardWidgetMobile extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             education.institution,
-            style: TextStyles.bodyLarge(context).copyWith(fontWeight: FontWeight.w600),
+            style: TextStyles.bodyLarge(context)
+                .copyWith(fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 4.h),
           Text(
@@ -535,5 +538,3 @@ class EducationCardWidgetMobile extends StatelessWidget {
     );
   }
 }
-
-

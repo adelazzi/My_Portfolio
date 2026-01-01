@@ -5,11 +5,6 @@ class ProjectsController extends GetxController {
   var projects = <Project>[].obs;
   var isLoading = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // loadProjects();
-  }
 
   Future<void> loadProjects() async {
     isLoading.value = true;
