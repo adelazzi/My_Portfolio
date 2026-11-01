@@ -35,6 +35,9 @@ jobs:
       - name: Analyze Code
         run: flutter analyze
 
+      - name: Check career.json
+        run: dart run tool/validate_career.dart
+
       - name: Build Web
         run: flutter build web --release --base-href=/My_Portfolio/
 

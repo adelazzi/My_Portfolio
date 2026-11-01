@@ -8,7 +8,6 @@ abstract class Routes {
   //common routes
   //
  
-    static const LOADING = _Paths.LOADING;
     static const MAINPAGE = _Paths.MAINPAGE;
     static const HOME = _Paths.HOME;
     static const ABOUT = _Paths.ABOUT;
@@ -23,7 +22,6 @@ abstract class _Paths {
   _Paths._();
 
 
-    static const LOADING = '/loading';
     static const MAINPAGE = '/mainpage';
     static const HOME = '/home';
     static const ABOUT = '/about';

@@ -1,0 +1,731 @@
+{
+  "$guide": "Edit this file to update the portfolio. See assets/portfolio/README.md for every field.",
+  "photo": null,
+  "tracks": [
+    {
+      "id": "community",
+      "title": {
+        "en": "Community",
+        "ar": "المجتمع",
+        "fr": "Communauté",
+        "ru": "Сообщество"
+      }
+    },
+    {
+      "id": "studies",
+      "main": true,
+      "title": {
+        "en": "Studies",
+        "ar": "الدراسة",
+        "fr": "Études",
+        "ru": "Учёба"
+      }
+    },
+    {
+      "id": "work",
+      "title": {
+        "en": "Work",
+        "ar": "العمل",
+        "fr": "Travail",
+        "ru": "Работа"
+      }
+    }
+  ],
+  "roles": [
+    {
+      "since": "2021",
+      "title": {
+        "en": "Flutter developer",
+        "ar": "مطوّر Flutter",
+        "fr": "Développeur Flutter",
+        "ru": "Flutter-разработчик"
+      }
+    },
+    {
+      "since": "2022",
+      "title": {
+        "en": "Mentor for Flutter students",
+        "ar": "مرشد لطلاب Flutter",
+        "fr": "Mentor d'étudiants Flutter",
+        "ru": "Наставник студентов по Flutter"
+      }
+    },
+    {
+      "since": "2023",
+      "title": {
+        "en": "Django backend developer",
+        "ar": "مطوّر واجهات خلفية Django",
+        "fr": "Développeur backend Django",
+        "ru": "Backend-разработчик на Django"
+      }
+    },
+    {
+      "since": "2023",
+      "title": {
+        "en": "Full-stack engineer",
+        "ar": "مهندس Full-stack",
+        "fr": "Ingénieur full-stack",
+        "ru": "Full-stack инженер"
+      }
+    },
+    {
+      "since": "2026",
+      "title": {
+        "en": "Software engineering student",
+        "ar": "طالب هندسة برمجيات",
+        "fr": "Étudiant en génie logiciel",
+        "ru": "Студент программной инженерии"
+      }
+    }
+  ],
+  "path": [
+    {
+      "id": "usthb-licence",
+      "track": "studies",
+      "start": "2020-09",
+      "end": "2024-06",
+      "label": "USTHB",
+      "logo": "assets/images/university_logo.png",
+      "title": {
+        "en": "Licentiate degree in Computer Science",
+        "ar": "ليسانس في علوم الحاسوب",
+        "fr": "Licence en Informatique",
+        "ru": "Лиценциат по информатике"
+      },
+      "place": {
+        "en": "USTHB University",
+        "ar": "جامعة USTHB",
+        "fr": "Université USTHB",
+        "ru": "Университет USTHB"
+      },
+      "details": {
+        "en": "Four-year degree focusing on algorithm development, data structures, and multiple programming languages. Developed strong problem-solving skills through competitive programming challenges and complex project implementations.",
+        "ar": "درجة لمدة أربع سنوات تركز على تطوير الخوارزميات وهياكل البيانات ولغات البرمجة المتعددة. طورت مهارات حل المشكلات القوية من خلال تحديات البرمجة التنافسية وتنفيذ المشاريع المعقدة.",
+        "fr": "Diplôme de quatre ans axé sur le développement d'algorithmes, les structures de données et plusieurs langages de programmation. Développé de solides compétences en résolution de problèmes grâce à des défis de programmation compétitive et des implémentations de projets complexes.",
+        "ru": "Четырехлетняя степень, сосредоточенная на разработке алгоритмов, структурах данных и множестве языков программирования. Развил сильные навыки решения проблем через соревновательное программирование и реализацию сложных проектов."
+      },
+      "links": [
+        {
+          "label": {
+            "en": "View certificate",
+            "ar": "عرض الشهادة",
+            "fr": "Voir le certificat",
+            "ru": "Открыть сертификат"
+          },
+          "url": "https://drive.google.com/file/d/1TRhmmKkNHx_toEhfd8XvQ33pbhOnLwaY/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "usthb-hpc",
+      "track": "studies",
+      "start": "2024-09",
+      "end": "2025-07",
+      "label": "HPC",
+      "logo": "assets/images/university_logo.png",
+      "title": {
+        "en": "HPC Master's Program",
+        "ar": "برنامج ماجستير HPC",
+        "fr": "Programme Master HPC",
+        "ru": "Программа магистратуры HPC"
+      },
+      "place": {
+        "en": "USTHB",
+        "ar": "USTHB",
+        "fr": "USTHB",
+        "ru": "USTHB"
+      },
+      "details": {
+        "en": "One of the top-performing students in this advanced program. Focusing on optimizing performance in computing clusters and parallel handling of huge data sets. Learning cutting-edge techniques for high-performance computing applications and distributed systems architecture.",
+        "ar": "واحد من أفضل الطلاب أداءً في هذا البرنامج المتقدم. يركز على تحسين الأداء في مجموعات الحوسبة والتعامل المتوازي مع مجموعات البيانات الضخمة. يتعلم تقنيات متطورة لتطبيقات الحوسبة عالية الأداء وهندسة الأنظمة الموزعة.",
+        "fr": "L'un des meilleurs étudiants de ce programme avancé. Focus sur l'optimisation des performances dans les clusters de calcul et la gestion parallèle de grands ensembles de données. Apprentissage de techniques de pointe pour les applications de calcul haute performance et l'architecture des systèmes distribués.",
+        "ru": "Один из лучших студентов в этой продвинутой программе. Фокус на оптимизации производительности в вычислительных кластерах и параллельной обработке больших наборов данных. Изучение передовых технологий для приложений высокопроизводительных вычислений и архитектуры распределенных систем."
+      }
+    },
+    {
+      "id": "oryol-russian",
+      "track": "studies",
+      "start": "2025-09",
+      "end": "2026-06",
+      "label": "Oryol",
+      "logo": "assets/images/oryol_logo.png",
+      "title": {
+        "en": "Russian language year",
+        "ar": "سنة اللغة الروسية",
+        "fr": "Année de langue russe",
+        "ru": "Год изучения русского языка"
+      },
+      "place": {
+        "en": "Orel State Agrarian University",
+        "ar": "جامعة أوريل الزراعية الحكومية",
+        "fr": "Université agraire d'État d'Orel",
+        "ru": "Орловский государственный аграрный университет"
+      },
+      "details": {
+        "en": "A preparatory year for international students in Oryol, dedicated to learning general and academic Russian before a master's degree taught in Russia.",
+        "ar": "سنة تحضيرية للطلاب الدوليين في أوريول، مخصصة لتعلم اللغة الروسية العامة والأكاديمية قبل الدراسة في الماجستير بروسيا.",
+        "fr": "Une année préparatoire pour étudiants internationaux à Orel, consacrée à l'apprentissage du russe général et académique avant un master en Russie.",
+        "ru": "Подготовительный год для иностранных студентов в Орле: изучение общего и академического русского языка перед магистратурой в России."
+      }
+    },
+    {
+      "id": "innopolis-msc",
+      "track": "studies",
+      "start": "2026-09",
+      "end": null,
+      "label": "Innopolis",
+      "link": "https://innopolis.university/en/",
+      "title": {
+        "en": "Master's in software engineering",
+        "ar": "ماجستير في هندسة البرمجيات",
+        "fr": "Master en génie logiciel",
+        "ru": "Магистратура по программной инженерии"
+      },
+      "place": {
+        "en": "Innopolis University",
+        "ar": "جامعة إنوبوليس",
+        "fr": "Université d'Innopolis",
+        "ru": "Университет Иннополис"
+      },
+      "details": {
+        "en": "First year of a master's degree in software engineering.",
+        "ar": "السنة الأولى من الماجستير في هندسة البرمجيات.",
+        "fr": "Première année de master en génie logiciel.",
+        "ru": "Первый курс магистратуры по программной инженерии."
+      }
+    },
+    {
+      "id": "matrix",
+      "track": "work",
+      "start": "2023-10",
+      "end": "2024-04",
+      "label": "Matrix",
+      "logo": "assets/images/matrix.png",
+      "title": {
+        "en": "Full Stack Developer",
+        "ar": "مطور Full Stack",
+        "fr": "Développeur Full Stack",
+        "ru": "Full Stack Разработчик"
+      },
+      "place": {
+        "en": "Matrix software Solutions",
+        "ar": "Matrix software Solutions",
+        "fr": "Matrix software Solutions",
+        "ru": "Matrix software Solutions"
+      },
+      "details": {
+        "en": "Developed full-stack mobile apps with Django APIs and Flutter frontends. Implemented authentication systems and responsive UIs with seamless backend integration.",
+        "ar": "طورت تطبيقات موبايل كاملة الطبقة مع واجهات برمجية Django وواجهات Flutter. نفذت أنظمة المصادقة وواجهات المستخدم المتجاوبة مع تكامل خلفي سلس.",
+        "fr": "Développé des applications mobiles full-stack avec APIs Django et frontends Flutter. Implémenté des systèmes d'authentification et des UI responsives avec intégration backend fluide.",
+        "ru": "Разработал полнофункциональные мобильные приложения с API Django и фронтендами Flutter. Реализовал системы аутентификации и адаптивные UI с плавной интеграцией бэкенда."
+      },
+      "highlights": {
+        "en": [
+          "Developed Flutter mobile apps with responsive UI and clean architecture",
+          "Built RESTful APIs using Django for backend services and data management",
+          "Implemented Dijkstra's algorithm for efficient route finding in a delivery tracking app",
+          "Optimized path-finding algorithms for real-time navigation with reduced computational overhead",
+          "Integrated Django ORM with spatial databases to support geolocation features"
+        ],
+        "ar": [
+          "طورت تطبيقات Flutter موبايل بواجهة مستخدم متجاوبة وهندسة نظيفة",
+          "بنيت واجهات برمجية RESTful باستخدام Django لخدمات الخلفية وإدارة البيانات",
+          "نفذت خوارزمية Dijkstra لإيجاد الطرق الفعالة في تطبيق تتبع التوصيل",
+          "حسّنت خوارزميات البحث عن المسار للتنقل في الوقت الفعلي مع تقليل العبء الحسابي",
+          "دمجت Django ORM مع قواعد بيانات مكانية لدعم ميزات تحديد المواقع"
+        ],
+        "fr": [
+          "Développé des applications mobiles Flutter avec UI responsive et architecture propre",
+          "Construit des APIs RESTful avec Django pour les services backend et la gestion des données",
+          "Implémenté l'algorithme de Dijkstra pour la recherche de routes efficaces dans une app de suivi de livraison",
+          "Optimisé les algorithmes de recherche de chemin pour la navigation en temps réel avec réduction de la charge computationnelle",
+          "Intégré Django ORM avec des bases de données spatiales pour supporter les fonctionnalités de géolocalisation"
+        ],
+        "ru": [
+          "Разработал мобильные приложения Flutter с адаптивным UI и чистой архитектурой",
+          "Создал RESTful API с использованием Django для бэкенд-сервисов и управления данными",
+          "Реализовал алгоритм Дейкстры для эффективного поиска маршрутов в приложении отслеживания доставки",
+          "Оптимизировал алгоритмы поиска пути для навигации в реальном времени с уменьшением вычислительной нагрузки",
+          "Интегрировал Django ORM с пространственными базами данных для поддержки геолокационных функций"
+        ]
+      }
+    },
+    {
+      "id": "hiske-dev",
+      "track": "work",
+      "start": "2024-06",
+      "end": "2025-08",
+      "label": "Hiske Dev",
+      "logo": "assets/images/hoskadev.png",
+      "title": {
+        "en": "Flutter developer",
+        "ar": "مطور Flutter",
+        "fr": "Développeur Flutter",
+        "ru": "Разработчик Flutter"
+      },
+      "place": {
+        "en": "Hiske Dev",
+        "ar": "Hiske Dev",
+        "fr": "Hiske Dev",
+        "ru": "Hiske Dev"
+      },
+      "details": {
+        "en": "Developed mobile applications for business clients with focus on enterprise solutions and integration with existing systems.",
+        "ar": "طورت تطبيقات الهواتف المحمولة لعملاء الأعمال مع التركيز على حلول المؤسسات والتكامل مع الأنظمة الحالية.",
+        "fr": "Développé des applications mobiles pour des clients professionnels avec un focus sur les solutions d'entreprise et l'intégration avec les systèmes existants.",
+        "ru": "Разработал мобильные приложения для бизнес-клиентов с акцентом на корпоративные решения и интеграцию с существующими системами."
+      },
+      "highlights": {
+        "en": [
+          "Developed responsive front-end interfaces using Flutter GetX",
+          "Led data preprocessing and cleaning initiatives for real projects",
+          "Joined the mobile development team to create custom applications for external clients",
+          "Collaborated with UX/UI designers to implement modern interfaces"
+        ],
+        "ar": [
+          "طورت واجهات أمامية متجاوبة باستخدام Flutter GetX",
+          "قدت مبادرات معالجة وتنظيف البيانات لمشاريع حقيقية",
+          "انضممت إلى فريق تطوير الهواتف المحمولة لإنشاء تطبيقات مخصصة للعملاء الخارجيين",
+          "تعاونت مع مصممي UX/UI لتنفيذ واجهات حديثة"
+        ],
+        "fr": [
+          "Développé des interfaces front-end responsives avec Flutter GetX",
+          "Dirigé des initiatives de prétraitement et nettoyage de données pour de vrais projets",
+          "Rejoint l'équipe de développement mobile pour créer des applications personnalisées pour des clients externes",
+          "Collaboré avec les designers UX/UI pour implémenter des interfaces modernes"
+        ],
+        "ru": [
+          "Разработал адаптивные фронтенд-интерфейсы с использованием Flutter GetX",
+          "Возглавил инициативы по предварительной обработке и очистке данных для реальных проектов",
+          "Присоединился к команде мобильной разработки для создания кастомных приложений для внешних клиентов",
+          "Сотрудничал с дизайнерами UX/UI для реализации современных интерфейсов"
+        ]
+      },
+      "links": [
+        {
+          "label": {
+            "en": "View certificate",
+            "ar": "عرض الشهادة",
+            "fr": "Voir le certificat",
+            "ru": "Открыть сертификат"
+          },
+          "url": "https://drive.google.com/file/d/1TTkK1Swgf5DdmtcWS5jjf50DYq3xiArq/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "omc-club",
+      "track": "community",
+      "start": "2022-01",
+      "end": null,
+      "label": "OMC Club",
+      "logo": "assets/images/omc_club.png",
+      "title": {
+        "en": "Team Leader",
+        "ar": "قائد الفريق",
+        "fr": "Chef d'équipe",
+        "ru": "Руководитель команды"
+      },
+      "place": {
+        "en": "OMC Club",
+        "ar": "نادي OMC",
+        "fr": "Club OMC",
+        "ru": "Клуб OMC"
+      },
+      "details": {
+        "en": "Started as a regular member and progressively grew to become a team leader through dedication and technical contributions. Now responsible for monitoring team progress and mentoring new members, representing significant professional growth within the organization.",
+        "ar": "بدأت كعضو عادي وتدريجياً نمت لأصبح قائد فريق من خلال التفاني والمساهمات التقنية. الآن مسؤول عن مراقبة تقدم الفريق وتدريب الأعضاء الجدد، مما يمثل نمواً مهنياً كبيراً داخل المنظمة.",
+        "fr": "Commencé comme membre ordinaire et progressivement devenu chef d'équipe grâce au dévouement et aux contributions techniques. Maintenant responsable du suivi du progrès de l'équipe et du mentorat des nouveaux membres, représentant une croissance professionnelle significative au sein de l'organisation.",
+        "ru": "Начал как обычный участник и постепенно вырос до руководителя команды благодаря преданности и техническим вкладам. Теперь отвечаю за мониторинг прогресса команды и наставничество новых членов, что представляет значительный профессиональный рост в организации."
+      },
+      "highlights": {
+        "en": [
+          "Organized hands-on workshops teaching Flutter and GetX to club members",
+          "Coordinated multiple hackathons and served as a team mentor",
+          "Won first place in an international competition with the club team"
+        ],
+        "ar": [
+          "نظمت ورش عمل عملية تُعلم Flutter و GetX لأعضاء النادي",
+          "نسقت عدة هاكاثونات وعملت كمرشد للفرق",
+          "فاز بالمركز الأول في مسابقة دولية مع فريق النادي"
+        ],
+        "fr": [
+          "Organisé des ateliers pratiques enseignant Flutter et GetX aux membres du club",
+          "Coordonné plusieurs hackathons et servi de mentor d'équipe",
+          "Remporté la première place dans une compétition internationale avec l'équipe du club"
+        ],
+        "ru": [
+          "Организовал практические мастер-классы по Flutter и GetX для членов клуба",
+          "Координировал несколько хакатонов и выступал наставником команд",
+          "Занял первое место на международном конкурсе с командой клуба"
+        ]
+      }
+    },
+    {
+      "id": "class-delegate",
+      "track": "community",
+      "start": "2022-09",
+      "end": "2024-06",
+      "label": "Delegate",
+      "logo": "assets/images/university_logo.png",
+      "title": {
+        "en": "Class Delegate",
+        "ar": "مندوب الصف",
+        "fr": "Délégué de classe",
+        "ru": "Классный староста"
+      },
+      "place": {
+        "en": "USTHB University",
+        "ar": "جامعة USTHB",
+        "fr": "Université USTHB",
+        "ru": "Университет USTHB"
+      },
+      "details": {
+        "en": "Served as the primary liaison between students and professors, facilitating effective communication and ensuring academic concerns were addressed promptly.",
+        "ar": "عملت كوسيط رئيسي بين الطلاب والأساتذة، مما يسهل التواصل الفعال ويضمن معالجة الهموم الأكاديمية بسرعة.",
+        "fr": "Servi comme principal intermédiaire entre les étudiants et les professeurs, facilitant une communication efficace et assurant un traitement rapide des préoccupations académiques.",
+        "ru": "Работал главным посредником между студентами и преподавателями, обеспечивая эффективную коммуникацию и оперативное решение академических вопросов."
+      },
+      "highlights": {
+        "en": [
+          "Coordinated class schedules and exam logistics with department administration",
+          "Organized study groups and collaborative learning sessions for complex subjects",
+          "Mediated conflicts and represented student interests in departmental meetings",
+          "Maintained communication channels between faculty and students for announcements and feedback",
+          "Facilitated resolution of academic issues affecting student performance and well-being"
+        ],
+        "ar": [
+          "نسقت جداول الدروس ولوجستيات الامتحانات مع إدارة القسم",
+          "نظمت مجموعات دراسة وجلسات تعلم تعاونية للمواد المعقدة",
+          "وسّطت في النزاعات ومثّلت مصالح الطلاب في اجتماعات القسم",
+          "حافظت على قنوات التواصل بين الأساتذة والطلاب للإعلانات والتعليقات",
+          "سهّلت حل المشكلات الأكاديمية التي تؤثر على أداء الطلاب ورفاهيتهم"
+        ],
+        "fr": [
+          "Coordonné les emplois du temps des classes et la logistique des examens avec l'administration du département",
+          "Organisé des groupes d'étude et des sessions d'apprentissage collaboratif pour des matières complexes",
+          "Médié les conflits et représenté les intérêts des étudiants lors des réunions départementales",
+          "Maintenu des canaux de communication entre le corps professoral et les étudiants pour les annonces et retours",
+          "Facilité la résolution des problèmes académiques affectant les performances et le bien-être des étudiants"
+        ],
+        "ru": [
+          "Координировал расписание занятий и логистику экзаменов с администрацией факультета",
+          "Организовывал учебные группы и совместные сессии обучения по сложным предметам",
+          "Разрешал конфликты и представлял интересы студентов на заседаниях факультета",
+          "Поддерживал каналы связи между преподавателями и студентами для объявлений и обратной связи",
+          "Способствовал решению академических проблем, влияющих на успеваемость и благополучие студентов"
+        ]
+      }
+    },
+    {
+      "id": "arab-games",
+      "track": "community",
+      "start": "2023-07",
+      "end": "2023-07",
+      "label": "Arab Games",
+      "logo": "assets/images/arab_games_logo.png",
+      "title": {
+        "en": "Logistics Volunteer",
+        "ar": "متطوع لوجستيات",
+        "fr": "Bénévole Logistique",
+        "ru": "Волонтер по логистике"
+      },
+      "place": {
+        "en": "Arab Games",
+        "ar": "ألعاب العرب",
+        "fr": "Jeux Arabes",
+        "ru": "Арабские игры"
+      },
+      "details": {
+        "en": "Volunteered as part of the logistics team for this prestigious international sporting event, ensuring smooth operations and coordination between various stakeholders.",
+        "ar": "تطوعت كجزء من فريق اللوجستيات لهذا الحدث الرياضي الدولي المرموق، مما يضمن عمليات سلسة وتنسيق بين مختلف أصحاب المصلحة.",
+        "fr": "Bénévolé au sein de l'équipe logistique de cet événement sportif international prestigieux, assurant des opérations fluides et une coordination entre les différents acteurs.",
+        "ru": "Работал волонтером в логистической команде этого престижного международного спортивного мероприятия, обеспечивая бесперебойную работу и координацию между различными заинтересованными сторонами."
+      },
+      "highlights": {
+        "en": [
+          "Coordinated equipment and supplies distribution across multiple event venues",
+          "Assisted with transportation logistics for athletes and officials",
+          "Supported venue setup and breakdown operations for different sporting competitions",
+          "Collaborated with international teams to resolve logistical challenges",
+          "Helped manage scheduling and resource allocation during the event"
+        ],
+        "ar": [
+          "نسقت توزيع المعدات والإمدادات عبر مواقع الحدث المتعددة",
+          "ساعدت في لوجستيات النقل للرياضيين والمسؤولين",
+          "دعمت عمليات إعداد وتفكيك الموقع لمسابقات رياضية مختلفة",
+          "تعاونت مع فرق دولية لحل التحديات اللوجستية",
+          "ساعدت في إدارة الجدولة وتخصيص الموارد أثناء الحدث"
+        ],
+        "fr": [
+          "Coordonné la distribution d'équipements et d'approvisionnements à travers plusieurs lieux d'événements",
+          "Assisté à la logistique de transport pour les athlètes et officiels",
+          "Supporté les opérations de mise en place et démontage des sites pour différentes compétitions sportives",
+          "Collaboré avec des équipes internationales pour résoudre les défis logistiques",
+          "AidÉ à la gestion de la planification et de l'allocation des ressources pendant l'événement"
+        ],
+        "ru": [
+          "Координировал распределение оборудования и поставок по нескольким площадкам мероприятия",
+          "Помогал с логистикой транспортировки спортсменов и официальных лиц",
+          "Поддерживал операции по установке и демонтажу площадок для различных спортивных соревнований",
+          "Сотрудничал с международными командами для решения логистических задач",
+          "Помогал управлять планированием и распределением ресурсов во время мероприятия"
+        ]
+      },
+      "links": [
+        {
+          "label": {
+            "en": "View certificate",
+            "ar": "عرض الشهادة",
+            "fr": "Voir le certificat",
+            "ru": "Открыть сертификат"
+          },
+          "url": "https://drive.google.com/file/d/1TTnSF_7Z5bXIhf-0Pb97UOdDXy-B6aQQ/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "gdg-algeria",
+      "track": "community",
+      "start": "2024-01",
+      "end": null,
+      "label": "GDG",
+      "logo": "assets/images/gdgalgeria.png",
+      "title": {
+        "en": "Logistics Member",
+        "ar": "عضو لوجستيات",
+        "fr": "Membre Logistique",
+        "ru": "Член логистической команды"
+      },
+      "place": {
+        "en": "GDG Algeria",
+        "ar": "GDG الجزائر",
+        "fr": "GDG Algérie",
+        "ru": "GDG Алжир"
+      },
+      "details": {
+        "en": "Responsible for coordinating event logistics, managing venue setup, and ensuring smooth execution of tech meetups and workshops. Collaborated with cross-functional teams to organize resources, handled equipment needs, and created detailed event plans to facilitate successful community gatherings and learning sessions.",
+        "ar": "مسؤول عن تنسيق لوجستيات الفعاليات، إدارة إعداد الموقع، وضمان تنفيذ سلس للقاءات التقنية والورش. تعاون مع فرق متعددة الوظائف لتنظيم الموارد، التعامل مع احتياجات المعدات، وإنشاء خطط فعاليات مفصلة لتسهيل التجمعات المجتمعية والجلسات التعليمية الناجحة.",
+        "fr": "Responsable de la coordination logistique des événements, gestion de la mise en place des lieux et assurance d'une exécution fluide des meetups tech et ateliers. Collaboré avec des équipes multifonctionnelles pour organiser les ressources, géré les besoins en équipement et créé des plans d'événements détaillés pour faciliter des rassemblements communautaires et sessions d'apprentissage réussis.",
+        "ru": "Отвечаю за координацию логистики мероприятий, управление подготовкой площадок и обеспечение бесперебойного проведения технологических встреч и мастер-классов. Сотрудничал с межфункциональными командами для организации ресурсов, управления потребностями в оборудовании и создания детальных планов мероприятий для успешных сообщественных собраний и учебных сессий."
+      },
+      "highlights": {
+        "en": [
+          "Streamlined event logistics for 10+ tech conferences using custom calendar management systems",
+          "Implemented task management workflows that improved team coordination by 40%",
+          "Developed an event planning calendar that synchronized responsibilities across multiple organizing teams"
+        ],
+        "ar": [
+          "تبسيط لوجستيات الفعاليات لأكثر من 10 مؤتمرات تقنية باستخدام أنظمة إدارة تقويم مخصصة",
+          "نفذ تدفقات عمل إدارة المهام التي حسنت تنسيق الفريق بنسبة 40%",
+          "طوّر تقويم تخطيط فعاليات ينسق المسؤوليات عبر فرق تنظيم متعددة"
+        ],
+        "fr": [
+          "Rationalisé la logistique d'événements pour 10+ conférences tech avec des systèmes de gestion de calendrier personnalisés",
+          "Implémenté des workflows de gestion de tâches améliorant la coordination d'équipe de 40%",
+          "Développé un calendrier de planification d'événements synchronisant les responsabilités à travers plusieurs équipes d'organisation"
+        ],
+        "ru": [
+          "Оптимизировал логистику для 10+ технологических конференций с использованием кастомных систем управления календарем",
+          "Реализовал рабочие процессы управления задачами, улучшив координацию команды на 40%",
+          "Разработал календарь планирования мероприятий, синхронизирующий обязанности между несколькими командами организаторов"
+        ]
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "olivia",
+      "date": "2024-02",
+      "image": "assets/images/projects/olivia.jpg",
+      "tech": [
+        "Flutter",
+        "Firebase"
+      ],
+      "title": {
+        "en": "Olivia - E-Commerce Mobile App",
+        "ar": "Olivia - تطبيق تجارة إلكترونية موبايل",
+        "fr": "Olivia - Application E-Commerce Mobile",
+        "ru": "Olivia - Мобильное приложение электронной коммерции"
+      },
+      "summary": {
+        "en": "A comprehensive e-commerce mobile application that connects marketers with admins. Features include product management, order processing, financial tracking, inventory management, and real-time analytics for sellers. Implemented secure payment gateways and user authentication.",
+        "ar": "تطبيق تجارة إلكترونية شامل يربط بين التجار والمدراء. يشمل ميزات إدارة المنتجات، معالجة الطلبات، تتبع المالية، إدارة المخزون، والتحليلات في الوقت الفعلي للبائعين. نفذ بوابات دفع آمنة ومصادقة المستخدمين.",
+        "fr": "Application mobile e-commerce complète connectant les marketeurs aux administrateurs. Fonctionnalités incluant la gestion des produits, traitement des commandes, suivi financier, gestion des stocks et analyses en temps réel pour les vendeurs. Implémenté des passerelles de paiement sécurisées et authentification utilisateur.",
+        "ru": "Полнофункциональное мобильное приложение электронной коммерции, соединяющее маркетологов с администраторами. Функции включают управление продуктами, обработку заказов, финансовое отслеживание, управление запасами и аналитику в реальном времени для продавцов. Реализованы безопасные платежные шлюзы и аутентификация пользователей."
+      }
+    },
+    {
+      "id": "data-mining-book",
+      "date": "2025-03",
+      "image": "assets/images/projects/MyDataMiningBook.jpg",
+      "tech": [
+        "Writing",
+        "Data Mining"
+      ],
+      "title": {
+        "en": "First Step In Data Mining - Educational Book",
+        "ar": "الخطوة الأولى في تعدين البيانات - كتاب تعليمي",
+        "fr": "Premiers Pas en Data Mining - Livre Éducatif",
+        "ru": "Первый шаг в Data Mining - Учебная книга"
+      },
+      "summary": {
+        "en": "Proudly presenting my first academic book: \"First Step in Data Mining\" — a concise, 108-page guide designed to make data mining accessible and practical for college students and beginners.\n\nHighlights:\nCore concepts: distance measures, classification, clustering\nMPI parallel computing for big data challenges\nStructured chapters with exercises (TD) and hands-on labs (TP)\n\nA resource crafted by a student, for students, to simplify the journey into data science.",
+        "ar": "أقدم بفخر كتابي الأكاديمي الأول: \"الخطوة الأولى في تعدين البيانات\" — دليل موجز مكون من 108 صفحات مصمم لجعل تعدين البيانات متاحاً وعملياً لطلبة الجامعات والمبتدئين.\n\nالنقاط البارزة:\nالمفاهيم الأساسية: مقاييس المسافة، التصنيف، التجميع\nالحوسبة المتوازية MPI لتحديات البيانات الكبيرة\nفصول منظمة مع تمارين (TD) ومعامل عملية (TP)\n\nمورد صُنع من طالب للطلاب لتبسيط الرحلة إلى علوم البيانات.",
+        "fr": "Présenté avec fierté mon premier livre académique : \"Premiers Pas en Data Mining\" — un guide concis de 108 pages conçu pour rendre le data mining accessible et pratique pour les étudiants universitaires et débutants.\n\nPoints forts :\nConcepts fondamentaux : mesures de distance, classification, clustering\nCalcul parallèle MPI pour les défis des big data\nChapitres structurés avec exercices (TD) et labs pratiques (TP)\n\nUne ressource créée par un étudiant, pour les étudiants, simplifiant le voyage vers la data science.",
+        "ru": "С гордостью представляю свою первую академическую книгу: \"Первый шаг в Data Mining\" — краткое 108-страничное руководство, разработанное для доступного и практического изучения data mining студентами колледжей и начинающими.\n\nОсновные моменты:\nОсновные концепции: меры расстояния, классификация, кластеризация\nПараллельные вычисления MPI для задач больших данных\nСтруктурированные главы с упражнениями (TD) и практическими занятиями (TP)\n\nРесурс, созданный студентом для студентов, упрощающий путь в data science."
+      }
+    },
+    {
+      "id": "gimdz",
+      "date": "2025-05",
+      "image": "assets/images/projects/gimdz.jpg",
+      "tech": [
+        "Flutter",
+        "Firebase",
+        "Dart",
+        "Django"
+      ],
+      "title": {
+        "en": "GIMDZ - Finance Mobile App",
+        "ar": "GIMDZ - تطبيق مالي موبايل",
+        "fr": "GIMDZ - Application Financière Mobile",
+        "ru": "GIMDZ - Финансовое мобильное приложение"
+      },
+      "summary": {
+        "en": "A comprehensive personal finance application for managing credit cards, bank accounts, and budgeting. Features include expense tracking, bill reminders, financial insights dashboard, custom budget categories, and AI-driven savings recommendations for users to better manage their finances.",
+        "ar": "تطبيق مالي شخصي شامل لإدارة بطاقات الائتمان، الحسابات البنكية، والميزانية. يشمل ميزات تتبع النفقات، تذكيرات الفواتير، لوحة تحكم رؤى مالية، فئات ميزانية مخصصة، وتوصيات توفير مدعومة بالذكاء الاصطناعي لمساعدة المستخدمين على إدارة أمورهم المالية بشكل أفضل.",
+        "fr": "Application de finance personnelle complète pour gérer cartes de crédit, comptes bancaires et budget. Fonctionnalités incluant suivi des dépenses, rappels de factures, tableau de bord d'insights financiers, catégories de budget personnalisées et recommandations d'épargne basées sur l'IA pour une meilleure gestion financière.",
+        "ru": "Полнофункциональное приложение личных финансов для управления кредитными картами, банковскими счетами и бюджетом. Функции включают отслеживание расходов, напоминания о счетах, панель финансовых инсайтов, пользовательские категории бюджета и рекомендации по сбережениям на основе ИИ для лучшего управления финансами."
+      },
+      "award": {
+        "en": "3rd place, National Innovation Fair in Fintech and AI (2025)",
+        "ar": "المركز الثالث، المعرض الوطني للابتكار في التكنولوجيا المالية والذكاء الاصطناعي (2025)",
+        "fr": "3e place, Salon national de l'innovation en fintech et IA (2025)",
+        "ru": "3-е место, Национальная ярмарка инноваций в финтехе и ИИ (2025)"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "View certificate",
+            "ar": "عرض الشهادة",
+            "fr": "Voir le certificat",
+            "ru": "Открыть сертификат"
+          },
+          "url": "https://drive.google.com/file/d/1H4QHIpcaoZAgmjChXvdrhltQcwEXGoum/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "econnect",
+      "date": "2023-05",
+      "image": "assets/images/projects/ecconnect.jpg",
+      "tech": [
+        "Flutter",
+        "Dart"
+      ],
+      "title": {
+        "en": "Econnect - Internation Compition Mobile App",
+        "ar": "Econnect - تطبيق مسابقة دولية موبايل",
+        "fr": "Econnect - Application Concours International Mobile",
+        "ru": "Econnect - Мобильное приложение международного конкурса"
+      },
+      "summary": {
+        "en": "An event organization app that allows users to find volunteers, purchase tickets, and manage event activities. Features include real-time volunteer management, secure ticket sales, analytics dashboard, and participant communication tools. Won first place in an international competition for its innovative approach to event coordination.",
+        "ar": "تطبيق تنظيم فعاليات يسمح للمستخدمين بإيجاد متطوعين، شراء تذاكر، وإدارة أنشطة الفعالية. يشمل ميزات إدارة المتطوعين في الوقت الفعلي، بيع تذاكر آمن، لوحة تحليلات، وأدوات تواصل المشاركين. فاز بالمركز الأول في مسابقة دولية لنهجه المبتكر في تنسيق الفعاليات.",
+        "fr": "Application d'organisation d'événements permettant de trouver des volontaires, acheter des billets et gérer les activités d'événement. Fonctionnalités incluant gestion des volontaires en temps réel, vente de billets sécurisée, tableau d'analyses et outils de communication des participants. A remporté la première place dans un concours international pour son approche innovante de coordination d'événements.",
+        "ru": "Приложение для организации мероприятий, позволяющее находить волонтеров, покупать билеты и управлять деятельностью события. Функции включают управление волонтерами в реальном времени, безопасную продажу билетов, аналитическую панель и инструменты коммуникации участников. Заняло первое место на международном конкурсе за инновационный подход к координации мероприятий."
+      }
+    },
+    {
+      "id": "faz-apps",
+      "date": "2024-09",
+      "image": "assets/images/projects/faz.jpg",
+      "tech": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Django"
+      ],
+      "title": {
+        "en": "Faz Apps - Provet School Mobile Apps",
+        "ar": "Faz Apps - تطبيقات مدرسية موبايل",
+        "fr": "Faz Apps - Applications Scolaires Mobile",
+        "ru": "Faz Apps - Школьные мобильные приложения"
+      },
+      "summary": {
+        "en": "Fez Apps: A Unified Flutter & Firebase Ecosystem for Modern Education!\nStreamlining school communication with three interconnected apps for admins, professors, and parents.\n\nFeatures:\nAdmin App: Manage faculty, students, and curricula in real-time.\nProfessor App: Organize classes, monitor performance, and handle assignments.\nParents App: Get live updates, pay fees, and receive instant notifications.\n\nBuilt with Flutter for cross-platform consistency and Firebase for real-time backend functionality. Overcame technical and UX challenges to deliver a seamless experience.",
+        "ar": "Fez Apps: نظام موحد بـ Flutter & Firebase للتعليم الحديث!\nتبسيط التواصل المدرسي بثلاث تطبيقات مترابطة للمدراء والأساتذة والآباء.\n\nالميزات:\nتطبيق المدراء: إدارة الهيئة التدريسية والطلاب والمناهج في الوقت الفعلي.\nتطبيق الأساتذة: تنظيم الحصص، مراقبة الأداء، وإدارة الواجبات.\nتطبيق الآباء: الحصول على تحديثات مباشرة، دفع الرسوم، وتلقي إشعارات فورية.\n\nمبني بـ Flutter لتوافق عبر المنصات و Firebase لوظائف الخلفية في الوقت الفعلي. تغلب على التحديات التقنية و UX لتقديم تجربة سلسة.",
+        "fr": "Fez Apps : Écosystème unifié Flutter & Firebase pour l'éducation moderne !\nSimplification de la communication scolaire avec trois applications interconnectées pour administrateurs, professeurs et parents.\n\nFonctionnalités :\nApp Admin : Gérer corps enseignant, étudiants et programmes en temps réel.\nApp Prof : Organiser classes, suivre performances et gérer devoirs.\nApp Parents : Recevoir mises à jour live, payer frais et notifications instantanées.\n\nConstruit avec Flutter pour cohérence multiplateforme et Firebase pour backend temps réel. Surmonté défis techniques et UX pour une expérience fluide.",
+        "ru": "Fez Apps: Единая экосистема Flutter & Firebase для современного образования!\nУпрощение школьной коммуникации с тремя взаимосвязанными приложениями для администраторов, преподавателей и родителей.\n\nФункции:\nПриложение администратора: Управление преподавателями, студентами и учебными планами в реальном времени.\nПриложение преподавателя: Организация занятий, мониторинг успеваемости и управление заданиями.\nПриложение родителей: Получение живых обновлений, оплата взносов и мгновенные уведомления.\n\nСоздано с Flutter для кроссплатформенной совместимости и Firebase для бэкенд-функций реального времени. Преодолены технические и UX-вызовы для обеспечения плавного опыта."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML/CSS",
+      "area": "Frontend",
+      "level": "familiar"
+    },
+    {
+      "name": "Dart",
+      "area": "Frontend",
+      "level": "daily"
+    },
+    {
+      "name": "Flutter",
+      "area": "Frontend",
+      "level": "daily"
+    },
+    {
+      "name": "Flutter GetX",
+      "area": "Frontend",
+      "level": "daily"
+    },
+    {
+      "name": "Python",
+      "area": "Backend",
+      "level": "daily"
+    },
+    {
+      "name": "Django",
+      "area": "Backend",
+      "level": "daily"
+    },
+    {
+      "name": "MongoDB",
+      "area": "Database",
+      "level": "daily"
+    },
+    {
+      "name": "MySQL",
+      "area": "Database",
+      "level": "daily"
+    },
+    {
+      "name": "Firebase",
+      "area": "Database",
+      "level": "daily"
+    },
+    {
+      "name": "Docker",
+      "area": "DevOps",
+      "level": "familiar"
+    },
+    {
+      "name": "GitHub",
+      "area": "DevOps",
+      "level": "familiar"
+    },
+    {
+      "name": "Azure",
+      "area": "DevOps",
+      "level": "familiar"
+    },
+    {
+      "name": "Hadoop",
+      "area": "DevOps",
+      "level": "familiar"
+    }
+  ]
+}

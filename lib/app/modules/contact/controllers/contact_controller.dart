@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:my_portfolio/app/core/constants/strings_assets_constants.dart';
-import 'package:my_portfolio/app/core/toast_component.dart';
+
+enum SendStatus { idle, sending, sent, failed }
 
 class ContactController extends GetxController {
   static final Uri _formspreeUri = Uri.parse('https://formspree.io/f/xgvyljqb');
@@ -14,14 +14,14 @@ class ContactController extends GetxController {
   final emailController = TextEditingController();
   final messageController = TextEditingController();
 
-  final RxBool isSending = false.obs;
+  final Rx<SendStatus> status = SendStatus.idle.obs;
 
-  Future<void> submitForm(BuildContext context, {required bool isDesktop}) async {
-    if (isSending.value || !(formKey.currentState?.validate() ?? false)) return;
+  bool get isSending => status.value == SendStatus.sending;
 
-    final name = nameController.text.trim();
-    isSending.value = true;
-    bool sent = false;
+  Future<void> submitForm() async {
+    if (isSending || !(formKey.currentState?.validate() ?? false)) return;
+
+    status.value = SendStatus.sending;
     try {
       final response = await http
           .post(
@@ -31,34 +31,29 @@ class ContactController extends GetxController {
               'Accept': 'application/json',
             },
             body: jsonEncode({
-              'name': name,
+              'name': nameController.text.trim(),
               'email': emailController.text.trim(),
               'message': messageController.text.trim(),
             }),
           )
           .timeout(const Duration(seconds: 15));
-      sent = response.statusCode >= 200 && response.statusCode < 300;
+      final sent = response.statusCode >= 200 && response.statusCode < 300;
+      status.value = sent ? SendStatus.sent : SendStatus.failed;
     } catch (_) {
-      sent = false;
-    } finally {
-      isSending.value = false;
+      status.value = SendStatus.failed;
     }
 
-    if (!context.mounted) return;
-    final message = sent
-        ? '${StringsAssetsConstants.thankYou} $name! ${StringsAssetsConstants.messageSent}'
-        : StringsAssetsConstants.oopsSomethingWrong;
-    final type = sent ? ToastTypes.success : ToastTypes.error;
-    if (isDesktop) {
-      ToastComponent().showDesktopToast(context, message: message, type: type);
-    } else {
-      ToastComponent().showMobileToast(context, message: message, type: type);
-    }
-
-    if (sent) {
+    if (status.value == SendStatus.sent) {
       nameController.clear();
       emailController.clear();
       messageController.clear();
+    }
+  }
+
+  /// Hides the last result once the visitor starts typing again.
+  void clearResult() {
+    if (status.value == SendStatus.sent || status.value == SendStatus.failed) {
+      status.value = SendStatus.idle;
     }
   }
 

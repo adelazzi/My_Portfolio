@@ -1,23 +1,23 @@
-// ignore_for_file: deprecated_member_use
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ThemeUtil {
-  static ThemeMode currentTheme = ThemeMode.dark;
+  /// Light is the default; visitors can switch from the top bar.
+  static final Rx<ThemeMode> mode = ThemeMode.light.obs;
 
-  static RxBool isDarkMode = false.obs;
+  static ThemeMode get currentTheme => mode.value;
 
-  static void changeTheme({required ThemeMode theme}) {
-  
-    isDarkMode(theme == ThemeMode.light);
-    Get.changeThemeMode(theme);
-    currentTheme = theme;
+  /// `?theme=dark` in the link opens the dark theme.
+  static void initialize({String? requested}) {
+    if (requested == 'dark') mode.value = ThemeMode.dark;
   }
 
-  static Future<void> initialize() async {
-  ThemeMode.dark;
-  
+  static bool get isDark => mode.value == ThemeMode.dark;
+
+  static void toggle() => changeTheme(theme: isDark ? ThemeMode.light : ThemeMode.dark);
+
+  static void changeTheme({required ThemeMode theme}) {
+    mode.value = theme;
+    Get.changeThemeMode(theme);
   }
 }

@@ -1,23 +1,19 @@
 name: my_portfolio
-description: A portfolio showcasing HPC and Fullstack developer skills
+description: Portfolio of Adel Azzi, Flutter and Django developer.
 publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  flutter_localizations:
+    sdk: flutter
   url_launcher: ^6.1.11
-  animated_text_kit: ^4.0.0
-  icons_plus: ^4.0.0
-  flutter_screenutil: ^5.5.4
-  flutter_animate: ^4.4.1
   http: ^0.13.6
   get: ^4.7.3
-  lottie: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -38,26 +34,30 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - assets/
     - assets/images/
-    - assets/icons/
     - assets/images/projects/
-    - assets/fonts/
     - assets/portfolio/
     - assets/translations/
 
   fonts:
-    - family: PlusJakartaSans-Bold
+    - family: PlexSans
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
-    - family: PlusJakartaSans-Regular
+        - asset: assets/fonts/plex/IBMPlexSans-Regular.ttf
+        - asset: assets/fonts/plex/IBMPlexSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/plex/IBMPlexSans-SemiBold.ttf
+          weight: 600
+    - family: PlexCondensed
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Regular.ttf
-    - family: PlusJakartaSans-Medium
+        - asset: assets/fonts/plex/IBMPlexSansCondensed-SemiBold.ttf
+          weight: 600
+    - family: PlexArabic
       fonts:
-        - asset: assets/fonts/PlusJakartaSans-Medium.ttf
-    - family: PlusJakartaSans-semiBold
-      fonts:
-        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+        - asset: assets/fonts/plex/IBMPlexSansArabic-Regular.ttf
+        - asset: assets/fonts/plex/IBMPlexSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/plex/IBMPlexSansArabic-SemiBold.ttf
+          weight: 600
