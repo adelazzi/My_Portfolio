@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 class IconsAssetsConstants {
-  static const String robot = "Green_Robot.json";
+  static const String robot = "assets/Green_Robot.json";
   // static const String Pccode = "assets/PC.json";
   static const String flutter = "assets/icons/flutter.png";
   static const String dart = "assets/icons/dart.png";

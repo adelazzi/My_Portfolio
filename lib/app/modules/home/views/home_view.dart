@@ -147,7 +147,7 @@ class HomeView extends GetView<HomeController> {
               height: 5.w,
             ),
             Text(
-              "Everything about me . \n Transforming bold ideas into creative Flutter reality 🚀",
+              StringsAssetsConstants.bio,
               style: TextStyles.bodySmall(context).copyWith(
                   color: MainColors.textColor(context).withOpacity(0.6)),
             ),

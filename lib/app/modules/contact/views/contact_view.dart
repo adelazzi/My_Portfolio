@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:icons_plus/icons_plus.dart';
 import 'package:my_portfolio/app/core/constants/constant_url.dart';
 import 'package:my_portfolio/app/core/constants/strings_assets_constants.dart';
 import 'package:my_portfolio/app/core/styles/colors.dart';
 import 'package:my_portfolio/app/core/styles/text_styles.dart';
-import 'package:my_portfolio/app/core/toast_component.dart';
 import 'package:my_portfolio/app/modules/contact/controllers/contact_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -157,12 +155,22 @@ class ContactView extends StatelessWidget {
 
               // Submit Button
               Center(
-                child: ElevatedButton.icon(
-                  onPressed: _submitForm,
-                  icon: const Icon(
-                    Icons.send,
-                    color: MainColors.whiteColor,
-                  ),
+                child: Obx(() => ElevatedButton.icon(
+                  onPressed: controller.isSending.value
+                      ? null
+                      : () =>
+                          controller.submitForm(context, isDesktop: true),
+                  icon: controller.isSending.value
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                              strokeWidth: 2, color: MainColors.whiteColor),
+                        )
+                      : const Icon(
+                          Icons.send,
+                          color: MainColors.whiteColor,
+                        ),
                   label: Text(
                     StringsAssetsConstants.sendMessage,
                     style: TextStyles.bodyTiny(context),
@@ -172,7 +180,7 @@ class ContactView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 32, vertical: 16),
                   ),
-                ),
+                )),
               ),
             ],
           ),
@@ -233,44 +241,6 @@ class ContactView extends StatelessWidget {
     );
   }
 
-  void _submitForm() async {
-    if (controller.formKey.currentState!.validate()) {
-      final name = controller.nameController.text;
-      final email = controller.emailController.text;
-      final message = controller.messageController.text;
-
-      final uri = Uri.parse(
-          'https://formspree.io/f/xgvyljqb'); // Replace with your form ID
-      final response = await http.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: '''{
-          "name": "$name",
-          "email": "$email",
-          "message": "$message"
-        }''',
-      );
-      if (response.statusCode == 200) {
-        ToastComponent().showDesktopToast(
-          Get.context!,
-          message:
-              '${StringsAssetsConstants.thankYou} $name! ${StringsAssetsConstants.messageSent}',
-          type: ToastTypes.success,
-        );
-
-        // Clear the form
-        controller.nameController.clear();
-        controller.emailController.clear();
-        controller.messageController.clear();
-      } else {
-        ToastComponent().showDesktopToast(
-          Get.context!,
-          message: StringsAssetsConstants.oopsSomethingWrong,
-          type: ToastTypes.error,
-        );
-      }
-    }
-  }
 }
 
 class ContactViewMobile extends StatelessWidget {
@@ -403,7 +373,7 @@ class ContactViewMobile extends StatelessWidget {
                 label: StringsAssetsConstants.yourMessage,
                 maxLines: 3,
                 validator: (value) => value?.isEmpty == true
-                    ? StringsAssetsConstants.yourMessage
+                    ? StringsAssetsConstants.pleaseEnterMessage
                     : null,
               ),
               SizedBox(height: 20.h),
@@ -411,9 +381,19 @@ class ContactViewMobile extends StatelessWidget {
               // Submit Button - Full width for mobile
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: () => _submitForm(context),
-                  icon: Icon(Icons.send, size: 18.sp),
+                child: Obx(() => ElevatedButton.icon(
+                  onPressed: controller.isSending.value
+                      ? null
+                      : () =>
+                          controller.submitForm(context, isDesktop: false),
+                  icon: controller.isSending.value
+                      ? SizedBox(
+                          width: 18.sp,
+                          height: 18.sp,
+                          child:
+                              const CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : Icon(Icons.send, size: 18.sp),
                   label: Text(
                     StringsAssetsConstants.sendMessage,
                     style: TextStyles.bodyMedium(context),
@@ -425,7 +405,7 @@ class ContactViewMobile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                   ),
-                ),
+                )),
               ),
             ],
           ),
@@ -541,39 +521,4 @@ class ContactViewMobile extends StatelessWidget {
     }
   }
 
-  void _submitForm(BuildContext context) async {
-    if (controller.formKey.currentState!.validate()) {
-      // Your existing form submission logic here
-      final name = controller.nameController.text;
-      final email = controller.emailController.text;
-      final message = controller.messageController.text;
-
-      final uri = Uri.parse('https://formspree.io/f/xgvyljqb');
-      final response = await http.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: '''{
-          "name": "$name",
-          "email": "$email",
-          "message": "$message"
-        }''',
-      );
-
-      if (response.statusCode == 200) {
-        ToastComponent().showDesktopToast(
-          Get.context!,
-          message:
-              '${StringsAssetsConstants.thankYou} $name! ${StringsAssetsConstants.messageSent}',
-          type: ToastTypes.success,
-        );
-        // controller.clear();
-      } else {
-        ToastComponent().showDesktopToast(
-          Get.context!,
-          message: StringsAssetsConstants.oopsSomethingWrong,
-          type: ToastTypes.error,
-        );
-      }
-    }
-  }
 }

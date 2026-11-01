@@ -9,7 +9,6 @@ import 'package:my_portfolio/app/core/utils/theme_util.dart';
 import 'package:my_portfolio/app/core/utils/translation_util.dart';
 import 'package:my_portfolio/app/core/utils/translations/translation.dart';
 import 'package:my_portfolio/app/core/utils/translations/translations_assets_reader.dart';
-import 'package:my_portfolio/app/modules/user_controller.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
@@ -44,14 +43,10 @@ class AppInitializer {
       dependencies[0], // Translations assets first
     ]);
     await Future.wait(dependencies.sublist(1));
-
-    // Initialize controllers last
-    Get.put(UserController(), permanent: true);
   }
 }
 
 void _configureSystemSettings() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -216,14 +211,8 @@ class ErrorApp extends StatelessWidget {
     );
   }
 
-  void _restartApp() {
-    if (kIsWeb) {
-      // Web: reload page
-      // (js.context.callMethod('location') as dynamic).callMethod('reload');
-    } else {
-      main();
-    }
-  }
+  // Re-running main() retries initialization on every platform, web included.
+  void _restartApp() => main();
 
   void _showErrorDetails(BuildContext context) {
     showDialog(
@@ -268,45 +257,3 @@ extension PortfolioTranslation on String {
   }
 }
 
-
-
-/////////////////////////////////////////////
-
-
-// void main() {
-//   // Ensure Flutter bindings are initialized for web
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//   runApp(const MyPortfolio());
-// }
-
-// class MyPortfolio extends StatelessWidget {
-//   const MyPortfolio({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ChangeNotifierProvider(
-//       create: (context) => PortfolioProvider(),
-//       child: Consumer<PortfolioProvider>(
-//         builder: (context, provider, _) {
-//           return ScreenUtilInit(
-//             designSize: kIsWeb ? const Size(1440, 900) : const Size(414, 896),
-//             minTextAdapt: true,
-//             splitScreenMode: true,
-//             builder: (context, child) {
-//               return MaterialApp(
-//                 title: 'Adel Azzi - Full Stack Developer Portfolio',
-//                 debugShowCheckedModeBanner: false,
-//                 themeMode: provider.themeMode,
-//                 theme: OptimizedTheme.lightTheme,
-//                 darkTheme: OptimizedTheme.darkTheme,
-//                 home: child,
-//               );
-//             },
-//             child: const HomeScreen(),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
