@@ -37,11 +37,15 @@ class PathSection extends GetView<MainpageController> {
             const _Legend(),
             const SizedBox(height: 28),
             if (Layout.isCompact(context))
-              _VerticalTree(
-                tree: tree,
-                lang: lang,
-                selected: selected,
-                onSelect: (i) => controller.selectedPathIndex.value = i,
+              _DrawIn(
+                axis: Axis.vertical,
+                duration: const Duration(milliseconds: 1400),
+                child: _VerticalTree(
+                  tree: tree,
+                  lang: lang,
+                  selected: selected,
+                  onSelect: (i) => controller.selectedPathIndex.value = i,
+                ),
               )
             else ...[
               _HorizontalTree(
@@ -171,6 +175,113 @@ class CareerTree {
       '${e.title.of(lang)}, ${e.place.of(lang)}, ${formatRange(e.start, e.end)}';
 }
 
+/// Reveals its child with a sweep the first time it scrolls into view: along
+/// the time axis on the horizontal tree, top to bottom on the vertical one.
+/// Shows everything at once when the visitor prefers reduced motion.
+class _DrawIn extends StatefulWidget {
+  const _DrawIn({
+    required this.axis,
+    required this.child,
+    required this.duration,
+    this.reverse = false,
+  });
+
+  final Axis axis;
+
+  /// Sweep from the end edge, for right-to-left layouts.
+  final bool reverse;
+  final Duration duration;
+  final Widget child;
+
+  @override
+  State<_DrawIn> createState() => _DrawInState();
+}
+
+class _DrawInState extends State<_DrawIn> with SingleTickerProviderStateMixin {
+  late final AnimationController _progress = AnimationController(
+    vsync: this,
+    duration: widget.duration,
+  );
+  late final Animation<double> _curve = CurvedAnimation(
+    parent: _progress,
+    curve: Curves.easeInOutCubic,
+  );
+  ScrollController? _scroll;
+
+  @override
+  void initState() {
+    super.initState();
+    _scroll = Get.find<MainpageController>().scrollController;
+    _scroll!.addListener(_checkVisible);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _checkVisible());
+  }
+
+  void _checkVisible() {
+    if (!mounted || _progress.isAnimating || _progress.isCompleted) return;
+    if (Layout.reduceMotion(context)) {
+      _start(instant: true);
+      return;
+    }
+    final box = context.findRenderObject() as RenderBox?;
+    if (box == null || !box.attached) return;
+    final top = box.localToGlobal(Offset.zero).dy;
+    if (top < MediaQuery.sizeOf(context).height * 0.8) _start();
+  }
+
+  void _start({bool instant = false}) {
+    _scroll?.removeListener(_checkVisible);
+    _scroll = null;
+    instant ? _progress.value = 1 : _progress.forward();
+  }
+
+  @override
+  void dispose() {
+    _scroll?.removeListener(_checkVisible);
+    _progress.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _curve,
+      child: widget.child,
+      builder: (context, child) {
+        if (_progress.isCompleted) return child!;
+        return ClipRect(
+          clipper: _SweepClipper(_curve.value, widget.axis, widget.reverse),
+          child: child,
+        );
+      },
+    );
+  }
+}
+
+class _SweepClipper extends CustomClipper<Rect> {
+  _SweepClipper(this.t, this.axis, this.reverse);
+
+  final double t;
+  final Axis axis;
+  final bool reverse;
+
+  /// Room for labels and focus rings that sit just outside the box.
+  static const _bleed = 48.0;
+
+  @override
+  Rect getClip(Size size) {
+    if (axis == Axis.vertical) {
+      return Rect.fromLTRB(-_bleed, -_bleed, size.width + _bleed, size.height * t);
+    }
+    final edge = (size.width + _bleed) * t;
+    return reverse
+        ? Rect.fromLTRB(size.width - edge, -_bleed, size.width + _bleed, size.height + _bleed)
+        : Rect.fromLTRB(-_bleed, -_bleed, edge, size.height + _bleed);
+  }
+
+  @override
+  bool shouldReclip(_SweepClipper old) => old.t != t || old.axis != axis || old.reverse != reverse;
+}
+
 enum _NodeKind { study, role, now }
 
 _NodeKind _kindOf(CareerTree tree, PathEntry e) {
@@ -185,13 +296,13 @@ class _Legend extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = Palette.of(context);
     Widget item(_NodeKind kind, String label) => Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomPaint(size: const Size(14, 14), painter: _DotPainter(kind, p)),
-            const SizedBox(width: 8),
-            Text(label, style: AppType.caption(context)),
-          ],
-        );
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomPaint(size: const Size(14, 14), painter: _DotPainter(kind, p)),
+        const SizedBox(width: 8),
+        Text(label, style: AppType.caption(context)),
+      ],
+    );
     return ExcludeSemantics(
       child: Wrap(
         spacing: 24,
@@ -215,12 +326,13 @@ void _paintDot(Canvas canvas, Offset c, double r, _NodeKind kind, Palette p) {
     case _NodeKind.role:
       canvas.drawCircle(c, r, Paint()..color = p.paper);
       canvas.drawCircle(
-          c,
-          r - 1.5,
-          Paint()
-            ..color = p.forest
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 3);
+        c,
+        r - 1.5,
+        Paint()
+          ..color = p.forest
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 3,
+      );
   }
 }
 
@@ -265,79 +377,113 @@ class _HorizontalTree extends StatelessWidget {
     final rtl = Directionality.of(context) == TextDirection.rtl;
     final height = _topPad + (tree.lanes.length - 1) * _laneGap + 76;
 
-    return LayoutBuilder(builder: (context, c) {
-      final width = c.maxWidth;
-      final geo = _HGeometry(
-        tree: tree,
-        width: width,
-        rtl: rtl,
-        left: _labelWidth + 24,
-        right: 28,
-        laneY: {
-          for (var i = 0; i < tree.lanes.length; i++) tree.lanes[i].id: _topPad + i * _laneGap,
-        },
-      );
-      final labels = _placeLabels(geo);
-      final headline = tree.headline;
+    return LayoutBuilder(
+      builder: (context, c) {
+        final width = c.maxWidth;
+        final geo = _HGeometry(
+          tree: tree,
+          width: width,
+          rtl: rtl,
+          left: _labelWidth + 24,
+          right: 28,
+          laneY: {
+            for (var i = 0; i < tree.lanes.length; i++) tree.lanes[i].id: _topPad + i * _laneGap,
+          },
+        );
+        final labels = _placeLabels(geo);
 
-      return SizedBox(
-        height: height,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned.fill(
-              child: CustomPaint(
-                painter: _HTreePainter(geo: geo, p: p, axisY: height - 20, caption: AppType.caption(context)),
-              ),
-            ),
-            for (final lane in tree.lanes)
-              Positioned(
-                left: rtl ? null : 0,
-                right: rtl ? 0 : null,
-                top: geo.laneY[lane.id]! - 10,
-                width: _labelWidth,
-                child: Text(
-                  lane.title.of(lang),
-                  style: AppType.caption(context).copyWith(
-                    color: lane.id == tree.mainLane ? p.ink : p.muted,
-                    fontWeight: lane.id == tree.mainLane ? FontWeight.w500 : null,
+        return SizedBox(
+          height: height,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: _YearGridPainter(
+                    geo: geo,
+                    p: p,
+                    top: _topPad - 34,
+                    axisY: height - 20,
+                    caption: AppType.caption(context),
                   ),
                 ),
               ),
-            for (var i = 0; i < tree.entries.length; i++) ...[
-              Positioned(
-                left: geo.x(tree.entries[i].start.value) - 50,
-                top: labels[i] ? geo.laneY[tree.entries[i].track]! - 34 : geo.laneY[tree.entries[i].track]! + 16,
-                width: 100,
-                child: ExcludeSemantics(
+              for (final lane in tree.lanes)
+                Positioned(
+                  left: rtl ? null : 0,
+                  right: rtl ? 0 : null,
+                  top: geo.laneY[lane.id]! - 10,
+                  width: _labelWidth,
                   child: Text(
-                    tree.entries[i].label,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    lane.title.of(lang),
                     style: AppType.caption(context).copyWith(
-                      color: i == selected ? p.ink : p.muted,
-                      fontWeight: i == selected ? FontWeight.w600 : null,
+                      color: lane.id == tree.mainLane ? p.ink : p.muted,
+                      fontWeight: lane.id == tree.mainLane ? FontWeight.w500 : null,
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                left: geo.x(tree.entries[i].start.value) - 18,
-                top: geo.laneY[tree.entries[i].track]! - 18,
-                child: _TreeNode(
-                  kind: _kindOf(tree, tree.entries[i]),
-                  selected: i == selected,
-                  pulse: identical(tree.entries[i], headline),
-                  semanticLabel: tree.describe(tree.entries[i], lang),
-                  onTap: () => onSelect(i),
+              Positioned.fill(
+                child: _DrawIn(
+                  axis: Axis.horizontal,
+                  reverse: rtl,
+                  duration: const Duration(milliseconds: 1600),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned.fill(
+                        child: CustomPaint(
+                          painter: _HTreePainter(geo: geo, p: p),
+                        ),
+                      ),
+                      ..._entryWidgets(context, geo, labels),
+                    ],
+                  ),
                 ),
               ),
             ],
-          ],
+          ),
+        );
+      },
+    );
+  }
+
+  List<Widget> _entryWidgets(BuildContext context, _HGeometry geo, List<bool> labels) {
+    final p = Palette.of(context);
+    final headline = tree.headline;
+    return [
+      for (var i = 0; i < tree.entries.length; i++) ...[
+        Positioned(
+          left: geo.x(tree.entries[i].start.value) - 50,
+          top: labels[i]
+              ? geo.laneY[tree.entries[i].track]! - 34
+              : geo.laneY[tree.entries[i].track]! + 16,
+          width: 100,
+          child: ExcludeSemantics(
+            child: Text(
+              tree.entries[i].label,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppType.caption(context).copyWith(
+                color: i == selected ? p.ink : p.muted,
+                fontWeight: i == selected ? FontWeight.w600 : null,
+              ),
+            ),
+          ),
         ),
-      );
-    });
+        Positioned(
+          left: geo.x(tree.entries[i].start.value) - 18,
+          top: geo.laneY[tree.entries[i].track]! - 18,
+          child: _TreeNode(
+            kind: _kindOf(tree, tree.entries[i]),
+            selected: i == selected,
+            pulse: identical(tree.entries[i], headline),
+            semanticLabel: tree.describe(tree.entries[i], lang),
+            onTap: () => onSelect(i),
+          ),
+        ),
+      ],
+    ];
   }
 
   /// true = label above the node. Flips sides when neighbours would collide.
@@ -388,13 +534,57 @@ class _HGeometry {
   double get forward => rtl ? -1 : 1;
 }
 
-class _HTreePainter extends CustomPainter {
-  _HTreePainter({required this.geo, required this.p, required this.axisY, required this.caption});
+/// The time scale behind the tree: a dashed line at each new year and the
+/// year labels along the bottom. It stays put while the tree draws in.
+class _YearGridPainter extends CustomPainter {
+  _YearGridPainter({
+    required this.geo,
+    required this.p,
+    required this.top,
+    required this.axisY,
+    required this.caption,
+  });
 
   final _HGeometry geo;
   final Palette p;
+  final double top;
   final double axisY;
   final TextStyle caption;
+
+  static const _dash = 4.0;
+  static const _gap = 5.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final line = Paint()
+      ..color = p.mist
+      ..strokeWidth = 1;
+    canvas.drawLine(Offset(geo.x(geo.t0), axisY), Offset(geo.x(geo.t1), axisY), line);
+
+    for (var y = geo.t0.ceil(); y <= geo.t1; y++) {
+      final x = geo.x(y.toDouble());
+      for (var d = top; d < axisY - 4; d += _dash + _gap) {
+        canvas.drawLine(Offset(x, d), Offset(x, math.min(d + _dash, axisY - 4)), line);
+      }
+      canvas.drawLine(Offset(x, axisY - 4), Offset(x, axisY + 4), line);
+      final tp = TextPainter(
+        text: TextSpan(text: '$y', style: caption),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      tp.paint(canvas, Offset(x - tp.width / 2, axisY + 8));
+    }
+  }
+
+  @override
+  bool shouldRepaint(_YearGridPainter old) =>
+      old.geo.width != geo.width || old.geo.rtl != geo.rtl || old.p != p || old.axisY != axisY;
+}
+
+class _HTreePainter extends CustomPainter {
+  _HTreePainter({required this.geo, required this.p});
+
+  final _HGeometry geo;
+  final Palette p;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -405,21 +595,6 @@ class _HTreePainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3
       ..strokeCap = StrokeCap.round;
-
-    // Year axis.
-    final axis = Paint()
-      ..color = p.mist
-      ..strokeWidth = 1;
-    canvas.drawLine(Offset(geo.x(geo.t0), axisY), Offset(geo.x(geo.t1), axisY), axis);
-    for (var y = geo.t0.ceil(); y <= geo.t1; y++) {
-      final x = geo.x(y.toDouble());
-      canvas.drawLine(Offset(x, axisY - 4), Offset(x, axisY + 4), axis);
-      final tp = TextPainter(
-        text: TextSpan(text: '$y', style: caption),
-        textDirection: TextDirection.ltr,
-      )..layout();
-      tp.paint(canvas, Offset(x - tp.width / 2, axisY + 8));
-    }
 
     // Branches first so the main line sits on top where they join it.
     const bend = 40.0;
@@ -455,7 +630,10 @@ class _HTreePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_HTreePainter old) =>
-      old.geo.width != geo.width || old.geo.rtl != geo.rtl || old.p != p || old.geo.tree != geo.tree;
+      old.geo.width != geo.width ||
+      old.geo.rtl != geo.rtl ||
+      old.p != p ||
+      old.geo.tree != geo.tree;
 }
 
 /// One selectable point on the horizontal tree.
@@ -479,8 +657,10 @@ class _TreeNode extends StatefulWidget {
 }
 
 class _TreeNodeState extends State<_TreeNode> with SingleTickerProviderStateMixin {
-  late final AnimationController _pulse =
-      AnimationController(vsync: this, duration: const Duration(milliseconds: 2200));
+  late final AnimationController _pulse = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 2200),
+  );
   bool _hover = false;
   bool _focus = false;
 
@@ -513,10 +693,12 @@ class _TreeNodeState extends State<_TreeNode> with SingleTickerProviderStateMixi
         onShowHoverHighlight: (v) => setState(() => _hover = v),
         onShowFocusHighlight: (v) => setState(() => _focus = v),
         actions: {
-          ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: (_) {
-            widget.onTap();
-            return null;
-          }),
+          ActivateIntent: CallbackAction<ActivateIntent>(
+            onInvoke: (_) {
+              widget.onTap();
+              return null;
+            },
+          ),
         },
         child: GestureDetector(
           onTap: widget.onTap,
@@ -570,21 +752,23 @@ class _NodePainter extends CustomPainter {
     final c = size.center(Offset.zero);
     if (pulse != null && pulse! > 0) {
       canvas.drawCircle(
-          c,
-          8 + 10 * pulse!,
-          Paint()
-            ..color = p.brass.withValues(alpha: (1 - pulse!) * 0.6)
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2);
+        c,
+        8 + 10 * pulse!,
+        Paint()
+          ..color = p.brass.withValues(alpha: (1 - pulse!) * 0.6)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2,
+      );
     }
     if (selected || focus) {
       canvas.drawCircle(
-          c,
-          14,
-          Paint()
-            ..color = focus ? p.brass : p.ink
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2);
+        c,
+        14,
+        Paint()
+          ..color = focus ? p.brass : p.ink
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2,
+      );
     }
     _paintDot(canvas, c, hover || selected ? 9.5 : 8, kind, p);
   }
@@ -692,18 +876,18 @@ class _VerticalRowState extends State<_VerticalRow> {
         mouseCursor: SystemMouseCursors.click,
         onShowFocusHighlight: (v) => setState(() => _focus = v),
         actions: {
-          ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: (_) {
-            widget.onTap();
-            return null;
-          }),
+          ActivateIntent: CallbackAction<ActivateIntent>(
+            onInvoke: (_) {
+              widget.onTap();
+              return null;
+            },
+          ),
         },
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: widget.onTap,
           child: Container(
-            decoration: BoxDecoration(
-              border: _focus ? Border.all(color: p.brass, width: 2) : null,
-            ),
+            decoration: BoxDecoration(border: _focus ? Border.all(color: p.brass, width: 2) : null),
             child: Stack(
               children: [
                 PositionedDirectional(
@@ -731,12 +915,17 @@ class _VerticalRowState extends State<_VerticalRow> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(e.title.of(widget.lang),
-                            style: AppType.label(context).copyWith(
-                                fontWeight: widget.selected ? FontWeight.w600 : FontWeight.w500)),
+                        Text(
+                          e.title.of(widget.lang),
+                          style: AppType.label(context).copyWith(
+                            fontWeight: widget.selected ? FontWeight.w600 : FontWeight.w500,
+                          ),
+                        ),
                         const SizedBox(height: 2),
-                        Text('${e.place.of(widget.lang)}, ${formatRange(e.start, e.end)}',
-                            style: AppType.caption(context)),
+                        Text(
+                          '${e.place.of(widget.lang)}, ${formatRange(e.start, e.end)}',
+                          style: AppType.caption(context),
+                        ),
                         if (widget.selected) ...[
                           const SizedBox(height: 12),
                           _EntryDetails(entry: e, lang: widget.lang, framed: false),
@@ -803,7 +992,10 @@ class _VRowPainter extends CustomPainter {
       if (down) {
         // A merge curve below covers the first stretch, so start under it.
         canvas.drawLine(
-            Offset(x, mergesHere ? ny + 28 : ny), Offset(x, size.height), stroke(downColor));
+          Offset(x, mergesHere ? ny + 28 : ny),
+          Offset(x, size.height),
+          stroke(downColor),
+        );
       } else if (lane != tree.mainLane && (isNodeLane || up) && below != null) {
         // The branch starts here: curve down into the main line.
         canvas.drawPath(
@@ -827,12 +1019,13 @@ class _VRowPainter extends CustomPainter {
     final c = Offset(laneX(entry.track), ny);
     if (selected) {
       canvas.drawCircle(
-          c,
-          11,
-          Paint()
-            ..color = p.ink
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2);
+        c,
+        11,
+        Paint()
+          ..color = p.ink
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2,
+      );
     }
     _paintDot(canvas, c, 7, _kindOf(tree, entry), p);
   }
@@ -889,10 +1082,13 @@ class _EntryDetails extends StatelessWidget {
                   children: [
                     Text(entry.title.of(lang), style: AppType.h3(context)),
                     const SizedBox(height: 4),
-                    Text('${entry.place.of(lang)}, ${formatRange(entry.start, entry.end)}',
-                        style: AppType.caption(context).copyWith(
-                            color: entry.isCurrent ? p.brassText : p.muted,
-                            fontWeight: entry.isCurrent ? FontWeight.w500 : null)),
+                    Text(
+                      '${entry.place.of(lang)}, ${formatRange(entry.start, entry.end)}',
+                      style: AppType.caption(context).copyWith(
+                        color: entry.isCurrent ? p.brassText : p.muted,
+                        fontWeight: entry.isCurrent ? FontWeight.w500 : null,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -933,7 +1129,10 @@ class _EntryDetails extends StatelessWidget {
             runSpacing: 8,
             children: [
               if (entry.link != null)
-                InlineLink(label: StringsAssetsConstants.visitSite, onTap: () => openUrl(entry.link!)),
+                InlineLink(
+                  label: StringsAssetsConstants.visitSite,
+                  onTap: () => openUrl(entry.link!),
+                ),
               for (final l in entry.links)
                 InlineLink(label: l.label.of(lang), onTap: () => openUrl(l.url)),
             ],
