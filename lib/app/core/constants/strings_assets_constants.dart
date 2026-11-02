@@ -35,6 +35,8 @@ class StringsAssetsConstants {
   static String get present => "ui_present".tr;
   static String get visitSite => "ui_visit_site".tr;
   static String get projectsTitle => "ui_projects_title".tr;
+  static String get filterAll => "ui_filter_all".tr;
+  static String get filterLabel => "ui_filter_label".tr;
   static String get skillsTitle => "ui_skills_title".tr;
   static String get skillsDaily => "ui_skills_daily".tr;
   static String get skillsFamiliar => "ui_skills_familiar".tr;

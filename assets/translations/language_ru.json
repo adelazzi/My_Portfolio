@@ -97,5 +97,7 @@
   "ui_theme_dark": "Тёмная тема",
   "ui_theme_light": "Светлая тема",
   "ui_language": "Язык",
-  "ui_footer": "Сделано на Flutter."
+  "ui_footer": "Сделано на Flutter.",
+  "ui_filter_all": "Все",
+  "ui_filter_label": "Фильтр проектов по технологии"
 }

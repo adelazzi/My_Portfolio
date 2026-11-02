@@ -97,5 +97,7 @@
   "ui_theme_dark": "التبديل إلى الوضع الداكن",
   "ui_theme_light": "التبديل إلى الوضع الفاتح",
   "ui_language": "اللغة",
-  "ui_footer": "صُمّم بـ Flutter."
+  "ui_footer": "صُمّم بـ Flutter.",
+  "ui_filter_all": "الكل",
+  "ui_filter_label": "تصفية المشاريع حسب التقنية"
 }

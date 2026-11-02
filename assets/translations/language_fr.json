@@ -97,5 +97,7 @@
   "ui_theme_dark": "Passer au thème sombre",
   "ui_theme_light": "Passer au thème clair",
   "ui_language": "Langue",
-  "ui_footer": "Conçu avec Flutter."
+  "ui_footer": "Conçu avec Flutter.",
+  "ui_filter_all": "Tous",
+  "ui_filter_label": "Filtrer les projets par technologie"
 }
