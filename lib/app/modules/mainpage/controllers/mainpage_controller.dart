@@ -17,6 +17,10 @@ class MainpageController extends GetxController {
   /// The section currently under the top bar, highlighted in the navigation.
   final Rx<Section> active = Section.top.obs;
 
+  /// Technology the projects list is filtered by; null shows all projects.
+  /// Skills set it too, so a skill can jump to the projects that use it.
+  final RxnString projectFilter = RxnString();
+
   /// Index of the selected point in the career tree; -1 picks the current one.
   final RxInt selectedPathIndex = (-1).obs;
 

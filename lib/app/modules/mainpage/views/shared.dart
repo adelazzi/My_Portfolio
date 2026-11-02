@@ -117,3 +117,75 @@ class AssetPicture extends StatelessWidget {
     );
   }
 }
+
+/// Compact outlined button for links that leave the site (certificate,
+/// website). The arrow says it opens somewhere else.
+class ExternalLinkButton extends StatelessWidget {
+  const ExternalLinkButton({super.key, required this.label, required this.url});
+
+  final String label;
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    return Semantics(
+      link: true,
+      child: OutlinedButton.icon(
+        onPressed: () => openUrl(url),
+        icon: Icon(
+          Directionality.of(context) == TextDirection.rtl ? Icons.north_west : Icons.north_east,
+          size: 16,
+        ),
+        iconAlignment: IconAlignment.end,
+        label: Text(label),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: p.ink,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          minimumSize: const Size(0, 40),
+          textStyle: AppType.label(context).copyWith(fontSize: 14),
+        ).copyWith(
+          side: WidgetStateProperty.resolveWith((s) {
+            if (s.contains(WidgetState.focused)) return BorderSide(color: p.brass, width: 2);
+            if (s.contains(WidgetState.hovered)) return BorderSide(color: p.forest, width: 1.5);
+            return BorderSide(color: p.mist, width: 1.5);
+          }),
+          backgroundColor: WidgetStateProperty.resolveWith(
+              (s) => s.contains(WidgetState.hovered) ? p.surface : Colors.transparent),
+        ),
+      ),
+    );
+  }
+}
+
+/// "Read more" / "Show less" toggle for long descriptions.
+class ReadMoreButton extends StatelessWidget {
+  const ReadMoreButton({super.key, required this.expanded, required this.lang, required this.onTap});
+
+  final bool expanded;
+  final String lang;
+  final VoidCallback onTap;
+
+  static const _more = {'ar': 'اقرأ المزيد', 'fr': 'Lire la suite', 'ru': 'Читать дальше'};
+  static const _less = {'ar': 'عرض أقل', 'fr': 'Réduire', 'ru': 'Свернуть'};
+
+  @override
+  Widget build(BuildContext context) {
+    final p = Palette.of(context);
+    return Semantics(
+      expanded: expanded,
+      child: TextButton.icon(
+        onPressed: onTap,
+        icon: Icon(expanded ? Icons.expand_less : Icons.expand_more, size: 20),
+        iconAlignment: IconAlignment.end,
+        label: Text(expanded ? (_less[lang] ?? 'Show less') : (_more[lang] ?? 'Read more')),
+        style: TextButton.styleFrom(
+          foregroundColor: p.forest,
+          padding: const EdgeInsetsDirectional.only(start: 0, end: 8, top: 10, bottom: 10),
+          minimumSize: const Size(0, 40),
+          textStyle: AppType.label(context).copyWith(fontSize: 14),
+        ),
+      ),
+    );
+  }
+}

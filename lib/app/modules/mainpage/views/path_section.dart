@@ -1129,12 +1129,9 @@ class _EntryDetails extends StatelessWidget {
             runSpacing: 8,
             children: [
               if (entry.link != null)
-                InlineLink(
-                  label: StringsAssetsConstants.visitSite,
-                  onTap: () => openUrl(entry.link!),
-                ),
+                ExternalLinkButton(label: StringsAssetsConstants.visitSite, url: entry.link!),
               for (final l in entry.links)
-                InlineLink(label: l.label.of(lang), onTap: () => openUrl(l.url)),
+                ExternalLinkButton(label: l.label.of(lang), url: l.url),
             ],
           ),
         ],

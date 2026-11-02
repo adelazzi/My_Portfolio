@@ -4,6 +4,7 @@ import 'package:my_portfolio/app/core/constants/strings_assets_constants.dart';
 import 'package:my_portfolio/app/core/design/palette.dart';
 import 'package:my_portfolio/app/data/career_data.dart';
 import 'package:my_portfolio/app/data/career_repository.dart';
+import 'package:my_portfolio/app/modules/mainpage/controllers/mainpage_controller.dart';
 import 'package:my_portfolio/app/modules/mainpage/views/shared.dart';
 
 /// Projects as a release index: every project listed at once, a live preview
@@ -16,8 +17,6 @@ class ProjectsSection extends StatefulWidget {
 }
 
 class _ProjectsSectionState extends State<ProjectsSection> {
-  /// Null shows every project.
-  String? _filter;
   String? _selectedId;
 
   static bool _twoPane(BuildContext context) => MediaQuery.sizeOf(context).width >= 900;
@@ -37,12 +36,14 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   @override
   Widget build(BuildContext context) {
     final repo = CareerRepository.to;
+    final page = Get.find<MainpageController>();
     return SectionFrame(
       top: 120,
       child: Obx(() {
         final all = repo.data.value.projects;
         final lang = repo.lang.value;
-        final visible = _filter == null ? all : all.where((p) => p.tech.contains(_filter)).toList();
+        final filter = page.projectFilter.value;
+        final visible = filter == null ? all : all.where((p) => p.tech.contains(filter)).toList();
         final twoPane = _twoPane(context);
 
         // Keep the selection inside the current filter. On phones nothing is
@@ -58,8 +59,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         final filters = _Filters(
           counts: _techCounts(all),
           total: all.length,
-          active: _filter,
-          onChanged: (f) => setState(() => _filter = f),
+          active: filter,
+          onChanged: (f) => page.projectFilter.value = f,
         );
         final index = Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -485,24 +486,21 @@ class _ProjectBodyState extends State<_ProjectBody> {
             overflow: _expanded || !long ? TextOverflow.visible : TextOverflow.ellipsis,
           ),
         ),
-        if (long || pr.links.isNotEmpty) ...[
-          const SizedBox(height: 10),
+        if (long) ...[
+          const SizedBox(height: 4),
+          ReadMoreButton(
+            expanded: _expanded,
+            lang: widget.lang,
+            onTap: () => setState(() => _expanded = !_expanded),
+          ),
+        ],
+        if (pr.links.isNotEmpty) ...[
+          SizedBox(height: long ? 8 : 16),
           Wrap(
-            spacing: 24,
-            runSpacing: 8,
+            spacing: 12,
+            runSpacing: 12,
             children: [
-              if (long)
-                InlineLink(
-                  label: _expanded ? _less(widget.lang) : _more(widget.lang),
-                  style: AppType.caption(context).copyWith(color: p.ink),
-                  onTap: () => setState(() => _expanded = !_expanded),
-                ),
-              for (final l in pr.links)
-                InlineLink(
-                  label: l.label.of(widget.lang),
-                  style: AppType.caption(context).copyWith(color: p.ink),
-                  onTap: () => openUrl(l.url),
-                ),
+              for (final l in pr.links) ExternalLinkButton(label: l.label.of(widget.lang), url: l.url),
             ],
           ),
         ],
@@ -510,9 +508,4 @@ class _ProjectBodyState extends State<_ProjectBody> {
     );
   }
 
-  // Kept local: only this toggle needs them.
-  String _more(String lang) =>
-      const {'ar': 'اقرأ المزيد', 'fr': 'Lire la suite', 'ru': 'Читать дальше'}[lang] ?? 'Read more';
-  String _less(String lang) =>
-      const {'ar': 'عرض أقل', 'fr': 'Réduire', 'ru': 'Свернуть'}[lang] ?? 'Show less';
 }

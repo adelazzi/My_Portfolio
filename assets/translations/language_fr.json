@@ -99,5 +99,8 @@
   "ui_language": "Langue",
   "ui_footer": "Conçu avec Flutter.",
   "ui_filter_all": "Tous",
-  "ui_filter_label": "Filtrer les projets par technologie"
+  "ui_filter_label": "Filtrer les projets par technologie",
+  "ui_skills_hint": "Regroupées par domaine. Sélectionnez une compétence avec un nombre de projets pour voir les projets qui l'utilisent.",
+  "ui_projects_count": "Projets : @n",
+  "ui_show_projects": "Voir les projets qui utilisent @name"
 }

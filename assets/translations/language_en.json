@@ -99,5 +99,8 @@
   "ui_language": "Language",
   "ui_footer": "Built with Flutter.",
   "ui_filter_all": "All",
-  "ui_filter_label": "Filter projects by technology"
+  "ui_filter_label": "Filter projects by technology",
+  "ui_skills_hint": "Grouped by area. Select a skill with a project count to see the projects that use it.",
+  "ui_projects_count": "Projects: @n",
+  "ui_show_projects": "Show projects that use @name"
 }

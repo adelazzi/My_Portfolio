@@ -99,5 +99,8 @@
   "ui_language": "اللغة",
   "ui_footer": "صُمّم بـ Flutter.",
   "ui_filter_all": "الكل",
-  "ui_filter_label": "تصفية المشاريع حسب التقنية"
+  "ui_filter_label": "تصفية المشاريع حسب التقنية",
+  "ui_skills_hint": "مجمّعة حسب المجال. اختر مهارة لها عدد مشاريع لعرض المشاريع التي تستخدمها.",
+  "ui_projects_count": "المشاريع: @n",
+  "ui_show_projects": "عرض المشاريع التي تستخدم @name"
 }

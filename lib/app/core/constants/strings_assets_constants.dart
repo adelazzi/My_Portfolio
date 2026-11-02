@@ -40,6 +40,9 @@ class StringsAssetsConstants {
   static String get skillsTitle => "ui_skills_title".tr;
   static String get skillsDaily => "ui_skills_daily".tr;
   static String get skillsFamiliar => "ui_skills_familiar".tr;
+  static String get skillsHint => "ui_skills_hint".tr;
+  static String projectsCount(int n) => "ui_projects_count".trParams({'n': '$n'});
+  static String showProjects(String name) => "ui_show_projects".trParams({'name': name});
   static String get footer => "ui_footer".tr;
 
   // Contact
